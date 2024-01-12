@@ -1,28 +1,91 @@
 <!DOCTYPE HTML>
-<html>
-	<head>
-		<title>Eashwar Subramanian Portfolio</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<html lang="en">
+<head>
+    <title>Eashwar Subramanian Portfolio</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <style>
+        .profile-image {
+            width: 100px; /* Adjust the size as needed */
+            height: 100px; /* Adjust the size as needed */
+            border-radius: 50%; /* Creates a circular shape */
+            overflow: hidden; /* Hide overflowing content */
+            margin-right: 20px; /* Adjust the margin as needed */
+        }
 
-		<!-- Wrapper -->
-			
+        .profile-image img {
+            width: 100%; /* Ensures the image fills the container */
+            height: auto; /* Maintains the image's aspect ratio */
+            display: block; /* Removes extra space below the image */
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
 
-				<!-- Intro -->
-					<div id="intro">
-						<h1>	Eashwar Subramanian<br />
-						</h1>
-						<p> Aspiring Data Scientist <a href="https://www.linkedin.com/in/eashwar-s-02461a1b3/">@Eashwar</a>
-						 </p>
-						<ul class="actions">
-							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-						</ul>
-					</div>
+        .skills h3 {
+            width: 100%;
+        }
 
+        .skills-container {
+            width: 48%;
+            margin-bottom: 20px;
+            list-style: none;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+        <!-- Intro -->
+        <div id="intro">
+			<div class="profile-image">
+                <a><img src="images/profile.jpg" >alt="" /></a>
+            </div>
+            <h1>Eashwar Subramanian</h1>
+            <p>Aspiring Data Scientist <a href="https://www.linkedin.com/in/eashwar-s-02461a1b3/">@Eashwar</a></p>
+            <h2>Summary</h2>
+            <p>I'm an aspiring data scientist with a passion for leveraging data-driven insights to solve complex problems. I'm dedicated to applying analytics techniques to extract meaningful patterns from diverse datasets. With a commitment to continuous learning and a keen eye for innovation, I'm poised to make impactful contributions to the field of data science.</p>
+
+            <ul class="actions">
+                <li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
+            </ul>
+
+            <h2>Skills</h2>
+            <div class="skills">
+                <div class="skills-container">
+                    <h3>Technical Skills</h3>
+                    <ul>
+                        <li>SQL (SQL Server, MySQL)</li>
+                        <li>Spreadsheet (Cell Reference, Data Validation)</li>
+                        <li>Python (Pandas, NumPy, SciPy, Matplotlib)</li>
+                        <li>Microsoft Power Bi</li>
+                        <li>Tableau</li>
+                        <li>Rstudio</li>
+                        <li>Excel (VLOOKUP, Conditional Formatting, Pivot Tables)</li>
+                        <li>Statistical Analysis Theory (Hypothesis Testing, Confidence Level)</li>
+                    </ul>
+                </div>
+                <div class="skills-container">
+                    <h3>Soft Skills</h3>
+                    <ul>
+                        <li>Analytical Thinking</li>
+                        <li>Attention to Detail</li>
+                        <li>Problem-Solving</li>
+                        <li>Communication Skills</li>
+                        <li>Team Collaboration</li>
+                        <li>Product Understanding</li>
+                        <!-- Add more soft skills as needed -->
+                    </ul>
+                </div>
+            </div>
+        </div>
 				<!-- Header -->
 				<header id="header">
 					<a href="index.html" class="logo">Learn More</a>
@@ -75,7 +138,7 @@
 										</a></h2>
 									</header>
 									<a href="https://github.com/Eashwar-Subramanian/Sales-Insights-" class="image fit"><img src="images/sales insights.png" alt="" /></a>
-									<p>This project uses Power Bi to analyse the sales of Atliq hardware company </p>
+									<p>In this project, Power Bi is used to analyse the retail sales of Atliq hardware company </p>
 									<ul class="actions special">
 										<li><a href="https://github.com/Eashwar-Subramanian/Sales-Insights-" class="button">View Project</a></li>
 									</ul>
@@ -87,7 +150,7 @@
 										</a></h2>
 									</header>
 									<a href="https://github.com/Eashwar-Subramanian/Nashville-Housing-Data-for-Data-cleaning" class="image fit"><img src="images/housing.png" alt="" /></a>
-									<p>This project cleans the housing data in MySQL </p>
+									<p>In this project, we take raw housing data and transform it in SQL Server to make it more usable for analysis.</p>
 									<ul class="actions special">
 										<li><a href="https://github.com/Eashwar-Subramanian/Nashville-Housing-Data-for-Data-cleaning" class="button">View Project</a></li>
 									</ul>

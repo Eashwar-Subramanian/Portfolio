@@ -37,6 +37,20 @@
             list-style: none;
             padding: 0;
         }
+		.vertical-navigation {
+			display: flex;
+    		flex-direction: column;
+    		align-items: flex-start;
+		}
+
+		.vertical-navigation ul {
+    		list-style: none;
+    		padding: 0;
+		}
+
+		.vertical-navigation li {
+    		margin-bottom: 10px; /* Adjust the spacing between links as needed */
+		}
     </style>
 </head>
 
@@ -45,25 +59,25 @@
     <div id="wrapper">
         <!-- Intro -->
         <div id="intro">
-	   <div class="profile-image">
-		   <a><img src="images/profile.png" ></a>
+			<div class="profile-image">
+                <a><img src="images/profile.png" ></a>
             </div>
             <h1>Eashwar Subramanian</h1>
             <p>Aspiring Data Scientist <a href="https://www.linkedin.com/in/eashwar-s-02461a1b3/">@Eashwar</a></p>
-            <h2>Summary</h2>
+            <h2 id="summary">Summary</h2>
             <p>I'm an aspiring data scientist with a passion for leveraging data-driven insights to solve complex problems. I'm dedicated to applying analytics techniques to extract meaningful patterns from diverse datasets. With a commitment to continuous learning and a keen eye for innovation, I'm poised to make impactful contributions to the field of data science.</p>
 
             <ul class="actions">
                 <li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
             </ul>
 
-            <h2>Skills</h2>
+            <h2 id="skills">Skills</h2>
             <div class="skills">
                 <div class="skills-container">
                     <h3>Technical Skills</h3>
                     <ul>
                         <li>SQL (SQL Server, MySQL)</li>
-			<li>Python (Pandas, NumPy, SciPy, Matplotlib)</li>
+						<li>Python (Pandas, NumPy, SciPy, Matplotlib)</li>
                         <li>Spreadsheet (Cell Reference, Data Validation)</li>
                         <li>Microsoft Power Bi</li>
                         <li>Tableau</li>
@@ -91,26 +105,26 @@
 					<a href="index.html" class="logo">Learn More</a>
 				</header>
 
-				<!-- Nav 
+				<!-- Nav--> 
 					<nav id="nav">
-						<ul class="links">
-							<li class="active"><a href="index.html">This is Massively</a></li>
-							<li><a href="generic.html">Generic Page</a></li>
-							<li><a href="elements.html">Elements Reference</a></li>
-						</ul>
-						<ul class="icons">
-							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						<div class="vertical-navigation">
+							<ul>
+								<li><a href="#summary">Summary</a></li>
+								<li><a href="#skills">Skills</a></li>
+								<li><a href="#projects">Projects</a></li>
+							</ul>
+						</div>
+						<ul class="icons alt">
+							<li><a href="https://www.linkedin.com/in/eashwar-s-02461a1b3/" class="icon brands alt fa-linkedin"><span class="label">linkedin</span></a></li>
+							<li><a href="https://github.com/Eashwar-Subramanian" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
 						</ul>
 					</nav>
-                -->
+                
 				<!-- Main -->
 					<div id="main">
                         <header class="major">
 									
-							<h2><a href="#">Projects<br />
+							<h2 id="projects"><a href="#">Projects<br />
 							</a></h2>
 						</header>
 						<!-- Featured Post 

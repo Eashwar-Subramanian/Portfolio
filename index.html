@@ -1,188 +1,169 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-    <title>Eashwar Subramanian Portfolio</title>
+    <title>Eashwar Subramanian | Data Portfolio</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
     <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .intro-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
         .profile-image {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             overflow: hidden;
-            margin-right: 20px;
         }
         .profile-image img {
             width: 100%;
             height: auto;
-            display: block;
         }
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
+        .summary-text {
+            max-width: 800px;
         }
-        .skills h3 {
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .project-item {
+            background: #f9f9f9;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .project-item img {
             width: 100%;
+            height: 180px;
+            object-fit: cover;
         }
-        .skills-container {
-            width: 48%;
-            margin-bottom: 20px;
-            list-style: none;
-            padding: 0;
+        .project-item h3 {
+            margin: 1rem;
         }
-		.vertical-navigation {
-			display: flex;
-			flex-direction: column;
-			align-items: flex-start;
-		}
-		.vertical-navigation ul {
-			list-style: none;
-			padding: 0;
-		}
-		.vertical-navigation li {
-			margin-bottom: 10px;
-		}
+        .project-item p {
+            margin: 0 1rem 1rem 1rem;
+        }
+        .contact-section {
+            background-color: #eee;
+            padding: 2rem;
+            margin-top: 2rem;
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body class="is-preload">
-<div id="wrapper">
-    <!-- Intro -->
-    <div id="intro">
-        <div class="profile-image">
-            <a><img src="images/profile.png" ></a>
-        </div>
-        <h1>Eashwar Subramanian</h1>
-        <p>Master of Data Science | SQL, Python, Power BI, AWS<br>
-        <a href="mailto:eashwars2001@gmail.com">eashwars2001@gmail.com</a></p>
-        <p>I’m passionate about building data-driven solutions for real-world business challenges. With a strong foundation in analytics, cloud deployment, and storytelling, I specialize in translating messy data into clear insights and interactive dashboards.</p>
-        <ul class="actions">
-            <li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-        </ul>
-        <h2 id="skills">Skills</h2>
-        <div class="skills">
-            <div class="skills-container">
-                <h3>Technical Skills</h3>
-                <ul>
-                    <li>Python (Pandas, NumPy, Matplotlib, Seaborn)</li>
-                    <li>SQL (SQL Server, MySQL)</li>
-                    <li>Power BI, Tableau</li>
-                    <li>HTML, CSS, Java, JavaScript</li>
-                    <li>AWS (EC2, S3, Lambda, DynamoDB)</li>
-                    <li>Excel, Git, Jupyter</li>
-                </ul>
+    <div id="wrapper">
+        <!-- Intro -->
+        <section id="intro">
+            <div class="inner intro-content">
+                <div class="profile-image">
+                    <img src="images/profile.png" alt="Eashwar Subramanian">
+                </div>
+                <div class="summary-text">
+                    <h1>Eashwar Subramanian</h1>
+                    <p><strong>Master of Data Science | RMIT University | Melbourne, Australia</strong></p>
+                    <p>Hands-on experience in SQL, Python, Power BI, AWS, and Tableau. Passionate about delivering insights from real-world data, building dashboards, and solving business problems. Currently seeking part-time, internship, or contract opportunities in data analytics and data engineering.</p>
+                    <p><a href="mailto:eashwars2001@gmail.com">eashwars2001@gmail.com</a> | +61 450 332 782</p>
+                    <p>
+                        <a href="https://github.com/Eashwar-Subramanian" target="_blank">GitHub</a> |
+                        <a href="https://www.linkedin.com/in/eashwar-s-02461a1b3/" target="_blank">LinkedIn</a> |
+                        <a href="https://eashwar-subramanian.github.io/Portfolio/" target="_blank">Portfolio</a>
+                    </p>
+                </div>
             </div>
-            <div class="skills-container">
-                <h3>Soft Skills</h3>
-                <ul>
-                    <li>Analytical Thinking</li>
-                    <li>Attention to Detail</li>
-                    <li>Problem-Solving</li>
-                    <li>Communication Skills</li>
-                    <li>Team Collaboration</li>
-                    <li>Product Understanding</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <!-- Header -->
-    <header id="header">
-        <a href="index.html" class="logo">Learn More</a>
-    </header>
-
-    <!-- Nav -->
-    <nav id="nav">
-        <div class="vertical-navigation">
-            <ul>
-                <li><a href="#summary">Summary</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-            </ul>
-        </div>
-        <ul class="icons alt">
-            <li><a href="https://www.linkedin.com/in/eashwar-s-02461a1b3/" class="icon brands alt fa-linkedin"><span class="label">linkedin</span></a></li>
-            <li><a href="https://github.com/Eashwar-Subramanian" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-        </ul>
-    </nav>
-
-    <!-- Main -->
-    <div id="main">
-        <header class="major">
-            <h2 id="projects"><a href="#">Projects</a></h2>
-        </header>
-        <section class="posts">
-            <article>
-                <header><h2><a href="https://github.com/Eashwar-Subramanian/Sales-Insights-">Sales Insights Dashboard</a></h2></header>
-                <a href="https://github.com/Eashwar-Subramanian/Sales-Insights-" class="image fit"><img src="images/sales insights.png" alt="Sales Insights" /></a>
-                <p>Created Power BI dashboard using MySQL data to analyze sales for AtliQ Hardware, driving stakeholder decision-making with 4 years of trend insights.</p>
-                <ul class="actions special">
-                    <li><a href="https://github.com/Eashwar-Subramanian/Sales-Insights-" class="button">View Project</a></li>
-                </ul>
-            </article>
-            <article>
-                <header><h2><a href="https://github.com/Eashwar-Subramanian/Nashville-Housing-Data-for-Data-cleaning">Real Estate Data Cleaning</a></h2></header>
-                <a href="https://github.com/Eashwar-Subramanian/Nashville-Housing-Data-for-Data-cleaning" class="image fit"><img src="images/housing.png" alt="Housing" /></a>
-                <p>Transformed and cleaned housing data in MySQL, standardizing and optimizing it for future analysis pipelines.</p>
-                <ul class="actions special">
-                    <li><a href="https://github.com/Eashwar-Subramanian/Nashville-Housing-Data-for-Data-cleaning" class="button">View Project</a></li>
-                </ul>
-            </article>
-            <article>
-                <header><h2><a href="https://github.com/Eashwar-Subramanian/Movies-Correlation-EDA-Project">Movies Correlation EDA</a></h2></header>
-                <a href="https://github.com/Eashwar-Subramanian/Movies-Correlation-EDA-Project" class="image fit"><img src="images/movies.png" alt="Movies" /></a>
-                <p>Performed EDA using Python to explore correlations between movie budget and revenue using heatmaps and regression plots.</p>
-                <ul class="actions special">
-                    <li><a href="https://github.com/Eashwar-Subramanian/Movies-Correlation-EDA-Project" class="button">View Project</a></li>
-                </ul>
-            </article>
-            <article>
-                <header><h2><a href="https://github.com/Eashwar-Subramanian/Music-Subscription-App">Cloud-Based Music Subscription App</a></h2></header>
-                <a href="https://github.com/Eashwar-Subramanian/Music-Subscription-App" class="image fit"><img src="images/musicapp.png" alt="Music App" /></a>
-                <p>Full-stack music app using Java Servlets and AWS services (EC2, S3, Lambda, DynamoDB). Includes login, search, and subscription functions.</p>
-                <ul class="actions special">
-                    <li><a href="https://github.com/Eashwar-Subramanian/Music-Subscription-App" class="button">View Project</a></li>
-                </ul>
-            </article>
         </section>
-    </div>
 
-    <!-- Footer -->
-    <footer>
-        <section class="split contact">
-            <section class="alt">
-                <h3>Address</h3>
-                <p>Melbourne, VIC - 3000</p>
-            </section>
-            <section>
-                <h3>Phone</h3>
-                <p><a href="#">(+61) 450 332 782</a></p>
-            </section>
-            <section>
-                <h3>Email</h3>
-                <p><a href="#">eashwars2001@gmail.com</a></p>
-            </section>
-            <section>
-                <h3>Social</h3>
-                <ul class="icons alt">
-                    <li><a href="https://www.linkedin.com/in/eashwar-s-02461a1b3/" class="icon brands alt fa-linkedin"><span class="label">linkedin</span></a></li>
+        <!-- Skills -->
+        <section id="skills">
+            <div class="inner">
+                <header class="major">
+                    <h2>Technical Skills</h2>
+                </header>
+                <ul>
+                    <li><strong>Languages & Tools:</strong> Python, SQL, Java, HTML/CSS, Git</li>
+                    <li><strong>Libraries & Frameworks:</strong> Pandas, NumPy, Matplotlib, Seaborn</li>
+                    <li><strong>Databases:</strong> MySQL, SQL Server, DynamoDB</li>
+                    <li><strong>Visualization:</strong> Power BI, Tableau</li>
+                    <li><strong>Cloud:</strong> AWS (EC2, S3, Lambda, API Gateway)</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects">
+            <div class="inner">
+                <header class="major">
+                    <h2>Featured Projects</h2>
+                </header>
+                <div class="project-grid">
+                    <div class="project-item">
+                        <img src="images/sales insights.png" alt="Sales Insights">
+                        <h3><a href="https://github.com/Eashwar-Subramanian/Sales-Insights-" target="_blank">Sales Insights Dashboard</a></h3>
+                        <p>Power BI dashboard visualizing 4 years of retail data from AtliQ Hardware. Helped uncover underperforming regions and enabled 7% revenue projection improvement.</p>
+                    </div>
+                    <div class="project-item">
+                        <img src="images/housing.png" alt="Housing Project">
+                        <h3><a href="https://github.com/Eashwar-Subramanian/Nashville-Housing-Data-for-Data-cleaning" target="_blank">Real Estate Data Cleaning</a></h3>
+                        <p>Transformed raw housing data in MySQL. Standardized formats, removed duplicates, and enhanced schema for streamlined analytics.</p>
+                    </div>
+                    <div class="project-item">
+                        <img src="images/movies.png" alt="Movies EDA">
+                        <h3><a href="https://github.com/Eashwar-Subramanian/Movies-Correlation-EDA-Project" target="_blank">Movies Correlation EDA</a></h3>
+                        <p>Exploratory analysis using Python to identify factors affecting gross revenue. Applied correlation matrices, scatter plots, and regression lines.</p>
+                    </div>
+                    <div class="project-item">
+                        <img src="images/musicapp.png" alt="Music App">
+                        <h3><a href="https://github.com/Eashwar-Subramanian/Music-Subscription-App" target="_blank">Music Subscription Web App (AWS)</a></h3>
+                        <p>Built and deployed full-stack Java-based web application using AWS (EC2, Lambda, S3, DynamoDB). Features include login, song search, and dynamic subscriptions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="contact-section">
+            <div class="inner">
+                <header class="major">
+                    <h2>Contact</h2>
+                </header>
+                <p>Let’s connect! I’m actively looking for part-time, internship, or project-based opportunities in data analytics, engineering, or research. I’m available up to 48 hours per fortnight under my student visa.</p>
+                <ul>
+                    <li><strong>Email:</strong> <a href="mailto:eashwars2001@gmail.com">eashwars2001@gmail.com</a></li>
+                    <li><strong>Phone:</strong> +61 450 332 782</li>
+                    <li><strong>Location:</strong> Melbourne, VIC 3000, Australia</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="inner">
+                <ul class="icons">
                     <li><a href="https://github.com/Eashwar-Subramanian" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+                    <li><a href="https://www.linkedin.com/in/eashwar-s-02461a1b3/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
                 </ul>
-            </section>
-        </section>
-    </footer>
-    <div id="copyright">
-        <ul><li>&copy; Eashwar Subramanian</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+                <ul class="copyright">
+                    <li>&copy; Eashwar Subramanian</li>
+                    <li>Design: Based on HTML5 UP</li>
+                </ul>
+            </div>
+        </footer>
     </div>
-</div>
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/jquery.scrollex.min.js"></script>
-<script src="assets/js/jquery.scrolly.min.js"></script>
-<script src="assets/js/browser.min.js"></script>
-<script src="assets/js/breakpoints.min.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
 </html>

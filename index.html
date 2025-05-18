@@ -8,29 +8,25 @@
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
     <style>
         .profile-image {
-            width: 100px; /* Adjust the size as needed */
-            height: 100px; /* Adjust the size as needed */
-            border-radius: 50%; /* Creates a circular shape */
-            overflow: hidden; /* Hide overflowing content */
-            margin-right: 20px; /* Adjust the margin as needed */
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 20px;
         }
-
         .profile-image img {
-            width: 100%; /* Ensures the image fills the container */
-            height: auto; /* Maintains the image's aspect ratio */
-            display: block; /* Removes extra space below the image */
+            width: 100%;
+            height: auto;
+            display: block;
         }
-        
         .skills {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
         }
-
         .skills h3 {
             width: 100%;
         }
-
         .skills-container {
             width: 48%;
             margin-bottom: 20px;
@@ -39,230 +35,154 @@
         }
 		.vertical-navigation {
 			display: flex;
-    		flex-direction: column;
-    		align-items: flex-start;
+			flex-direction: column;
+			align-items: flex-start;
 		}
-
 		.vertical-navigation ul {
-    		list-style: none;
-    		padding: 0;
+			list-style: none;
+			padding: 0;
 		}
-
 		.vertical-navigation li {
-    		margin-bottom: 10px; /* Adjust the spacing between links as needed */
+			margin-bottom: 10px;
 		}
     </style>
 </head>
-
 <body class="is-preload">
-    <!-- Wrapper -->
-    <div id="wrapper">
-        <!-- Intro -->
-        <div id="intro">
-			<div class="profile-image">
-                <a><img src="images/profile.png" ></a>
+<div id="wrapper">
+    <!-- Intro -->
+    <div id="intro">
+        <div class="profile-image">
+            <a><img src="images/profile.png" ></a>
+        </div>
+        <h1>Eashwar Subramanian</h1>
+        <p>Master of Data Science | SQL, Python, Power BI, AWS<br>
+        <a href="mailto:eashwars2001@gmail.com">eashwars2001@gmail.com</a></p>
+        <p>I’m passionate about building data-driven solutions for real-world business challenges. With a strong foundation in analytics, cloud deployment, and storytelling, I specialize in translating messy data into clear insights and interactive dashboards.</p>
+        <ul class="actions">
+            <li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
+        </ul>
+        <h2 id="skills">Skills</h2>
+        <div class="skills">
+            <div class="skills-container">
+                <h3>Technical Skills</h3>
+                <ul>
+                    <li>Python (Pandas, NumPy, Matplotlib, Seaborn)</li>
+                    <li>SQL (SQL Server, MySQL)</li>
+                    <li>Power BI, Tableau</li>
+                    <li>HTML, CSS, Java, JavaScript</li>
+                    <li>AWS (EC2, S3, Lambda, DynamoDB)</li>
+                    <li>Excel, Git, Jupyter</li>
+                </ul>
             </div>
-            <h1>Eashwar Subramanian</h1>
-            <p>Aspiring Data Scientist <a href="https://www.linkedin.com/in/eashwar-s-02461a1b3/">@Eashwar</a></p>
-            <h2 id="summary">Summary</h2>
-            <p>I'm an aspiring data scientist with a passion for leveraging data-driven insights to solve complex problems. I'm dedicated to applying analytics techniques to extract meaningful patterns from diverse datasets. With a commitment to continuous learning and a keen eye for innovation, I'm poised to make impactful contributions to the field of data science.</p>
-
-            <ul class="actions">
-                <li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-            </ul>
-
-            <h2 id="skills">Skills</h2>
-            <div class="skills">
-                <div class="skills-container">
-                    <h3>Technical Skills</h3>
-                    <ul>
-                        <li>SQL (SQL Server, MySQL)</li>
-						<li>Python (Pandas, NumPy, SciPy, Matplotlib)</li>
-                        <li>Spreadsheet (Cell Reference, Data Validation)</li>
-                        <li>Microsoft Power Bi</li>
-                        <li>Tableau</li>
-                        <li>Rstudio</li>
-                        <li>Excel (VLOOKUP, Conditional Formatting, Pivot Tables)</li>
-                        <li>Statistical Analysis Theory (Hypothesis Testing, Confidence Level)</li>
-                    </ul>
-                </div>
-                <div class="skills-container">
-                    <h3>Soft Skills</h3>
-                    <ul>
-                        <li>Analytical Thinking</li>
-                        <li>Attention to Detail</li>
-                        <li>Problem-Solving</li>
-                        <li>Communication Skills</li>
-                        <li>Team Collaboration</li>
-                        <li>Product Understanding</li>
-                        <!-- Add more soft skills as needed -->
-                    </ul>
-                </div>
+            <div class="skills-container">
+                <h3>Soft Skills</h3>
+                <ul>
+                    <li>Analytical Thinking</li>
+                    <li>Attention to Detail</li>
+                    <li>Problem-Solving</li>
+                    <li>Communication Skills</li>
+                    <li>Team Collaboration</li>
+                    <li>Product Understanding</li>
+                </ul>
             </div>
         </div>
-				<!-- Header -->
-				<header id="header">
-					<a href="index.html" class="logo">Learn More</a>
-				</header>
+    </div>
 
-				<!-- Nav--> 
-					<nav id="nav">
-						<div class="vertical-navigation">
-							<ul>
-								<li><a href="#summary">Summary</a></li>
-								<li><a href="#skills">Skills</a></li>
-								<li><a href="#projects">Projects</a></li>
-							</ul>
-						</div>
-						<ul class="icons alt">
-							<li><a href="https://www.linkedin.com/in/eashwar-s-02461a1b3/" class="icon brands alt fa-linkedin"><span class="label">linkedin</span></a></li>
-							<li><a href="https://github.com/Eashwar-Subramanian" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-						</ul>
-					</nav>
-                
-				<!-- Main -->
-					<div id="main">
-                        <header class="major">
-									
-							<h2 id="projects"><a href="#">Projects<br />
-							</a></h2>
-						</header>
-						<!-- Featured Post 
-							<article class="post featured">
-								<header class="major">
-									
-									<h2><a href="#">Projects<br />
-									</a></h2>
-									<p>Aenean ornare velit lacus varius enim ullamcorper proin aliquam<br />
-									facilisis ante sed etiam magna interdum congue. Lorem ipsum dolor<br />
-									amet nullam sed etiam veroeros.</p>
-								</header>
-								<a href="#" class="image main"><img src="images/pic01.jpg" alt="" /></a>
-								<ul class="actions special">
-									<li><a href="#" class="button large">Full Story</a></li>
-								</ul>
-							</article>
-                        -->
-						<!-- Posts -->
-							<section class="posts">
-								<article>
-									<header>
-										
-										<h2><a href="https://github.com/Eashwar-Subramanian/Sales-Insights-">Sales Insights<br />
-										</a></h2>
-									</header>
-									<a href="https://github.com/Eashwar-Subramanian/Sales-Insights-" class="image fit"><img src="images/sales insights.png" alt="" /></a>
-									<p>In this project, Power Bi is used to analyse the retail sales of Atliq hardware company </p>
-									<ul class="actions special">
-										<li><a href="https://github.com/Eashwar-Subramanian/Sales-Insights-" class="button">View Project</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										
-										<h2><a href="https://github.com/Eashwar-Subramanian/Nashville-Housing-Data-for-Data-cleaning">Data Cleaning in MySQL<br />
-										</a></h2>
-									</header>
-									<a href="https://github.com/Eashwar-Subramanian/Nashville-Housing-Data-for-Data-cleaning" class="image fit"><img src="images/housing.png" alt="" /></a>
-									<p>In this project, we take raw housing data and transform it in SQL Server to make it more usable for analysis.</p>
-									<ul class="actions special">
-										<li><a href="https://github.com/Eashwar-Subramanian/Nashville-Housing-Data-for-Data-cleaning" class="button">View Project</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										
-										<h2><a href="https://github.com/Eashwar-Subramanian/Covid19Dashboard">Data Exploration in MySQL<br />
-										</a></h2>
-									</header>
-									<a href="https://github.com/Eashwar-Subramanian/Covid19Dashboard" class="image fit"><img src="images/covid.png" alt="" /></a>
-									<p>Data Exploration of Covid19 dataset in MySQL</p>
-									<ul class="actions special">
-										<li><a href="https://github.com/Eashwar-Subramanian/Covid19Dashboard" class="button">View Project</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										
-										<h2><a href="https://github.com/Eashwar-Subramanian/Movies-Correlation-EDA-Project">Movies Correlation EDA <br />
-										</a></h2>
-									</header>
-									<a href="https://github.com/Eashwar-Subramanian/Movies-Correlation-EDA-Project" class="image fit"><img src="images/movies.png" alt="" /></a>
-									<p>This project analyse how variables effect the gross revenue of movies</p>
-									<ul class="actions special">
-										<li><a href="https://github.com/Eashwar-Subramanian/Movies-Correlation-EDA-Project" class="button">View Project</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										
-										<h2><a href="https://public.tableau.com/app/profile/eashwar.s4137/vizzes">Tableau Dasboards<br />
-										</a></h2>
-									</header>
-									<a href="https://public.tableau.com/app/profile/eashwar.s4137/vizzes" class="image fit"><img src="images/tableau.png" alt="" /></a>
-									<p>Tableau Dasboard for project on Covid19</p>
-									<ul class="actions special">
-										<li><a href="https://public.tableau.com/app/profile/eashwar.s4137/vizzes" class="button">View Project</a></li>
-									</ul>
-								</article>
-							    <!--
-								<article>
-									<header>
-										
-										<h2><a href="#">Amazon Web Scraping<br />
-										</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic07.jpg" alt="" /></a>
-									<p>In this project, we scrape the data from Amazon to analyse the price data fro products</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">View Project</a></li>
-									</ul>
-								</article>
-							-->
-							</section>
-                        
+    <!-- Header -->
+    <header id="header">
+        <a href="index.html" class="logo">Learn More</a>
+    </header>
 
-				<!-- Footer -->
+    <!-- Nav -->
+    <nav id="nav">
+        <div class="vertical-navigation">
+            <ul>
+                <li><a href="#summary">Summary</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+            </ul>
+        </div>
+        <ul class="icons alt">
+            <li><a href="https://www.linkedin.com/in/eashwar-s-02461a1b3/" class="icon brands alt fa-linkedin"><span class="label">linkedin</span></a></li>
+            <li><a href="https://github.com/Eashwar-Subramanian" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+        </ul>
+    </nav>
 
-						<section class="split contact">
-							<section class="alt">
-								<h3>Address</h3>
-								<p><br/>
-								Melbourne, VIC-3000</p>
-							</section>
-							<section>
-								<h3>Phone</h3>
-								<p><a href="#">(+61) 0450332782</a></p>
-							</section>
-							<section>
-								<h3>Email</h3>
-								<p><a href="#">eashwars2001@gmail.com</a></p>
-							</section>
-							<section>
-								<h3>Social</h3>
-								<ul class="icons alt">
-									<li><a href="https://www.linkedin.com/in/eashwar-s-02461a1b3/" class="icon brands alt fa-linkedin"><span class="label">linkedin</span></a></li>
-									<li><a href="https://github.com/Eashwar-Subramanian" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-								</ul>
-							</section>
-						</section>
-					</footer>
+    <!-- Main -->
+    <div id="main">
+        <header class="major">
+            <h2 id="projects"><a href="#">Projects</a></h2>
+        </header>
+        <section class="posts">
+            <article>
+                <header><h2><a href="https://github.com/Eashwar-Subramanian/Sales-Insights-">Sales Insights Dashboard</a></h2></header>
+                <a href="https://github.com/Eashwar-Subramanian/Sales-Insights-" class="image fit"><img src="images/sales insights.png" alt="Sales Insights" /></a>
+                <p>Created Power BI dashboard using MySQL data to analyze sales for AtliQ Hardware, driving stakeholder decision-making with 4 years of trend insights.</p>
+                <ul class="actions special">
+                    <li><a href="https://github.com/Eashwar-Subramanian/Sales-Insights-" class="button">View Project</a></li>
+                </ul>
+            </article>
+            <article>
+                <header><h2><a href="https://github.com/Eashwar-Subramanian/Nashville-Housing-Data-for-Data-cleaning">Real Estate Data Cleaning</a></h2></header>
+                <a href="https://github.com/Eashwar-Subramanian/Nashville-Housing-Data-for-Data-cleaning" class="image fit"><img src="images/housing.png" alt="Housing" /></a>
+                <p>Transformed and cleaned housing data in MySQL, standardizing and optimizing it for future analysis pipelines.</p>
+                <ul class="actions special">
+                    <li><a href="https://github.com/Eashwar-Subramanian/Nashville-Housing-Data-for-Data-cleaning" class="button">View Project</a></li>
+                </ul>
+            </article>
+            <article>
+                <header><h2><a href="https://github.com/Eashwar-Subramanian/Movies-Correlation-EDA-Project">Movies Correlation EDA</a></h2></header>
+                <a href="https://github.com/Eashwar-Subramanian/Movies-Correlation-EDA-Project" class="image fit"><img src="images/movies.png" alt="Movies" /></a>
+                <p>Performed EDA using Python to explore correlations between movie budget and revenue using heatmaps and regression plots.</p>
+                <ul class="actions special">
+                    <li><a href="https://github.com/Eashwar-Subramanian/Movies-Correlation-EDA-Project" class="button">View Project</a></li>
+                </ul>
+            </article>
+            <article>
+                <header><h2><a href="https://github.com/Eashwar-Subramanian/Music-Subscription-App">Cloud-Based Music Subscription App</a></h2></header>
+                <a href="https://github.com/Eashwar-Subramanian/Music-Subscription-App" class="image fit"><img src="images/musicapp.png" alt="Music App" /></a>
+                <p>Full-stack music app using Java Servlets and AWS services (EC2, S3, Lambda, DynamoDB). Includes login, search, and subscription functions.</p>
+                <ul class="actions special">
+                    <li><a href="https://github.com/Eashwar-Subramanian/Music-Subscription-App" class="button">View Project</a></li>
+                </ul>
+            </article>
+        </section>
+    </div>
 
-				<!-- Copyright -->
-					<div id="copyright">
-						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
-					</div>
-
-			</div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
-	</body>
-</html>    
+    <!-- Footer -->
+    <footer>
+        <section class="split contact">
+            <section class="alt">
+                <h3>Address</h3>
+                <p>Melbourne, VIC - 3000</p>
+            </section>
+            <section>
+                <h3>Phone</h3>
+                <p><a href="#">(+61) 450 332 782</a></p>
+            </section>
+            <section>
+                <h3>Email</h3>
+                <p><a href="#">eashwars2001@gmail.com</a></p>
+            </section>
+            <section>
+                <h3>Social</h3>
+                <ul class="icons alt">
+                    <li><a href="https://www.linkedin.com/in/eashwar-s-02461a1b3/" class="icon brands alt fa-linkedin"><span class="label">linkedin</span></a></li>
+                    <li><a href="https://github.com/Eashwar-Subramanian" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+                </ul>
+            </section>
+        </section>
+    </footer>
+    <div id="copyright">
+        <ul><li>&copy; Eashwar Subramanian</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+    </div>
+</div>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

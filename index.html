@@ -4,155 +4,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eashwar Subramanian | Data Portfolio</title>
-    <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/babel-standalone@7.22.9/babel.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <div id="root"></div>
-    <script type="text/babel">
-        const App = () => {
-            return (
-                <div className="min-h-screen bg-gray-100 font-sans">
-                    {/* Hero Section */}
-                    <header className="bg-gradient-to-r from-teal-600 to-blue-800 text-white py-16">
-                        <div className="max-w-5xl mx-auto px-4 text-center">
-                            <img
-                                src="https://via.placeholder.com/150"
-                                alt="Eashwar Subramanian"
-                                className="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-white"
-                            />
-                            <h1 className="text-4xl font-bold">Eashwar Subramanian</h1>
-                            <p className="text-xl mt-2">Data Science Student | Turning Data into Insights</p>
-                            <p className="mt-4">
-                                Melbourne, VIC, Australia |{" "}
-                                <a href="mailto:eashwars2001@gmail.com" className="underline">eashwars2001@gmail.com</a> | +61 450 332 782
-                            </p>
-                            <div className="flex justify-center gap-4 mt-4">
-                                <a href="https://github.com/Eashwar-Subramanian" target="_blank" className="text-white hover:text-teal-200">GitHub</a>
-                                <a href="https://www.linkedin.com/in/eashwar-s-02461a1b3/" target="_blank" className="text-white hover:text-teal-200">LinkedIn</a>
-                            </div>
-                        </div>
-                    </header>
+<body class="bg-gray-100 font-sans">
+    <!-- Hero Section -->
+    <header class="bg-gradient-to-r from-teal-600 to-blue-800 text-white py-16">
+        <div class="max-w-5xl mx-auto px-4 text-center">
+            <img
+                src="https://via.placeholder.com/150"
+                alt="Eashwar Subramanian"
+                class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-white"
+            />
+            <h1 class="text-4xl font-bold">Eashwar Subramanian</h1>
+            <p class="text-xl mt-2">Data Science Student | Turning Data into Insights</p>
+            <p class="mt-4">
+                Melbourne, VIC, Australia | 
+                <a href="mailto:eashwars2001@gmail.com" class="underline">eashwars2001@gmail.com</a> | +61 450 332 782
+            </p>
+            <div class="flex justify-center gap-4 mt-4">
+                <a href="https://github.com/Eashwar-Subramanian" target="_blank" class="text-white hover:text-teal-200">GitHub</a>
+                <a href="https://www.linkedin.com/in/eashwar-s-02461a1b3/" target="_blank" class="text-white hover:text-teal-200">LinkedIn</a>
+            </div>
+        </div>
+    </header>
 
-                    {/* About Section */}
-                    <section className="py-12 bg-white">
-                        <div className="max-w-5xl mx-auto px-4">
-                            <h2 className="text-3xl font-semibold text-gray-800 mb-6">About Me</h2>
-                            <p className="text-lg text-gray-600">
-                                Master of Data Science student at RMIT University, Melbourne. Skilled in SQL, Python, Power BI, Tableau, and AWS, with hands-on experience in data cleaning, EDA, and dashboard development. Seeking part-time, internship, or contract roles in data analytics or engineering (up to 48 hours/fortnight due to visa restrictions).
-                            </p>
-                        </div>
-                    </section>
+    <!-- About Section -->
+    <section class="py-12 bg-white">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">About Me</h2>
+            <p class="text-lg text-gray-600">
+                Master of Data Science student at RMIT University, Melbourne. Skilled in SQL, Python, Power BI, Tableau, and AWS, with hands-on experience in data cleaning, EDA, and dashboard development. Seeking part-time, internship, or contract roles in data analytics or engineering (up to 48 hours/fortnight due to visa restrictions).
+            </p>
+        </div>
+    </section>
 
-                    {/* Skills Section */}
-                    <section className="py-12 bg-gray-100">
-                        <div className="max-w-5xl mx-auto px-4">
-                            <h2 className="text-3xl font-semibold text-gray-800 mb-6">Technical Skills</h2>
-                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                                {[
-                                    { name: "Python", icon: "🐍" },
-                                    { name: "SQL", icon: "🗄️" },
-                                    { name: "Power BI", icon: "📊" },
-                                    { name: "Tableau", icon: "📈" },
-                                    { name: "AWS", icon: "☁️" },
-                                    { name: "R", icon: "📝" },
-                                    { name: "Pandas", icon: "🐼" },
-                                    { name: "Matplotlib", icon: "📉" },
-                                ].map(skill => (
-                                    <div key={skill.name} className="flex items-center bg-white p-3 rounded-lg shadow">
-                                        <span className="text-2xl mr-2">{skill.icon}</span>
-                                        <span className="text-gray-700">{skill.name}</span>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </section>
+    <!-- Skills Section -->
+    <section class="py-12 bg-gray-100">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Technical Skills</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                <div class="bg-white p-3 rounded shadow">Python</div>
+                <div class="bg-white p-3 rounded shadow">SQL</div>
+                <div class="bg-white p-3 rounded shadow">Power BI</div>
+                <div class="bg-white p-3 rounded shadow">Tableau</div>
+                <div class="bg-white p-3 rounded shadow">AWS</div>
+                <div class="bg-white p-3 rounded shadow">Pandas</div>
+                <div class="bg-white p-3 rounded shadow">NumPy</div>
+                <div class="bg-white p-3 rounded shadow">Matplotlib</div>
+                <div class="bg-white p-3 rounded shadow">Seaborn</div>
+                <div class="bg-white p-3 rounded shadow">MySQL</div>
+                <div class="bg-white p-3 rounded shadow">Java</div>
+                <div class="bg-white p-3 rounded shadow">Git</div>
+            </div>
+        </div>
+    </section>
 
-                    {/* Projects Section */}
-                    <section className="py-12 bg-white">
-                        <div className="max-w-5xl mx-auto px-4">
-                            <h2 className="text-3xl font-semibold text-gray-800 mb-6">Featured Projects</h2>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                {[
-                                    {
-                                        title: "Real Estate Data Transformation",
-                                        description: "Cleaned and standardized a real estate dataset using MySQL, removing duplicates and optimizing schema for analytics.",
-                                        tech: "MySQL, SQL, CSV",
-                                        metrics: "Standardized 5+ columns, removed 10% duplicate records.",
-                                        link: "https://github.com/Eashwar-Subramanian/Nashville-Housing-Data-for-Data-cleaning",
-                                    },
-                                    {
-                                        title: "Global COVID-19 Analytics Dashboard",
-                                        description: "Built a Tableau dashboard with SQL queries to analyze global COVID-19 trends, visualizing infection and vaccination rates.",
-                                        tech: "MySQL, SQL, Tableau",
-                                        metrics: "Analyzed data for 200+ countries, visualized 4 key metrics.",
-                                        link: "https://github.com/Eashwar-Subramanian/COVID-19-Data-Analysis",
-                                    },
-                                    {
-                                        title: "AtliQ Sales Insights Dashboard",
-                                        description: "Developed a Power BI dashboard to visualize 4 years of sales trends, enabling data-driven decisions for AtliQ Hardware.",
-                                        tech: "Power BI, MySQL, ETL",
-                                        metrics: "Projected 7% revenue increase, 10% cost savings.",
-                                        link: "https://github.com/Eashwar-Subramanian/AtliQ-Hardware-Sales-Analytics-Dashboard",
-                                    },
-                                    {
-                                        title: "Movie Revenue Correlation Analysis",
-                                        description: "Performed EDA on movie data using Python to uncover correlations between budget and gross revenue.",
-                                        tech: "Python, Pandas, Matplotlib, Seaborn",
-                                        metrics: "Analyzed 10+ variables, visualized 3 key correlations.",
-                                        link: "https://github.com/Eashwar-Subramanian/Movies-Correlation-EDA-Project",
-                                    },
-                                    {
-                                        title: "Climate Forecasting Dashboard",
-                                        description: "Created a Flask-based dashboard using SARIMA models to forecast temperature and rainfall, with policy recommendations.",
-                                        tech: "Python, Flask, Statsmodels, Matplotlib",
-                                        metrics: "Achieved MAE < 1°C, provided 5+ policy suggestions.",
-                                        link: "https://github.com/Eashwar-Subramanian/Climate-Analysis-Dashboard",
-                                    },
-                                ].map(project => (
-                                    <div key={project.title} className="bg-gray-50 p-6 rounded-lg shadow hover:shadow-lg transition">
-                                        <h3 className="text-xl font-semibold text-gray-800">{project.title}</h3>
-                                        <p className="text-gray-600 mt-2">{project.description}</p>
-                                        <p className="text-gray-500 mt-2"><strong>Tech Stack:</strong> {project.tech}</p>
-                                        <p className="text-gray-500 mt-1"><strong>Impact:</strong> {project.metrics}</p>
-                                        <a
-                                            href={project.link}
-                                            target="_blank"
-                                            className="inline-block mt-4 text-teal-600 hover:text-teal-800 font-semibold"
-                                        >
-                                            View on GitHub
-                                        </a>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Contact Section */}
-                    <section className="py-12 bg-teal-600 text-white">
-                        <div className="max-w-5xl mx-auto px-4 text-center">
-                            <h2 className="text-3xl font-semibold mb-6">Get in Touch</h2>
-                            <p className="text-lg mb-4">
-                                I’m seeking part-time, internship, or contract opportunities in data analytics or engineering (up to 48 hours/fortnight). Let’s connect!
-                            </p>
-                            <p className="mb-4">
-                                <a href="mailto:eashwars2001@gmail.com" className="underline">eashwars2001@gmail.com</a> | +61 450 332 782
-                            </p>
-                            <p>Melbourne, VIC, Australia</p>
-                        </div>
-                    </section>
-
-                    {/* Footer */}
-                    <footer className="py-6 bg-gray-800 text-white text-center">
-                        <p>&copy; 2025 Eashwar Subramanian. All rights reserved.</p>
-                    </footer>
+    <!-- Projects Section -->
+    <section class="py-12 bg-white">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Featured Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-gray-50 p-6 rounded-lg shadow">
+                    <h3 class="text-xl font-semibold text-gray-800">Sales Insights Dashboard</h3>
+                    <p class="text-gray-600 mt-2">Interactive Power BI dashboard visualizing 4 years of sales trends from MySQL.</p>
+                    <a href="https://github.com/Eashwar-Subramanian/Sales-Insights-" target="_blank" class="text-teal-600 mt-2 inline-block">View on GitHub</a>
                 </div>
-            );
-        };
+                <div class="bg-gray-50 p-6 rounded-lg shadow">
+                    <h3 class="text-xl font-semibold text-gray-800">Real Estate Data Cleaning</h3>
+                    <p class="text-gray-600 mt-2">Cleaned and standardized real estate dataset using SQL for accurate analysis.</p>
+                    <a href="https://github.com/Eashwar-Subramanian/Nashville-Housing-Data-for-Data-cleaning" target="_blank" class="text-teal-600 mt-2 inline-block">View on GitHub</a>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg shadow">
+                    <h3 class="text-xl font-semibold text-gray-800">Movies Correlation EDA</h3>
+                    <p class="text-gray-600 mt-2">Exploratory Data Analysis using Python to uncover correlations in movie datasets.</p>
+                    <a href="https://github.com/Eashwar-Subramanian/Movies-Correlation-EDA-Project" target="_blank" class="text-teal-600 mt-2 inline-block">View on GitHub</a>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg shadow">
+                    <h3 class="text-xl font-semibold text-gray-800">Cloud-Based Music Subscription Web App</h3>
+                    <p class="text-gray-600 mt-2">Built full-stack app using Java, AWS services and deployed on EC2.</p>
+                    <a href="https://github.com/Eashwar-Subramanian" target="_blank" class="text-teal-600 mt-2 inline-block">View on GitHub</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        ReactDOM.render(<App />, document.getElementById('root'));
-    </script>
+    <!-- Contact Section -->
+    <section class="py-12 bg-teal-600 text-white text-center">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-3xl font-semibold mb-6">Get in Touch</h2>
+            <p class="text-lg mb-4">Actively seeking opportunities in data analytics, engineering, and related domains.</p>
+            <p class="mb-2">
+                <a href="mailto:eashwars2001@gmail.com" class="underline">eashwars2001@gmail.com</a> | +61 450 332 782
+            </p>
+            <p>Melbourne, VIC, Australia</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-6 bg-gray-800 text-white text-center">
+        <p>&copy; 2025 Eashwar Subramanian. All rights reserved.</p>
+    </footer>
 </body>
 </html>

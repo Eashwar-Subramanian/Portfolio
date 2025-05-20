@@ -3,123 +3,230 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Eashwar Subramanian – Data Science Portfolio featuring real-world projects in SQL, Python, Power BI, Tableau, and AWS. Based in Melbourne, Australia.">
+    <meta name="description" content="Eashwar Subramanian – Data Science Portfolio showcasing projects in Python, SQL, Power BI, Tableau, and AWS. Based in Melbourne, Australia.">
+    <meta name="keywords" content="data science portfolio, Eashwar Subramanian, Python, SQL, Power BI, Tableau, AWS, Melbourne, data analytics, data engineering">
+    <meta name="author" content="Eashwar Subramanian">
     <title>Eashwar Subramanian | Data Portfolio</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Sticky Navigation */
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Hover Effect for Buttons */
+        .btn-teal {
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .btn-teal:hover {
+            background-color: #0d9488;
+            transform: translateY(-2px);
+        }
+    </style>
 </head>
 <body class="bg-gray-100 font-sans">
+    <!-- Navigation Bar -->
+    <nav class="bg-gray-800 text-white py-4 sticky-nav">
+        <div class="max-w-5xl mx-auto px-4 flex justify-between items-center">
+            <div class="text-xl font-bold">Eashwar Subramanian</div>
+            <div class="space-x-6">
+                <a href="#home" class="hover:text-teal-300">Home</a>
+                <a href="#about" class="hover:text-teal-300">About</a>
+                <a href="#education" class="hover:text-teal-300">Education</a>
+                <a href="#skills" class="hover:text-teal-300">Skills</a>
+                <a href="#projects" class="hover:text-teal-300">Projects</a>
+                <a href="#contact" class="hover:text-teal-300">Contact</a>
+            </div>
+        </div>
+    </nav>
+
     <!-- Hero Section -->
-    <header class="bg-gradient-to-r from-gray-900 to-gray-700 text-white py-16">
+    <header id="home" class="bg-gradient-to-r from-gray-900 to-gray-700 text-white py-16">
         <div class="max-w-5xl mx-auto px-4 text-center">
             <div class="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-white">
-              <img src="images/profile.png" alt="Eashwar Subramanian" class="w-full h-auto object-cover" />
+                <img src="images/profile.png" alt="Eashwar Subramanian Profile Photo" class="w-full h-auto object-cover" loading="lazy">
             </div>
-
-            <h1 class="text-4xl font-bold">Eashwar Subramanian</h1>
-            <p class="text-xl mt-2">Data Science Student | Turning Data into Insights</p>
+            <h1 class="text-4xl font-bold font-poppins">Eashwar Subramanian</h1>
+            <p class="text-xl mt-2">Driving Business Value Through Data Analytics & Automation</p>
             <p class="mt-4">
                 Melbourne, VIC, Australia | 
-                <a href="mailto:eashwars2001@gmail.com" class="underline">eashwars2001@gmail.com</a> | +61 450 332 782
+                <a href="mailto:eashwars2001@gmail.com" class="underline hover:text-teal-300">eashwars2001@gmail.com</a> | +61 450 332 782
             </p>
             <div class="flex justify-center gap-4 mt-4">
-                <a href="https://github.com/Eashwar-Subramanian" target="_blank" class="text-white hover:text-teal-200">GitHub</a>
-                <a href="https://www.linkedin.com/in/eashwar-s-02461a1b3/" target="_blank" class="text-white hover:text-teal-200">LinkedIn</a>
+                <a href="https://github.com/Eashwar-Subramanian" target="_blank" class="text-white hover:text-teal-300"><i class="fab fa-github mr-1"></i> GitHub</a>
+                <a href="https://www.linkedin.com/in/eashwar-s-02461a1b3/" target="_blank" class="text-white hover:text-teal-300"><i class="fab fa-linkedin mr-1"></i> LinkedIn</a>
             </div>
+            <a href="#projects" class="mt-6 inline-block bg-teal-600 text-white py-2 px-6 rounded-lg btn-teal">Explore My Projects</a>
         </div>
     </header>
 
     <!-- About Section -->
-    <section class="py-12 bg-white">
+    <section id="about" class="py-12 bg-white">
         <div class="max-w-5xl mx-auto px-4">
-            <h2 class="text-3xl font-semibold text-gray-800 mb-6">About Me</h2>
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6 font-poppins">About Me</h2>
             <p class="text-lg text-gray-600">
-                Master of Data Science student at RMIT University, Melbourne. Skilled in SQL, Python, Power BI, Tableau, and AWS, with hands-on experience in data cleaning, EDA, forecasting, and full-stack development. Interested in solving real-world problems through data and automation. Seeking part-time, internship, or contract roles in data analytics or engineering (up to 48 hours/fortnight due to visa restrictions).
+                I’m a Master of Data Science student at RMIT University, Melbourne, passionate about transforming complex data into actionable insights for business and societal impact. With expertise in Python, SQL, Power BI, Tableau, and AWS, I’ve delivered projects like a sales dashboard that improved forecasting accuracy by 15% and a climate forecasting tool with real-time policy recommendations. I thrive in solving real-world problems through data analytics and automation. Actively seeking part-time, internship, or contract roles in data analytics or engineering (up to 48 hours/fortnight). When not analyzing data, I enjoy hiking Melbourne’s trails and engaging with the local data science community.
+                <br>
+                <a href="assets/resume.pdf" target="_blank" class="text-teal-600 underline hover:text-teal-800 mt-2 inline-block">Download My Resume</a>
             </p>
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section class="py-12 bg-gray-100">
+    <!-- Education Section -->
+    <section id="education" class="py-12 bg-gray-100">
         <div class="max-w-5xl mx-auto px-4">
-            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Skills</h2>
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                <div class="bg-white p-3 rounded shadow">Python (Pandas, NumPy, Matplotlib, Seaborn)</div>
-                <div class="bg-white p-3 rounded shadow">SQL (MySQL, SQL Server)</div>
-                <div class="bg-white p-3 rounded shadow">Data Visualization (Power BI, Tableau)</div>
-                <div class="bg-white p-3 rounded shadow">Web Development (HTML, CSS, Java, JavaScript)</div>
-                <div class="bg-white p-3 rounded shadow">AWS (EC2, S3, DynamoDB, Lambda)</div>
-                <div class="bg-white p-3 rounded shadow">Machine Learning (Supervised, Unsupervised)</div>
-                <div class="bg-white p-3 rounded shadow">Cloud Deployment (Apache2, Jetty, EC2)</div>
-                <div class="bg-white p-3 rounded shadow">Web Scraping (BeautifulSoup, Scrapy)</div>
-                <div class="bg-white p-3 rounded shadow">Git & Version Control</div>
-                <div class="bg-white p-3 rounded shadow">Excel, Jupyter, GitHub</div>
-                <div class="bg-white p-3 rounded shadow">Problem Solving</div>
-                <div class="bg-white p-3 rounded shadow">Agile Methodologies</div>
-                <div class="bg-white p-3 rounded shadow">Communication & Collaboration</div>
-                <div class="bg-white p-3 rounded shadow">Critical Thinking</div>
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6 font-poppins">Education</h2>
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h3 class="text-xl font-semibold text-gray-800">Master of Data Science</h3>
+                <p class="text-gray-600">RMIT University, Melbourne, VIC, Australia | Expected 2025</p>
+                <p class="text-gray-600 mt-2">Relevant Coursework: Machine Learning, Big Data Analytics, Data Visualization, Cloud Computing</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h3 class="text-xl font-semibold text-gray-800">Bachelor of Technology in Electronics & Communication</h3>
+                <p class="text-gray-600">Rajagiri School Of Engineering and Technology, Kochi, Kerala, India | Graduated: Aug 2023 | SCGPA: 8.8/10.0 </p>
+                <p class="text-gray-600 mt-2">Relevant Coursework: Machine Learning, Probability and Random Processes, Numerical Methods, Scientific Computing, Computer Vision, Programming in C</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-12 bg-gray-100">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6 font-poppins">Skills</h2>
+            <div class="space-y-6">
+                <!-- Programming -->
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Programming</h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                        <div class="bg-white p-3 rounded shadow"><i class="fab fa-python mr-1 text-teal-600"></i> Python (Pandas, NumPy, Matplotlib, Seaborn)</div>
+                        <div class="bg-white p-3 rounded shadow"><i class="fas fa-database mr-1 text-teal-600"></i> SQL (MySQL, SQL Server)</div>
+                        <div class="bg-white p-3 rounded shadow"><i class="fab fa-html5 mr-1 text-teal-600"></i> Web Development (HTML, CSS, Java, JavaScript)</div>
+                    </div>
+                </div>
+                <!-- Data Visualization -->
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Data Visualization</h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                        <div class="bg-white p-3 rounded shadow"><i class="fas fa-chart-bar mr-1 text-teal-600"></i> Power BI</div>
+                        <div class="bg-white p-3 rounded shadow"><i class="fas fa-chart-line mr-1 text-teal-600"></i> Tableau</div>
+                    </div>
+                </div>
+                <!-- Cloud & Deployment -->
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Cloud & Deployment</h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                        <div class="bg-white p-3 rounded shadow"><i class="fab fa-aws mr-1 text-teal-600"></i> AWS (EC2, S3, DynamoDB, Lambda)</div>
+                        <div class="bg-white p-3 rounded shadow"><i class="fas fa-server mr-1 text-teal-600"></i> Cloud Deployment (Apache2, Jetty, EC2)</div>
+                    </div>
+                </div>
+                <!-- Other Technical Skills -->
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Other Technical Skills</h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                        <div class="bg-white p-3 rounded shadow"><i class="fas fa-robot mr-1 text-teal-600"></i> Machine Learning (Supervised, Unsupervised)</div>
+                        <div class="bg-white p-3 rounded shadow"><i class="fas fa-spider mr-1 text-teal-600"></i> Web Scraping (BeautifulSoup, Scrapy)</div>
+                        <div class="bg-white p-3 rounded shadow"><i class="fab fa-git mr-1 text-teal-600"></i> Git & Version Control</div>
+                        <div class="bg-white p-3 rounded shadow"><i class="fas fa-table mr-1 text-teal-600"></i> Excel, Jupyter, GitHub</div>
+                    </div>
+                </div>
+                <!-- Soft Skills -->
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Soft Skills</h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                        <div class="bg-white p-3 rounded shadow"><i class="fas fa-lightbulb mr-1 text-teal-600"></i> Problem Solving</div>
+                        <div class="bg-white p-3 rounded shadow"><i class="fas fa-users mr-1 text-teal-600"></i> Agile Methodologies</div>
+                        <div class="bg-white p-3 rounded shadow"><i class="fas fa-comments mr-1 text-teal-600"></i> Communication & Collaboration</div>
+                        <div class="bg-white p-3 rounded shadow"><i class="fas fa-brain mr-1 text-teal-600"></i> Critical Thinking</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section class="py-12 bg-white">
+    <section id="projects" class="py-12 bg-white">
         <div class="max-w-5xl mx-auto px-4">
-            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Featured Projects</h2>
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6 font-poppins">Featured Projects</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="bg-gray-50 p-6 rounded-lg shadow">
+                    <img src="images/sales_dashboard.png" alt="Sales Insights Dashboard Screenshot" class="w-full h-48 object-cover rounded mb-4" loading="lazy">
                     <h3 class="text-xl font-semibold text-gray-800">Sales Insights Dashboard</h3>
-                    <p class="text-gray-600 mt-2">Interactive Power BI dashboard visualizing 4 years of sales trends from MySQL.</p>
-                    <a href="https://github.com/Eashwar-Subramanian/Sales-Insights-" target="_blank" class="text-teal-600 mt-2 inline-block">View on GitHub</a>
+                    <p class="text-gray-600 mt-2">Developed an interactive Power BI dashboard visualizing 4 years of sales trends from MySQL, improving forecasting accuracy by 15%. Tech: Power BI, MySQL, Python.</p>
+                    <a href="https://github.com/Eashwar-Subramanian/Sales-Insights-" target="_blank" class="text-teal-600 mt-2 inline-block hover:text-teal-800">View on GitHub</a>
                 </div>
                 <div class="bg-gray-50 p-6 rounded-lg shadow">
+                    <img src="images/real_estate.png" alt="Real Estate Data Cleaning Screenshot" class="w-full h-48 object-cover rounded mb-4" loading="lazy">
                     <h3 class="text-xl font-semibold text-gray-800">Real Estate Data Cleaning</h3>
-                    <p class="text-gray-600 mt-2">Cleaned and standardized real estate dataset using SQL for accurate analysis.</p>
-                    <a href="https://github.com/Eashwar-Subramanian/Nashville-Housing-Data-for-Data-cleaning" target="_blank" class="text-teal-600 mt-2 inline-block">View on GitHub</a>
+                    <p class="text-gray-600 mt-2">Cleaned and standardized a real estate dataset using SQL, enabling accurate analysis for Australian housing trends. Tech: SQL, Python.</p>
+                    <a href="https://github.com/Eashwar-Subramanian/Nashville-Housing-Data-for-Data-cleaning" target="_blank" class="text-teal-600 mt-2 inline-block hover:text-teal-800">View on GitHub</a>
                 </div>
                 <div class="bg-gray-50 p-6 rounded-lg shadow">
+                    <img src="images/movies_eda.png" alt="Movies Correlation EDA Screenshot" class="w-full h-48 object-cover rounded mb-4" loading="lazy">
                     <h3 class="text-xl font-semibold text-gray-800">Movies Correlation EDA</h3>
-                    <p class="text-gray-600 mt-2">Exploratory Data Analysis using Python to uncover correlations in movie datasets.</p>
-                    <a href="https://github.com/Eashwar-Subramanian/Movies-Correlation-EDA-Project" target="_blank" class="text-teal-600 mt-2 inline-block">View on GitHub</a>
+                    <p class="text-gray-600 mt-2">Conducted exploratory data analysis using Python to uncover correlations in movie datasets, identifying key drivers of box office success. Tech: Python, Pandas, Seaborn.</p>
+                    <a href="https://github.com/Eashwar-Subramanian/Movies-Correlation-EDA-Project" target="_blank" class="text-teal-600 mt-2 inline-block hover:text-teal-800">View on GitHub</a>
                 </div>
                 <div class="bg-gray-50 p-6 rounded-lg shadow">
-                    <h3 class="text-xl font-semibold text-gray-800">Cloud-Based Music Subscription Web App</h3>
-                    <p class="text-gray-600 mt-2">Built full-stack app using Java, AWS services and deployed on EC2.</p>
-                    <a href="https://github.com/Eashwar-Subramanian/Cloud-Based-Music-Subscription-Web-Application" target="_blank" class="text-teal-600 mt-2 inline-block">View on GitHub</a>
+                    <img src="images/music_app.png" alt="Cloud-Based Music App Screenshot" class="w-full h-48 object-cover rounded mb-4" loading="lazy">
+                    <h3 class="text-xl font-semibold text-gray-800">Cloud-Based Music Subscription App</h3>
+                    <p class="text-gray-600 mt-2">Built a full-stack music subscription web app using Java and AWS, deployed on EC2 with a 99.9% uptime. Tech: Java, AWS EC2, S3, DynamoDB.</p>
+                    <a href="https://github.com/Eashwar-Subramanian/Cloud-Based-Music-Subscription-Web-Application" target="_blank" class="text-teal-600 mt-2 inline-block hover:text-teal-800">View on GitHub</a>
                 </div>
                 <div class="bg-gray-50 p-6 rounded-lg shadow">
+                    <img src="images/climate_dashboard.png" alt="Climate Forecasting Dashboard Screenshot" class="w-full h-48 object-cover rounded mb-4" loading="lazy">
                     <h3 class="text-xl font-semibold text-gray-800">Climate Forecasting Dashboard</h3>
-                    <p class="text-gray-600 mt-2">Created a SARIMA-based climate forecasting tool with real-time policy suggestions and visualizations.</p>
-                    <a href="https://github.com/Eashwar-Subramanian/Climate-Analysis-Dashboard" target="_blank" class="text-teal-600 mt-2 inline-block">View on GitHub</a>
+                    <p class="text-gray-600 mt-2">Created a SARIMA-based climate forecasting tool with real-time policy suggestions, visualized using Tableau. Tech: Python, SARIMA, Tableau.</p>
+                    <a href="https://github.com/Eashwar-Subramanian/Climate-Analysis-Dashboard" target="_blank" class="text-teal-600 mt-2 inline-block hover:text-teal-800">View on GitHub</a>
                 </div>
                 <div class="bg-gray-50 p-6 rounded-lg shadow">
+                    <img src="images/ecommerce_shipping.png" alt="E-Commerce Shipping Analysis Screenshot" class="w-full h-48 object-cover rounded mb-4" loading="lazy">
                     <h3 class="text-xl font-semibold text-gray-800">E-Commerce Shipping Data Analysis</h3>
-                    <p class="text-gray-600 mt-2">Performed EDA and feature engineering on shipping logistics to improve delivery efficiency.</p>
-                    <a href="https://github.com/Eashwar-Subramanian/E-Commerce-Shipping-Data-Analysis-Using-R" target="_blank" class="text-teal-600 mt-2 inline-block">View on GitHub</a>
+                    <p class="text-gray-600 mt-2">Performed EDA and feature engineering on shipping logistics, improving delivery efficiency by 10%. Tech: R, Python, dplyr.</p>
+                    <a href="https://github.com/Eashwar-Subramanian/E-Commerce-Shipping-Data-Analysis-Using-R" target="_blank" class="text-teal-600 mt-2 inline-block hover:text-teal-800">View on GitHub</a>
                 </div>
                 <div class="bg-gray-50 p-6 rounded-lg shadow">
+                    <img src="images/urban_growth.png" alt="Climate-Driven Urban Growth Screenshot" class="w-full h-48 object-cover rounded mb-4" loading="lazy">
                     <h3 class="text-xl font-semibold text-gray-800">Climate-Driven Urban Growth Analysis</h3>
-                    <p class="text-gray-600 mt-2">Analyzed how climatic variables like rainfall and temperature impacted population trends in Australian cities.</p>
-                    <a href="https://github.com/Eashwar-Subramanian/Climate-Driven-Urban-Growth-Analysis-Using-R" target="_blank" class="text-teal-600 mt-2 inline-block">View on GitHub</a>
+                    <p class="text-gray-600 mt-2">Analyzed climatic variables like rainfall and temperature to model population trends in Australian cities. Tech: R, Python, ggplot2.</p>
+                    <a href="https://github.com/Eashwar-Subramanian/Climate-Driven-Urban-Growth-Analysis-Using-R" target="_blank" class="text-teal-600 mt-2 inline-block hover:text-teal-800">View on GitHub</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="bg-gray-900 text-white py-16 text-center">
+    <section id="contact" class="bg-gray-900 text-white py-16 text-center">
         <div class="max-w-5xl mx-auto px-4">
-            <h2 class="text-3xl font-semibold mb-6">Get in Touch</h2>
-            <p class="text-lg mb-4">Actively seeking opportunities in data analytics, engineering, and related domains.</p>
+            <h2 class="text-3xl font-semibold mb-6 font-poppins">Get in Touch</h2>
+            <p class="text-lg mb-4">Actively seeking opportunities in data analytics, data engineering, and related domains in Melbourne.</p>
             <p class="mb-2">
-                <a href="mailto:eashwars2001@gmail.com" class="underline">eashwars2001@gmail.com</a> | +61 450 332 782
+                <a href="mailto:eashwars2001@gmail.com" class="underline hover:text-teal-300">eashwars2001@gmail.com</a> | +61 450 332 782
             </p>
-            <p>Melbourne, VIC, Australia</p>
+            <p class="mb-4">Melbourne, VIC, Australia</p>
+            <a href="https://calendly.com/eashwars2001" target="_blank" class="bg-teal-600 text-white py-2 px-6 rounded-lg btn-teal inline-block">Schedule a Call</a>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="py-6 bg-gray-800 text-white text-center">
-        <p>&copy; 2025 Eashwar Subramanian. All rights reserved.</p>
+        <p>© 2025 Eashwar Subramanian. All rights reserved.</p>
     </footer>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
 </body>
 </html>

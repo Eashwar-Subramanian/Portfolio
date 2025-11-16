@@ -1,406 +1,540 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Eashwar Subramanian — AI & Data Science Portfolio</title>
-  <meta name="description" content="Eashwar Subramanian — Final-semester Master of Data Science (RMIT). Applied AI, retrieval systems, ML pipelines, cloud & analytics. Graduating Dec 2025.">
-  <meta name="author" content="Eashwar Subramanian">
-  <meta name="keywords" content="Data Science, RAG, Retrieval Augmented Generation, pgvector, FastAPI, AWS, Machine Learning, RMIT, healthcare AI, analytics">
-  <link rel="icon" href="data:,">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    * { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
-    body { background: #fafafa; color: #1a1a1a; }
-    a { color: inherit; text-decoration: none; }
-    .section-divider { border-top: 1px solid #e5e5e5; }
-    
-    .card { 
-      background: white; 
-      border: 1px solid #e5e5e5; 
-      border-radius: 12px; 
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-      transition: all 0.2s ease;
-    }
-    .card:hover {
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      border-color: #d4d4d4;
-    }
-    
-    .tag {
-      background: #f5f5f5;
-      border: 1px solid #e5e5e5;
-      transition: all 0.2s ease;
-    }
-    .tag:hover {
-      background: #eeeeee;
-      border-color: #d4d4d4;
-    }
-    
-    .nav-link {
-      transition: color 0.2s ease;
-    }
-    
-    input, textarea {
-      transition: all 0.2s ease;
-    }
-    input:focus, textarea:focus {
-      outline: none;
-      border-color: #1a1a1a;
-      box-shadow: 0 0 0 3px rgba(0,0,0,0.05);
-    }
-    
-    button[type="submit"] {
-      transition: all 0.2s ease;
-    }
-    button[type="submit"]:hover {
-      background: #000000;
-      transform: translateY(-1px);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    }
-  </style>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Eashwar Subramanian – Healthcare AI Specialist & Data Scientist. TGA-compliant systems, Australian market focus. Currently at Solara Health, Melbourne.">
+    <meta name="keywords" content="healthcare AI, data science, TGA compliance, RAG pipelines, Australian data analyst, Melbourne, RMIT, regulatory compliance">
+    <meta name="author" content="Eashwar Subramanian">
+    <title>Eashwar Subramanian | Healthcare AI Specialist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        html { scroll-behavior: smooth; }
+        .gradient-bg { background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #3b82f6 100%); }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
+        .btn-primary { 
+            background: linear-gradient(45deg, #059669, #10b981);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover { 
+            background: linear-gradient(45deg, #047857, #059669);
+            transform: translateY(-2px);
+        }
+    </style>
 </head>
-<body class="antialiased">
-
-  <!-- NAV -->
-  <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-200">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="flex items-center justify-between py-5">
-        <a href="#home" class="flex items-center gap-3">
-          <div class="w-11 h-11 rounded-full bg-gradient-to-br from-gray-900 to-gray-700 text-white flex items-center justify-center font-semibold text-sm shadow-sm">ES</div>
-          <div>
-            <div class="text-base font-semibold text-gray-900">Eashwar Subramanian</div>
-            <div class="text-xs text-gray-500">Data Science • RMIT</div>
-          </div>
-        </a>
-
-        <div class="hidden md:flex items-center gap-8 text-sm">
-          <a href="#experience" class="nav-link text-gray-600 hover:text-gray-900 font-medium">Experience</a>
-          <a href="#projects" class="nav-link text-gray-600 hover:text-gray-900 font-medium">Projects</a>
-          <a href="#skills" class="nav-link text-gray-600 hover:text-gray-900 font-medium">Skills</a>
-          <a href="#contact" class="nav-link text-gray-600 hover:text-gray-900 font-medium">Contact</a>
-          <a href="Eashwar Subramanian Resume.pdf" target="_blank" class="px-5 py-2 bg-gray-900 text-white rounded-lg text-sm font-medium hover:bg-gray-800 transition-colors">Resume</a>
+<body class="bg-gray-50 font-sans">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="text-xl font-bold text-gray-800">Eashwar Subramanian</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-600 hover:text-blue-600 transition">Home</a>
+                    <a href="#about" class="text-gray-600 hover:text-blue-600 transition">About</a>
+                    <a href="#experience" class="text-gray-600 hover:text-blue-600 transition">Experience</a>
+                    <a href="#projects" class="text-gray-600 hover:text-blue-600 transition">Projects</a>
+                    <a href="#contact" class="text-gray-600 hover:text-blue-600 transition">Contact</a>
+                </div>
+            </div>
         </div>
+    </nav>
 
-        <div class="md:hidden">
-          <button id="mobileBtn" aria-label="Open menu" class="p-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"/></svg>
-          </button>
+    <!-- Hero Section -->
+    <header id="home" class="gradient-bg text-white py-20">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h1 class="text-5xl font-bold mb-4">Eashwar Subramanian</h1>
+            <p class="text-xl mb-2 text-blue-100">Healthcare AI Specialist | TGA-Compliant Systems Developer</p>
+            <p class="text-lg mb-6 text-blue-200">Building production-grade AI solutions for Australian healthcare compliance</p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+                <span class="flex items-center text-blue-100">
+                    <i class="fas fa-map-marker-alt mr-2"></i>Melbourne, VIC, Australia
+                </span>
+                <span class="flex items-center text-blue-100">
+                    <i class="fas fa-envelope mr-2"></i>eashwars2001@gmail.com
+                </span>
+                <span class="flex items-center text-blue-100">
+                    <i class="fas fa-phone mr-2"></i>+61 450 332 782
+                </span>
+            </div>
+            <div class="flex justify-center gap-6 mb-8">
+                <a href="https://github.com/Eashwar-Subramanian" target="_blank" 
+                   class="text-white hover:text-blue-200 text-xl transition">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/eashwar-s-02461a1b3/" target="_blank" 
+                   class="text-white hover:text-blue-200 text-xl transition">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+            </div>
+            <div class="flex justify-center gap-4">
+                <a href="#projects" class="btn-primary text-white py-3 px-8 rounded-lg font-semibold">
+                    View Projects
+                </a>
+                <a href="Eashwar Subramanian Resume.pdf" target="_blank" 
+                   class="bg-transparent border-2 border-white text-white py-3 px-8 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition">
+                    Download Resume
+                </a>
+            </div>
         </div>
-      </div>
-    </div>
-  </nav>
+    </header>
 
-  <!-- MOBILE NAV -->
-  <div id="mobileNav" class="fixed inset-0 bg-white z-40 hidden">
-    <div class="p-6">
-      <div class="flex justify-between items-center mb-6">
-        <div class="font-semibold">Menu</div>
-        <button id="mobileClose" class="p-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 8.586L3.293 1.879 1.879 3.293 8.586 10l-6.707 6.707 1.414 1.414L10 11.414l6.707 6.707 1.414-1.414L11.414 10l6.707-6.707-1.414-1.414L10 8.586z" clip-rule="evenodd" /></svg></button>
-      </div>
-      <nav class="flex flex-col gap-4">
-        <a href="#experience" class="py-2 text-gray-700">Experience</a>
-        <a href="#projects" class="py-2 text-gray-700">Projects</a>
-        <a href="#skills" class="py-2 text-gray-700">Skills</a>
-        <a href="#contact" class="py-2 text-gray-700">Contact</a>
-        <a href="Eashwar Subramanian Resume.pdf" target="_blank" class="py-2 text-gray-700">Resume</a>
-      </nav>
-    </div>
-  </div>
-
-  <!-- HERO -->
-  <header id="home" class="max-w-6xl mx-auto px-6 py-20 md:py-28">
-    <div class="mb-12">
-      <div class="mb-6">
-        <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-4 leading-tight">Eashwar Subramanian</h1>
-        <p class="text-xl text-gray-600 mb-2 font-medium">Master of Data Science (RMIT)</p>
-        <p class="text-base text-gray-500">Graduating December 2025</p>
-      </div>
-      
-      <p class="text-lg text-gray-700 leading-relaxed max-w-3xl mb-8">
-        Building production-ready AI and data systems — retrieval pipelines, model evaluation, cloud deployments, and analytics dashboards. Seeking <span class="font-semibold text-gray-900">Data Science</span>, <span class="font-semibold text-gray-900">ML Engineering</span>, and <span class="font-semibold text-gray-900">Analytics</span> roles from late 2025.
-      </p>
-      
-      <div class="flex flex-wrap gap-6 items-center text-sm text-gray-600 mb-8">
-        <div class="flex items-center gap-2">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-          <span>Melbourne, Australia</span>
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-gray-800 mb-12 text-center">About Me</h2>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <p class="text-lg text-gray-600 mb-6">
+                        Final-semester Master of Data Science student at RMIT University with specialized experience in healthcare AI compliance. Currently developing TGA-compliant RAG pipelines at Solara Health, focusing on medical chatbot safety and regulatory adherence.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-6">
+                        My expertise centers on production-grade AI systems for Australian healthcare, customer segmentation driving revenue optimization, and climate forecasting for government policy support. I combine technical depth in Python, AWS, and machine learning with practical understanding of business impact and regulatory requirements.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 text-sm">
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <i class="fas fa-briefcase text-blue-600 mb-2"></i>
+                            <div class="font-semibold text-gray-800">Current Role</div>
+                            <div class="text-gray-600">Data Science Intern at Solara Health</div>
+                        </div>
+                        <div class="bg-green-50 p-4 rounded-lg">
+                            <i class="fas fa-graduation-cap text-green-600 mb-2"></i>
+                            <div class="font-semibold text-gray-800">Education</div>
+                            <div class="text-gray-600">M.S. Data Science, RMIT (Dec 2025)</div>
+                        </div>
+                        <div class="bg-purple-50 p-4 rounded-lg">
+                            <i class="fas fa-certificate text-purple-600 mb-2"></i>
+                            <div class="font-semibold text-gray-800">Specialization</div>
+                            <div class="text-gray-600">Healthcare AI & Compliance</div>
+                        </div>
+                        <div class="bg-orange-50 p-4 rounded-lg">
+                            <i class="fas fa-users text-orange-600 mb-2"></i>
+                            <div class="font-semibold text-gray-800">Community</div>
+                            <div class="text-gray-600">Data Science Melbourne Meetup</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-100 p-8 rounded-lg">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Core Competencies</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="font-semibold text-gray-800 mb-2">Healthcare AI & Compliance</div>
+                            <div class="text-gray-600 text-sm">TGA-compliant RAG systems, medical chatbot development, regulatory safeguards, crisis escalation protocols</div>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-gray-800 mb-2">Business Intelligence</div>
+                            <div class="text-gray-600 text-sm">Customer segmentation, revenue optimization, RFM analysis, policy-grade forecasting</div>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-gray-800 mb-2">Technical Leadership</div>
+                            <div class="text-gray-600 text-sm">Production pipeline development, automated testing (Pytest), Docker CI/CD, agile workflows</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <span class="text-gray-300">•</span>
-        <span class="font-medium text-gray-700">Open to full-time roles</span>
-      </div>
+    </section>
 
-      <div class="flex gap-3">
-        <a href="https://github.com/Eashwar-Subramanian" target="_blank" class="px-5 py-2.5 border border-gray-300 rounded-lg text-sm text-gray-700 hover:bg-gray-50 hover:border-gray-400 transition-all font-medium">GitHub</a>
-        <a href="https://www.linkedin.com/in/eashwar-s-02461a1b3/" target="_blank" class="px-5 py-2.5 border border-gray-300 rounded-lg text-sm text-gray-700 hover:bg-gray-50 hover:border-gray-400 transition-all font-medium">LinkedIn</a>
-        <a href="mailto:eashwars2001@gmail.com" class="px-5 py-2.5 border border-gray-300 rounded-lg text-sm text-gray-700 hover:bg-gray-50 hover:border-gray-400 transition-all font-medium">Email</a>
-      </div>
-    </div>
-  </header>
+    <!-- Experience Section -->
+    <section id="experience" class="py-16 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-gray-800 mb-12 text-center">Professional Experience</h2>
+            <div class="space-y-8">
+                <!-- Current Role -->
+                <div class="bg-white p-8 rounded-lg shadow-md card-hover">
+                    <div class="flex flex-col md:flex-row justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800">Data Science Intern</h3>
+                            <p class="text-xl text-blue-600 font-semibold">Solara Health</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-gray-600">July 2025 – Present</p>
+                            <p class="text-gray-600">Melbourne, Australia</p>
+                        </div>
+                    </div>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• Implementing TGA-compliant RAG pipelines ensuring healthcare chatbot responses meet Australian regulatory standards</li>
+                        <li>• Built comprehensive test suites (Pytest + FastAPI) covering API schema, routing logic, and disclaimer enforcement</li>
+                        <li>• Designed patient query classification system for treatment options, side effects, logistics, and support categories</li>
+                        <li>• Integrated crisis escalation protocols and refusal mechanisms for regulatory compliance</li>
+                        <li>• Delivered traceable AI outputs with citations improving stakeholder trust and audit capabilities</li>
+                    </ul>
+                </div>
 
-  <div class="section-divider"></div>
-
-  <!-- EXPERIENCE -->
-  <section id="experience" class="max-w-6xl mx-auto px-6 py-20">
-    <h2 class="text-3xl font-bold text-gray-900 mb-12">Experience</h2>
-
-    <div class="space-y-8">
-      <article class="card p-8">
-        <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
-          <div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-2">Data Science Intern</h3>
-            <div class="text-sm text-gray-600 mb-1 font-medium">Solara Health • Melbourne, Australia</div>
-            <div class="text-sm text-gray-500">July 2025 – Present</div>
-          </div>
-          <div class="text-xs text-gray-500 bg-gray-50 px-3 py-1.5 rounded-full inline-block">Team project • Industry-supervised</div>
+                <!-- Previous Role -->
+                <div class="bg-white p-8 rounded-lg shadow-md card-hover">
+                    <div class="flex flex-col md:flex-row justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800">Data Analyst Intern</h3>
+                            <p class="text-xl text-blue-600 font-semibold">PrepInsta Pvt Ltd</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-gray-600">Dec 2023 – Feb 2024</p>
+                            <p class="text-gray-600">Remote, India</p>
+                        </div>
+                    </div>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• Developed 5+ stakeholder dashboards (Tableau, Excel) increasing client engagement by 10%</li>
+                        <li>• Optimized SQL query performance reducing data retrieval time by 25% for executive reporting</li>
+                        <li>• Automated reporting workflows with Python (Beautiful Soup) cutting manual effort by 30%</li>
+                    </ul>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <ul class="space-y-3 text-sm text-gray-700 leading-relaxed mb-6">
-          <li class="flex items-start gap-3">
-            <span class="text-gray-400 mt-1">▸</span>
-            <span>Built ingestion pipeline (PDF/HTML/Markdown) with semantic chunking (LlamaIndex), SHA-256 deduplication, metadata tagging, and deterministic version control for reproducible indexes.</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-gray-400 mt-1">▸</span>
-            <span>Implemented semantic retrieval: MiniLM-based bi-encoder embeddings, pgvector (IVFFlat) indexing, and cross-encoder reranking for top-k precision.</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-gray-400 mt-1">▸</span>
-            <span>Designed tenant-aware hierarchical routing with PostgreSQL Row-Level Security to ensure hospital-scoped retrieval (hospital → national → state).</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-gray-400 mt-1">▸</span>
-            <span>Developed audit-ready citation formatting and source-tracing logic (date-extraction, fallback rules, hyperlinks) to support compliance and traceability.</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-gray-400 mt-1">▸</span>
-            <span>Built reproducible evaluation pipeline integrating RAGAS + semantic similarity proofs; produced metrics for iterative improvement (faithfulness ~69.4%, context precision 92.7%, recall 91.2%).</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-gray-400 mt-1">▸</span>
-            <span>Authored Pytest-based test suites for ingestion, retrieval, and moderation interactions; contributed to containerized CI workflows and sprint coordination.</span>
-          </li>
-        </ul>
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-gray-800 mb-12 text-center">Strategic Projects</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Featured Project 1 -->
+                <div class="bg-gray-50 rounded-lg shadow-md card-hover overflow-hidden">
+                    <div class="p-6">
+                        <div class="w-full h-48 bg-blue-100 rounded-lg mb-4 flex items-center justify-center">
+                            <i class="fas fa-users text-4xl text-blue-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Australian Retail Customer Segmentation</h3>
+                        <p class="text-gray-600 mb-4">
+                            Identified high-value customer segment representing 15% of total revenue through K-Means clustering and RFM analysis of 5,000 transactions.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Python</span>
+                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">K-Means</span>
+                            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">RFM Analysis</span>
+                            <span class="bg-orange-100 text-orange-800 px-2 py-1 rounded text-xs">Power BI</span>
+                        </div>
+                        <a href="https://github.com/Eashwar-Subramanian/retail-customer-segmentation-australia" 
+                           target="_blank" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            View Project →
+                        </a>
+                    </div>
+                </div>
 
-        <div class="flex flex-wrap gap-2">
-          <span class="tag px-3 py-1.5 text-gray-700 rounded-lg text-xs font-medium">Python</span>
-          <span class="tag px-3 py-1.5 text-gray-700 rounded-lg text-xs font-medium">PostgreSQL (pgvector)</span>
-          <span class="tag px-3 py-1.5 text-gray-700 rounded-lg text-xs font-medium">FastAPI</span>
-          <span class="tag px-3 py-1.5 text-gray-700 rounded-lg text-xs font-medium">Docker</span>
-          <span class="tag px-3 py-1.5 text-gray-700 rounded-lg text-xs font-medium">RAGAS</span>
+                <!-- Featured Project 2 -->
+                <div class="bg-gray-50 rounded-lg shadow-md card-hover overflow-hidden">
+                    <div class="p-6">
+                        <div class="w-full h-48 bg-green-100 rounded-lg mb-4 flex items-center justify-center">
+                            <i class="fas fa-cloud-sun text-4xl text-green-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Climate Policy Forecasting Dashboard</h3>
+                        <p class="text-gray-600 mb-4">
+                            SARIMA forecasting system achieving 1.2°C MAE for Australian government climate policy decisions with interactive mapping.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Python</span>
+                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">SARIMA</span>
+                            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">Flask</span>
+                            <span class="bg-orange-100 text-orange-800 px-2 py-1 rounded text-xs">Folium</span>
+                        </div>
+                        <a href="https://github.com/Eashwar-Subramanian/climate-policy-forecasting-dashboard" 
+                           target="_blank" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            View Project →
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Featured Project 3 -->
+                <div class="bg-gray-50 rounded-lg shadow-md card-hover overflow-hidden">
+                    <div class="p-6">
+                        <div class="w-full h-48 bg-purple-100 rounded-lg mb-4 flex items-center justify-center">
+                            <i class="fas fa-chart-line text-4xl text-purple-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Sales Analytics Dashboard</h3>
+                        <p class="text-gray-600 mb-4">
+                            Analyzed 4-year sales history identifying regions with 7% revenue uplift potential through automated Power BI reporting.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Power BI</span>
+                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">MySQL</span>
+                            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">ETL</span>
+                        </div>
+                        <a href="https://github.com/Eashwar-Subramanian/sales-analytics-dashboard-powerbi" 
+                           target="_blank" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            View Project →
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Additional Projects -->
+                <div class="bg-gray-50 rounded-lg shadow-md card-hover overflow-hidden">
+                    <div class="p-6">
+                        <div class="w-full h-48 bg-red-100 rounded-lg mb-4 flex items-center justify-center">
+                            <i class="fas fa-cloud text-4xl text-red-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Cloud Music Subscription Platform</h3>
+                        <p class="text-gray-600 mb-4">
+                            Full-stack AWS application with Java servlets, DynamoDB storage, and Apache2 reverse proxy configuration.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Java</span>
+                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">AWS</span>
+                            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">DynamoDB</span>
+                        </div>
+                        <a href="https://github.com/Eashwar-Subramanian/cloud-music-subscription-app" 
+                           target="_blank" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            View Project →
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg shadow-md card-hover overflow-hidden">
+                    <div class="p-6">
+                        <div class="w-full h-48 bg-yellow-100 rounded-lg mb-4 flex items-center justify-center">
+                            <i class="fas fa-database text-4xl text-yellow-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Real Estate Data Cleaning Pipeline</h3>
+                        <p class="text-gray-600 mb-4">
+                            Comprehensive data quality improvement system with address parsing, duplicate removal, and schema optimization.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">MySQL</span>
+                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">Data Quality</span>
+                        </div>
+                        <a href="https://github.com/Eashwar-Subramanian/real-estate-data-cleaning-mysql" 
+                           target="_blank" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            View Project →
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg shadow-md card-hover overflow-hidden">
+                    <div class="p-6">
+                        <div class="w-full h-48 bg-indigo-100 rounded-lg mb-4 flex items-center justify-center">
+                            <i class="fas fa-truck text-4xl text-indigo-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">E-Commerce Logistics Analysis</h3>
+                        <p class="text-gray-600 mb-4">
+                            Shipping performance optimization analysis identifying delivery efficiency factors across 10,999+ transactions using R.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">R</span>
+                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">Logistics</span>
+                            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">ggplot2</span>
+                        </div>
+                        <a href="https://github.com/Eashwar-Subramanian/ecommerce-shipping-analysis-r" 
+                           target="_blank" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            View Project →
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-      </article>
+    </section>
 
-      <article class="card p-8">
-        <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
-          <div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-2">Data Analyst Intern</h3>
-            <div class="text-sm text-gray-600 mb-1 font-medium">PrepInsta • Remote</div>
-            <div class="text-sm text-gray-500">December 2023 – February 2024</div>
-          </div>
-          <div class="text-xs text-gray-500 bg-gray-50 px-3 py-1.5 rounded-full inline-block">Contract</div>
+    <!-- Skills Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-gray-800 mb-12 text-center">Technical Expertise</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">
+                        <i class="fas fa-code text-blue-600 mr-2"></i>Programming & Analytics
+                    </h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• Python (Pandas, NumPy, Scikit-learn, Statsmodels)</li>
+                        <li>• SQL (MySQL, SQL Server, DynamoDB)</li>
+                        <li>• R (dplyr, ggplot2, tidyr)</li>
+                        <li>• Java (Servlets, Spring)</li>
+                        <li>• Machine Learning & Statistical Analysis</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">
+                        <i class="fas fa-cloud text-green-600 mr-2"></i>Cloud & DevOps
+                    </h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• AWS (EC2, S3, Lambda, DynamoDB)</li>
+                        <li>• Docker & CI/CD Pipelines</li>
+                        <li>• FastAPI & Flask Development</li>
+                        <li>• Git & Version Control</li>
+                        <li>• Apache2 & Jetty Server Management</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">
+                        <i class="fas fa-chart-bar text-purple-600 mr-2"></i>Visualization & Specialized
+                    </h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• Power BI & Tableau Dashboards</li>
+                        <li>• Healthcare AI & RAG Systems</li>
+                        <li>• Regulatory Compliance (TGA)</li>
+                        <li>• Time Series Forecasting (SARIMA)</li>
+                        <li>• Customer Segmentation (RFM, K-Means)</li>
+                    </ul>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <ul class="space-y-3 text-sm text-gray-700 leading-relaxed mb-6">
-          <li class="flex items-start gap-3">
-            <span class="text-gray-400 mt-1">▸</span>
-            <span>Delivered 5+ stakeholder dashboards (Tableau) improving client engagement by ~10%.</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-gray-400 mt-1">▸</span>
-            <span>Optimized SQL queries and ETL tasks, reducing report latency ~25%.</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-gray-400 mt-1">▸</span>
-            <span>Automated web scraping and data cleaning pipelines in Python, cutting manual effort ~30%.</span>
-          </li>
-        </ul>
-
-        <div class="flex flex-wrap gap-2">
-          <span class="tag px-3 py-1.5 text-gray-700 rounded-lg text-xs font-medium">Tableau</span>
-          <span class="tag px-3 py-1.5 text-gray-700 rounded-lg text-xs font-medium">SQL</span>
-          <span class="tag px-3 py-1.5 text-gray-700 rounded-lg text-xs font-medium">Python</span>
+    <!-- Testimonial/Stats Section -->
+    <section class="py-16 bg-blue-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-gray-800 mb-12 text-center">Professional Impact</h2>
+            <div class="grid md:grid-cols-4 gap-8 text-center">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-3xl font-bold text-blue-600 mb-2">15%</div>
+                    <div class="text-gray-600">Revenue segment identified through customer analytics</div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-3xl font-bold text-green-600 mb-2">1.2°C</div>
+                    <div class="text-gray-600">Climate forecasting accuracy (MAE) for policy decisions</div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-3xl font-bold text-purple-600 mb-2">7%</div>
+                    <div class="text-gray-600">Projected revenue uplift through data-driven insights</div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-3xl font-bold text-orange-600 mb-2">TGA</div>
+                    <div class="text-gray-600">Compliant healthcare AI systems developed</div>
+                </div>
+            </div>
         </div>
-      </article>
-    </div>
-  </section>
+    </section>
 
-  <div class="section-divider"></div>
-
-  <!-- PROJECTS -->
-  <section id="projects" class="max-w-6xl mx-auto px-6 py-20">
-    <h2 class="text-3xl font-bold text-gray-900 mb-12">Projects</h2>
-
-    <div class="grid md:grid-cols-2 gap-6">
-      <article class="card p-7">
-        <div class="mb-5">
-          <h3 class="text-lg font-semibold text-gray-900 mb-2">Solara Healthcare RAG System</h3>
-          <div class="text-xs text-gray-500 mb-3 bg-gray-50 px-2.5 py-1 rounded-full inline-block">Team project (RMIT + Solara)</div>
-          <p class="text-sm text-gray-700 leading-relaxed mb-4">
-            Built retrieval-augmented generation platform integrating document ingestion, semantic chunking, vector search, reranking, and evaluation. System focused on traceability (citations), tenant isolation, and reproducible evaluation for iterative improvement.
-          </p>
+    <!-- Blog/Insights Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-gray-800 mb-12 text-center">Latest Insights</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <article class="bg-gray-50 rounded-lg shadow-md card-hover p-6">
+                    <div class="w-full h-32 bg-blue-100 rounded-lg mb-4 flex items-center justify-center">
+                        <i class="fas fa-heartbeat text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Building TGA-Compliant AI Systems</h3>
+                    <p class="text-gray-600 text-sm mb-3">
+                        Key considerations for developing healthcare AI that meets Australian regulatory standards, from my experience at Solara Health.
+                    </p>
+                    <div class="text-xs text-gray-500">Coming Soon</div>
+                </article>
+                
+                <article class="bg-gray-50 rounded-lg shadow-md card-hover p-6">
+                    <div class="w-full h-32 bg-green-100 rounded-lg mb-4 flex items-center justify-center">
+                        <i class="fas fa-users text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Customer Segmentation for Australian Retailers</h3>
+                    <p class="text-gray-600 text-sm mb-3">
+                        How RFM analysis revealed hidden revenue opportunities in Australian retail customer data.
+                    </p>
+                    <div class="text-xs text-gray-500">Coming Soon</div>
+                </article>
+                
+                <article class="bg-gray-50 rounded-lg shadow-md card-hover p-6">
+                    <div class="w-full h-32 bg-purple-100 rounded-lg mb-4 flex items-center justify-center">
+                        <i class="fas fa-cloud-sun text-2xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">SARIMA for Climate Policy Forecasting</h3>
+                    <p class="text-gray-600 text-sm mb-3">
+                        Technical deep-dive into time-series forecasting for Australian government climate decision support.
+                    </p>
+                    <div class="text-xs text-gray-500">Coming Soon</div>
+                </article>
+            </div>
         </div>
-        <div class="mb-5 p-4 bg-gray-50 rounded-lg">
-          <div class="text-xs font-semibold text-gray-600 mb-2 uppercase tracking-wide">Key Metrics</div>
-          <div class="text-sm text-gray-900 space-y-1 font-medium">
-            <div>Context precision: <span class="text-gray-600 font-normal">92.7%</span></div>
-            <div>Context recall: <span class="text-gray-600 font-normal">91.2%</span></div>
-            <div>Faithfulness (RAGAS): <span class="text-gray-600 font-normal">~69.4%</span></div>
-          </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact" class="py-16 gradient-bg text-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold mb-4">Let's Connect</h2>
+                <p class="text-xl text-blue-100">
+                    Interested in healthcare AI, data analytics, or regulatory compliance projects? Let's discuss opportunities.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Get in Touch</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-center">
+                            <i class="fas fa-briefcase text-2xl mr-4 text-blue-300"></i>
+                            <div>
+                                <div class="font-semibold">Open to Opportunities</div>
+                                <div class="text-blue-200 text-sm">Part-time, contract, or full-time roles in Melbourne</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-2xl mr-4 text-blue-300"></i>
+                            <div>
+                                <div class="font-semibold">Location</div>
+                                <div class="text-blue-200 text-sm">Melbourne, Victoria, Australia</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <i class="fas fa-graduation-cap text-2xl mr-4 text-blue-300"></i>
+                            <div>
+                                <div class="font-semibold">Availability</div>
+                                <div class="text-blue-200 text-sm">Final semester - Available December 2025</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 flex gap-4">
+                        <a href="mailto:eashwars2001@gmail.com" 
+                           class="btn-primary text-white py-3 px-6 rounded-lg font-semibold">
+                            <i class="fas fa-envelope mr-2"></i>Email Me
+                        </a>
+                        <a href="https://www.linkedin.com/in/eashwar-s-02461a1b3/" target="_blank"
+                           class="bg-transparent border-2 border-white text-white py-3 px-6 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition">
+                            <i class="fab fa-linkedin mr-2"></i>LinkedIn
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="bg-white/10 backdrop-blur rounded-lg p-6">
+                    <h3 class="text-xl font-bold mb-6">Send a Message</h3>
+                    <form action="https://formspree.io/f/xpznzpzp" method="POST" class="space-y-4">
+                        <div>
+                            <label for="name" class="block text-sm font-semibold mb-2">Name *</label>
+                            <input type="text" id="name" name="name" required
+                                   class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-blue-200 focus:outline-none focus:border-white">
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-sm font-semibold mb-2">Email *</label>
+                            <input type="email" id="email" name="email" required
+                                   class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-blue-200 focus:outline-none focus:border-white">
+                        </div>
+                        
+                        <div>
+                            <label for="company" class="block text-sm font-semibold mb-2">Company</label>
+                            <input type="text" id="company" name="company"
+                                   class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-blue-200 focus:outline-none focus:border-white">
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-semibold mb-2">Message *</label>
+                            <textarea id="message" name="message" rows="4" required
+                                      class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-blue-200 focus:outline-none focus:border-white resize-none"></textarea>
+                        </div>
+                        
+                        <button type="submit" 
+                                class="w-full btn-primary text-white py-3 px-6 rounded-lg font-semibold">
+                            <i class="fas fa-paper-plane mr-2"></i>Send Message
+                        </button>
+                    </form>
+                    <p class="text-xs text-blue-200 mt-3">* Required fields. Your information is kept confidential.</p>
+                </div>
+            </div>
         </div>
-        <div class="flex flex-wrap gap-2">
-          <span class="tag px-3 py-1.5 text-gray-700 rounded-lg text-xs font-medium">Python</span>
-          <span class="tag px-3 py-1.5 text-gray-700 rounded-lg text-xs font-medium">PostgreSQL</span>
-          <span class="tag px-3 py-1.5 text-gray-700 rounded-lg text-xs font-medium">FastAPI</span>
-          <span class="tag px-3 py-1.5 text-gray-700 rounded-lg text-xs font-medium">RAGAS</span>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-6 bg-gray-800 text-white text-center">
+        <div class="max-w-6xl mx-auto px-4">
+            <p class="text-gray-400">© 2025 Eashwar Subramanian. Healthcare AI Specialist & Data Scientist.</p>
+            <p class="text-gray-500 text-sm mt-2">Last updated: January 2025</p>
         </div>
-      </article>
-
-      <article class="card p-7">
-        <h3 class="text-lg font-semibold text-gray-900 mb-2">Australian Retail Customer Segmentation</h3>
-        <div class="text-xs text-gray-500 mb-3">K-Means & RFM analysis</div>
-        <p class="text-sm text-gray-700 leading-relaxed mb-5">
-          Identified high-value customer segment representing ~15% of total revenue. Implemented data cleaning to correct invalid order IDs (72.5% corrected) enabling accurate RFM segmentation and targeted marketing insights.
-        </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="tag px-3 py-1.5 text-gray-700 rounded-lg text-xs font-medium">Python</span>
-          <span class="tag px-3 py-1.5 text-gray-700 rounded-lg text-xs font-medium">scikit-learn</span>
-          <span class="tag px-3 py-1.5 text-gray-700 rounded-lg text-xs font-medium">RFM</span>
-        </div>
-      </article>
-
-      <article class="card p-7">
-        <h3 class="text-lg font-semibold text-gray-900 mb-2">Climate Policy Forecasting Dashboard</h3>
-        <div class="text-xs text-gray-500 mb-3">SARIMA time-series forecasting</div>
-        <p class="text-sm text-gray-700 leading-relaxed mb-5">
-          Developed time-series forecasts (SARIMA) for climate indicators achieving ~1.2°C MAE. Deployed interactive Flask dashboard with geospatial visualisation for policy stakeholders.
-        </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="tag px-3 py-1.5 text-gray-700 rounded-lg text-xs font-medium">SARIMA</span>
-          <span class="tag px-3 py-1.5 text-gray-700 rounded-lg text-xs font-medium">Flask</span>
-          <span class="tag px-3 py-1.5 text-gray-700 rounded-lg text-xs font-medium">Folium</span>
-        </div>
-      </article>
-
-      <article class="card p-7">
-        <h3 class="text-lg font-semibold text-gray-900 mb-2">Sales Analytics Dashboard</h3>
-        <div class="text-xs text-gray-500 mb-3">Power BI & ETL automation</div>
-        <p class="text-sm text-gray-700 leading-relaxed mb-5">
-          Automated Power BI reports and ETL pipelines across 4 years of sales history identifying opportunities for ~7% revenue uplift.
-        </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="tag px-3 py-1.5 text-gray-700 rounded-lg text-xs font-medium">Power BI</span>
-          <span class="tag px-3 py-1.5 text-gray-700 rounded-lg text-xs font-medium">MySQL</span>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <div class="section-divider"></div>
-
-  <!-- SKILLS -->
-  <section id="skills" class="max-w-6xl mx-auto px-6 py-20">
-    <h2 class="text-3xl font-bold text-gray-900 mb-12">Technical Skills</h2>
-
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div class="card p-6">
-        <h3 class="text-sm font-semibold text-gray-900 mb-3 uppercase tracking-wide">Languages</h3>
-        <p class="text-sm text-gray-700 leading-relaxed">Python, SQL, R, Java</p>
-      </div>
-
-      <div class="card p-6">
-        <h3 class="text-sm font-semibold text-gray-900 mb-3 uppercase tracking-wide">Cloud & DevOps</h3>
-        <p class="text-sm text-gray-700 leading-relaxed">AWS (Bedrock, EC2, S3, Lambda, Aurora), Docker, CI/CD, Git</p>
-      </div>
-
-      <div class="card p-6">
-        <h3 class="text-sm font-semibold text-gray-900 mb-3 uppercase tracking-wide">ML & Retrieval</h3>
-        <p class="text-sm text-gray-700 leading-relaxed">RAG, Sentence-Transformers (MiniLM), Cross-Encoders, Semantic Chunking, RAGAS</p>
-      </div>
-
-      <div class="card p-6">
-        <h3 class="text-sm font-semibold text-gray-900 mb-3 uppercase tracking-wide">Databases</h3>
-        <p class="text-sm text-gray-700 leading-relaxed">PostgreSQL (pgvector, RLS, IVFFlat), MySQL, DynamoDB</p>
-      </div>
-
-      <div class="card p-6">
-        <h3 class="text-sm font-semibold text-gray-900 mb-3 uppercase tracking-wide">Analytics</h3>
-        <p class="text-sm text-gray-700 leading-relaxed">Power BI, Tableau, RFM Analysis, Time-Series (SARIMA)</p>
-      </div>
-
-      <div class="card p-6">
-        <h3 class="text-sm font-semibold text-gray-900 mb-3 uppercase tracking-wide">Frameworks & Testing</h3>
-        <p class="text-sm text-gray-700 leading-relaxed">FastAPI, Flask, LangChain, Pytest, Pydantic</p>
-      </div>
-    </div>
-  </section>
-
-  <div class="section-divider"></div>
-
-  <!-- CONTACT -->
-  <section id="contact" class="max-w-6xl mx-auto px-6 py-20">
-    <h2 class="text-3xl font-bold text-gray-900 mb-12">Contact</h2>
-    <div class="grid md:grid-cols-2 gap-12">
-      <div>
-        <p class="text-base text-gray-700 leading-relaxed mb-8">
-          Open to full-time and contract opportunities from December 2025. Available to discuss data science, ML engineering, analytics, and cloud/production work.
-        </p>
-        <div class="space-y-6">
-          <div>
-            <div class="text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wide">Email</div>
-            <div class="text-base text-gray-900 font-medium">eashwars2001@gmail.com</div>
-          </div>
-          <div>
-            <div class="text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wide">Phone</div>
-            <div class="text-base text-gray-900 font-medium">+61 450 332 782</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card p-8">
-        <form class="space-y-5" action="https://formspree.io/f/xpznzpzp" method="POST">
-          <div>
-            <label class="text-xs font-semibold text-gray-700 mb-2 block uppercase tracking-wide">Name *</label>
-            <input type="text" name="name" required class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-gray-900" />
-          </div>
-          <div>
-            <label class="text-xs font-semibold text-gray-700 mb-2 block uppercase tracking-wide">Email *</label>
-            <input type="email" name="email" required class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-gray-900" />
-          </div>
-          <div>
-            <label class="text-xs font-semibold text-gray-700 mb-2 block uppercase tracking-wide">Company</label>
-            <input type="text" name="company" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-gray-900" />
-          </div>
-          <div>
-            <label class="text-xs font-semibold text-gray-700 mb-2 block uppercase tracking-wide">Message *</label>
-            <textarea name="message" rows="4" required class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-gray-900"></textarea>
-          </div>
-          <div>
-            <button type="submit" class="px-6 py-2.5 bg-gray-900 text-white rounded-lg text-sm font-medium">Send message</button>
-            <p class="text-xs text-gray-500 mt-3">* Required fields. I respond within 3–5 business days.</p>
-          </div>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="border-t border-gray-200 mt-20 bg-white">
-    <div class="max-w-6xl mx-auto px-6 py-10">
-      <div class="text-sm text-gray-500">© 2025 Eashwar Subramanian. All rights reserved.</div>
-    </div>
-  </footer>
-
-  <script>
-    const mobileBtn = document.getElementById('mobileBtn');
-    const mobileNav = document.getElementById('mobileNav');
-    const mobileClose = document.getElementById('mobileClose');
-    mobileBtn?.addEventListener('click', () => mobileNav.classList.remove('hidden'));
-    mobileClose?.addEventListener('click', () => mobileNav.classList.add('hidden'));
-    mobileNav?.addEventListener('click', (e) => { if (e.target === mobileNav) mobileNav.classList.add('hidden'); });
-  </script>
+    </footer>
 </body>
 </html>
+

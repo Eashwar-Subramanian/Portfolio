@@ -8,735 +8,298 @@
   <meta name="author" content="Eashwar Subramanian">
   <meta name="keywords" content="Data Science, RAG, Retrieval Augmented Generation, pgvector, FastAPI, AWS, Machine Learning, RMIT, healthcare AI, analytics">
   <link rel="icon" href="data:,">
-  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
-    code, pre { font-family: 'JetBrains Mono', 'Courier New', monospace; }
-    
-    :root {
-      --primary: #6366f1;
-      --primary-dark: #4f46e5;
-      --accent: #ec4899;
-      --dark: #0a0a0f;
-      --dark-light: #151520;
-      --text: #e4e4e7;
-      --text-muted: #a1a1aa;
-    }
-    
-    body { 
-      background: linear-gradient(135deg, #0a0a0f 0%, #151520 50%, #1a1a2e 100%);
-      color: var(--text);
-      min-height: 100vh;
-    }
-    
-    .glass { 
-      background: rgba(20, 20, 30, 0.7); 
-      backdrop-filter: blur(12px); 
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    .muted { color: var(--text-muted); }
-    
-    .chip { 
-      display: inline-flex; 
-      align-items: center; 
-      gap: 6px; 
-      padding: 6px 12px; 
-      border-radius: 6px; 
-      background: rgba(99, 102, 241, 0.15); 
-      border: 1px solid rgba(99, 102, 241, 0.3);
-      font-size: 12px; 
-      color: #c7d2fe; 
-      transition: all 0.2s ease;
-    }
-    
-    .chip:hover {
-      background: rgba(99, 102, 241, 0.25);
-      border-color: rgba(99, 102, 241, 0.5);
-      transform: translateY(-1px);
-    }
-    
-    pre.code { 
-      background: #0a0a0f; 
-      color: #a78bfa; 
-      padding: 16px; 
-      border-radius: 8px; 
-      overflow: auto;
-      border: 1px solid rgba(167, 139, 250, 0.2);
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    }
-    
-    .badge { 
-      background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(236, 72, 153, 0.2)); 
-      color: #e9d5ff; 
-      padding: 6px 12px; 
-      border-radius: 6px; 
-      font-weight: 600; 
-      font-size: 12px;
-      border: 1px solid rgba(236, 72, 153, 0.3);
-    }
-    
-    .arch-box { 
-      min-height: 220px; 
-      border-radius: 12px; 
-      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(236, 72, 153, 0.1)); 
-      border: 1px solid rgba(99, 102, 241, 0.3); 
-      display: flex; 
-      align-items: center; 
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .arch-box::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
-      animation: pulse 4s ease-in-out infinite;
-    }
-    
-    @keyframes pulse {
-      0%, 100% { opacity: 0.5; transform: scale(1); }
-      50% { opacity: 0.8; transform: scale(1.1); }
-    }
-    
-    .proj-card { 
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .proj-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.1), transparent);
-      transition: left 0.5s ease;
-    }
-    
-    .proj-card:hover::before {
-      left: 100%;
-    }
-    
-    .proj-card:hover { 
-      transform: translateY(-8px); 
-      box-shadow: 0 20px 60px rgba(99, 102, 241, 0.2); 
-      border-color: rgba(99, 102, 241, 0.5);
-    }
-    
-    .gradient-text {
-      background: linear-gradient(135deg, #6366f1, #ec4899, #8b5cf6);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    
-    .section-bg {
-      background: rgba(15, 15, 25, 0.5);
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-    }
-    
-    nav {
-      background: rgba(10, 10, 15, 0.8);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    .card-modern {
-      background: rgba(20, 20, 30, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      transition: all 0.3s ease;
-    }
-    
-    .card-modern:hover {
-      background: rgba(25, 25, 40, 0.8);
-      border-color: rgba(99, 102, 241, 0.4);
-      box-shadow: 0 10px 40px rgba(99, 102, 241, 0.15);
-    }
-    
-    .btn-primary {
-      background: linear-gradient(135deg, #6366f1, #8b5cf6);
-      border: none;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
-    }
-    
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
-    }
-    
-    .btn-secondary {
-      background: transparent;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      transition: all 0.3s ease;
-    }
-    
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.05);
-      border-color: rgba(99, 102, 241, 0.5);
-    }
-    
-    input, textarea {
-      background: rgba(15, 15, 25, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: var(--text);
-      transition: all 0.3s ease;
-    }
-    
-    input:focus, textarea:focus {
-      outline: none;
-      border-color: rgba(99, 102, 241, 0.5);
-      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
-    }
-    
-    footer {
-      background: rgba(5, 5, 10, 0.8);
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
+    body { background: #ffffff; color: #222222; }
+    a { color: inherit; text-decoration: none; }
+    .section-divider { border-top: 1px solid #ebebeb; }
   </style>
 </head>
-<body class="antialiased leading-relaxed">
+<body class="antialiased">
 
   <!-- NAV -->
-  <nav class="sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="flex items-center justify-between py-5">
-        <a href="#home" class="flex items-center gap-3 group">
-          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-indigo-500/30 group-hover:shadow-indigo-500/50 transition-all duration-300 group-hover:scale-110">ES</div>
+  <nav class="sticky top-0 z-50 bg-white border-b border-gray-200">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center justify-between py-4">
+        <a href="#home" class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-gray-900 text-white flex items-center justify-center font-semibold text-sm">ES</div>
           <div>
-            <div class="text-lg font-bold gradient-text">Eashwar Subramanian</div>
-            <div class="text-xs muted -mt-0.5">AI & Data Science • Graduating Dec 2025</div>
+            <div class="text-base font-semibold text-gray-900">Eashwar Subramanian</div>
+            <div class="text-xs text-gray-500">Data Science • RMIT</div>
           </div>
         </a>
 
         <div class="hidden md:flex items-center gap-8 text-sm">
-          <a href="#about" class="muted hover:text-indigo-400 transition-colors">About</a>
-          <a href="#experience" class="muted hover:text-indigo-400 transition-colors">Experience</a>
-          <a href="#projects" class="muted hover:text-indigo-400 transition-colors">Projects</a>
-          <a href="#skills" class="muted hover:text-indigo-400 transition-colors">Skills</a>
-          <a href="#insights" class="muted hover:text-indigo-400 transition-colors">Insights</a>
-          <a href="#contact" class="muted hover:text-indigo-400 transition-colors">Contact</a>
-          <a href="#resume" class="btn-primary inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm text-white">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" /></svg>
-            Resume
-          </a>
+          <a href="#experience" class="text-gray-600 hover:text-gray-900">Experience</a>
+          <a href="#projects" class="text-gray-600 hover:text-gray-900">Projects</a>
+          <a href="#skills" class="text-gray-600 hover:text-gray-900">Skills</a>
+          <a href="#contact" class="text-gray-600 hover:text-gray-900">Contact</a>
+          <a href="Eashwar Subramanian Resume.pdf" target="_blank" class="px-4 py-2 bg-gray-900 text-white rounded-md text-sm font-medium">Resume</a>
         </div>
 
-        <!-- mobile menu button -->
         <div class="md:hidden">
-          <button id="mobileBtn" aria-label="Open menu" class="p-2 rounded-lg hover:bg-white/10 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"/></svg>
+          <button id="mobileBtn" aria-label="Open menu" class="p-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"/></svg>
           </button>
         </div>
       </div>
     </div>
   </nav>
 
-  <!-- MOBILE NAV POPUP -->
-  <div id="mobileNav" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 hidden">
-    <div class="absolute right-0 top-0 w-64 h-full glass p-6 shadow-2xl">
+  <!-- MOBILE NAV -->
+  <div id="mobileNav" class="fixed inset-0 bg-white z-40 hidden">
+    <div class="p-6">
       <div class="flex justify-between items-center mb-6">
-        <div class="font-bold text-white">Menu</div>
-        <button id="mobileClose" class="p-1 rounded-lg hover:bg-white/10 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 8.586L3.293 1.879 1.879 3.293 8.586 10l-6.707 6.707 1.414 1.414L10 11.414l6.707 6.707 1.414-1.414L11.414 10l6.707-6.707-1.414-1.414L10 8.586z" clip-rule="evenodd" /></svg></button>
+        <div class="font-semibold">Menu</div>
+        <button id="mobileClose" class="p-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 8.586L3.293 1.879 1.879 3.293 8.586 10l-6.707 6.707 1.414 1.414L10 11.414l6.707 6.707 1.414-1.414L11.414 10l6.707-6.707-1.414-1.414L10 8.586z" clip-rule="evenodd" /></svg></button>
       </div>
-      <nav class="flex flex-col gap-3">
-        <a href="#about" class="py-2 px-2 rounded-lg hover:bg-white/10 transition-colors text-white">About</a>
-        <a href="#experience" class="py-2 px-2 rounded-lg hover:bg-white/10 transition-colors text-white">Experience</a>
-        <a href="#projects" class="py-2 px-2 rounded-lg hover:bg-white/10 transition-colors text-white">Projects</a>
-        <a href="#skills" class="py-2 px-2 rounded-lg hover:bg-white/10 transition-colors text-white">Skills</a>
-        <a href="#insights" class="py-2 px-2 rounded-lg hover:bg-white/10 transition-colors text-white">Insights</a>
-        <a href="#contact" class="py-2 px-2 rounded-lg hover:bg-white/10 transition-colors text-white">Contact</a>
-        <a href="#resume" class="py-2 px-2 rounded-lg hover:bg-white/10 transition-colors text-white">Resume</a>
+      <nav class="flex flex-col gap-4">
+        <a href="#experience" class="py-2 text-gray-700">Experience</a>
+        <a href="#projects" class="py-2 text-gray-700">Projects</a>
+        <a href="#skills" class="py-2 text-gray-700">Skills</a>
+        <a href="#contact" class="py-2 text-gray-700">Contact</a>
+        <a href="Eashwar Subramanian Resume.pdf" target="_blank" class="py-2 text-gray-700">Resume</a>
       </nav>
     </div>
   </div>
 
   <!-- HERO -->
-  <header id="home" class="relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-indigo-900/20 via-purple-900/20 to-pink-900/20"></div>
-    <div class="absolute inset-0" style="background-image: radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);"></div>
-    <div class="relative max-w-7xl mx-auto px-6 py-20 md:py-32 flex flex-col md:flex-row gap-12 items-center">
-      <div class="flex-1">
-        <div class="inline-flex items-center gap-4 mb-6">
-          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center text-white font-bold text-xl shadow-2xl shadow-indigo-500/30">ES</div>
-          <div>
-            <h1 class="text-4xl md:text-5xl font-extrabold mb-2">
-              <span class="gradient-text">Eashwar Subramanian</span>
-            </h1>
-            <div class="text-sm muted">Final-semester Master of Data Science (RMIT) — Graduating Dec 2025</div>
-          </div>
-        </div>
-
-        <p class="text-xl md:text-2xl max-w-2xl leading-relaxed mb-8 text-gray-300">
-          I build <span class="text-indigo-400 font-semibold">production-ready AI and data systems</span> — retrieval pipelines, model evaluation, cloud deployments, and analytics dashboards. Seeking Data Science / ML / Analytics roles from late 2025.
-        </p>
-
-        <div class="mt-8 flex flex-wrap gap-4 items-center">
-          <a href="#projects" class="btn-primary inline-flex items-center gap-2 px-6 py-3 rounded-lg text-white font-semibold">
-            View Projects
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
-          </a>
-          <a href="#contact" class="btn-secondary inline-flex items-center gap-2 px-6 py-3 rounded-lg text-white">Contact</a>
-          <a id="resume" href="Eashwar Subramanian Resume.pdf" class="btn-secondary inline-flex items-center gap-2 px-6 py-3 rounded-lg text-white" target="_blank">
-            Download Resume
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-          </a>
-        </div>
-
-        <div class="mt-8 flex flex-wrap gap-6 items-center text-sm muted">
-          <div class="flex items-center gap-2"><svg class="h-4 w-4 text-indigo-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3M16 7V3M4 11h16M4 19h16"/></svg> Melbourne, Australia</div>
-          <div class="flex items-center gap-2">•</div>
-          <div class="flex items-center gap-2"><svg class="h-4 w-4 text-indigo-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 12a4 4 0 10-8 0v4h8v-4z"/></svg> Open to roles: Data Science, ML, Analytics</div>
-        </div>
-
-        <div class="mt-8 flex gap-4">
-          <a href="https://github.com/Eashwar-Subramanian" target="_blank" class="chip"><svg class="h-4 w-4" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.38 7.86 10.9.58.1.79-.25.79-.56 0-.28-.01-1.02-.01-2-3.2.7-3.87-1.54-3.87-1.54-.53-1.36-1.3-1.72-1.3-1.72-1.06-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.72 1.27 3.38.97.1-.76.4-1.27.72-1.56-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.29 1.2-3.1-.12-.3-.52-1.52.11-3.17 0 0 .98-.31 3.2 1.18a11.18 11.18 0 015.82 0c2.2-1.49 3.18-1.18 3.18-1.18.63 1.65.23 2.87.11 3.17.75.81 1.2 1.84 1.2 3.1 0 4.43-2.7 5.4-5.28 5.68.41.36.77 1.07.77 2.16 0 1.56-.01 2.82-.01 3.2 0 .31.21.67.8.56C20.71 21.38 24 17.08 24 12 24 5.65 18.35.5 12 .5z"/></svg> GitHub</a>
-          <a href="https://www.linkedin.com/in/eashwar-s-02461a1b3/" target="_blank" class="chip"><svg class="h-4 w-4" viewBox="0 0 24 24"><path fill="currentColor" d="M4.98 3.5C3.88 3.5 3 4.37 3 5.5s.88 2 1.98 2H5c1.1 0 2-.88 2-2s-.9-2-2.02-2H4.98zM3 8h4v13H3zM9 8h3.84v1.83h.05c.53-1 1.82-2.03 3.74-2.03 4 0 4.74 2.63 4.74 6.05V21H18v-6.12c0-1.46-.03-3.34-2.06-3.34-2.06 0-2.38 1.6-2.38 3.22V21H9V8z"/></svg> LinkedIn</a>
-          <a href="mailto:eashwars2001@gmail.com" class="chip"><svg class="h-4 w-4" viewBox="0 0 24 24"><path fill="currentColor" d="M1.5 6.75v10.5A2.75 2.75 0 004.25 20h15.5A2.75 2.75 0 0022.5 17.25V6.75A2.75 2.75 0 0019.75 4H4.25A2.75 2.75 0 001.5 6.75zm2.45-.53L12 12.27l8.05-6.05H3.95z"/></svg> Email</a>
-        </div>
+  <header id="home" class="max-w-5xl mx-auto px-6 py-16 md:py-24">
+    <div class="mb-8">
+      <h1 class="text-4xl md:text-5xl font-semibold text-gray-900 mb-4">Eashwar Subramanian</h1>
+      <p class="text-lg text-gray-600 mb-6">Master of Data Science (RMIT) • Graduating December 2025</p>
+      <p class="text-base text-gray-700 leading-relaxed max-w-2xl mb-8">
+        Building production-ready AI and data systems — retrieval pipelines, model evaluation, cloud deployments, and analytics dashboards. Seeking Data Science, ML Engineering, and Analytics roles from late 2025.
+      </p>
+      <div class="flex flex-wrap gap-4 items-center text-sm text-gray-600">
+        <span>📍 Melbourne, Australia</span>
+        <span>•</span>
+        <span>Open to full-time roles</span>
       </div>
+    </div>
 
-      <div class="w-full md:w-96">
-        <div class="glass p-6 rounded-2xl">
-          <div class="text-sm muted mb-1">Status</div>
-          <div class="text-lg font-bold text-white mb-6">Available from Dec 2025 — Open to full-time roles</div>
-          <div class="text-sm muted mb-1">Location</div>
-          <div class="font-semibold text-white mb-6">Melbourne, Victoria, Australia</div>
-
-          <div class="grid grid-cols-2 gap-3 mb-6">
-            <div class="card-modern p-4 rounded-lg">
-              <div class="text-xs muted mb-1">Current</div>
-              <div class="font-semibold text-sm text-white">Data Science Intern — Solara Health</div>
-            </div>
-            <div class="card-modern p-4 rounded-lg">
-              <div class="text-xs muted mb-1">Education</div>
-              <div class="font-semibold text-sm text-white">MDS — RMIT (Dec 2025)</div>
-            </div>
-          </div>
-
-          <div>
-            <a href="#contact" class="btn-primary inline-block w-full text-center py-3 rounded-lg text-white font-semibold">Let's talk</a>
-          </div>
-        </div>
-      </div>
+    <div class="flex gap-3 mb-8">
+      <a href="https://github.com/Eashwar-Subramanian" target="_blank" class="px-4 py-2 border border-gray-300 rounded-md text-sm text-gray-700 hover:bg-gray-50">GitHub</a>
+      <a href="https://www.linkedin.com/in/eashwar-s-02461a1b3/" target="_blank" class="px-4 py-2 border border-gray-300 rounded-md text-sm text-gray-700 hover:bg-gray-50">LinkedIn</a>
+      <a href="mailto:eashwars2001@gmail.com" class="px-4 py-2 border border-gray-300 rounded-md text-sm text-gray-700 hover:bg-gray-50">Email</a>
     </div>
   </header>
 
-  <!-- ABOUT -->
-  <section id="about" class="max-w-7xl mx-auto px-6 py-16 section-bg">
-    <div class="grid md:grid-cols-3 gap-10 items-center">
-      <div class="md:col-span-2">
-        <h2 class="text-3xl md:text-4xl font-bold mb-6">
-          <span class="gradient-text">About</span>
-        </h2>
-        <p class="text-lg text-gray-300 leading-relaxed mb-4">
-          I'm a Master of Data Science candidate at RMIT, finishing December 2025. I build <span class="text-indigo-400 font-semibold">end-to-end data and ML systems</span> — from ingestion and feature pipelines to model evaluation, production APIs and cloud deployment.
-        </p>
-
-        <p class="text-lg text-gray-300 leading-relaxed mb-6">
-          While my recent internship focused on healthcare RAG systems, I'm a generalist in data science: retrieval systems, supervised models, time-series forecasting, analytics dashboards, and cloud engineering. I write production-quality code, care about test coverage, and prioritize systems that are auditable and maintainable.
-        </p>
-
-        <div class="flex flex-wrap gap-3">
-          <span class="badge">Production ML</span>
-          <span class="badge">RAG & Retrieval</span>
-          <span class="badge">Cloud Deployments</span>
-          <span class="badge">Evaluation & Monitoring</span>
-        </div>
-      </div>
-
-      <div class="card-modern p-6 rounded-xl">
-        <h3 class="font-bold text-xl mb-4 text-white">Quick facts</h3>
-        <ul class="space-y-3 text-sm">
-          <li class="text-gray-300"><span class="text-indigo-400 font-semibold">Role:</span> Data Science Intern at Solara Health</li>
-          <li class="text-gray-300"><span class="text-indigo-400 font-semibold">Graduation:</span> Dec 2025 (RMIT)</li>
-          <li class="text-gray-300"><span class="text-indigo-400 font-semibold">Preferred roles:</span> Data Scientist, ML Engineer, Analytics</li>
-          <li class="text-gray-300"><span class="text-indigo-400 font-semibold">Languages:</span> Python, SQL, R, Java</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+  <div class="section-divider"></div>
 
   <!-- EXPERIENCE -->
-  <section id="experience" class="max-w-7xl mx-auto px-6 py-16">
-    <h2 class="text-3xl md:text-4xl font-bold mb-10">
-      <span class="gradient-text">Professional Experience</span>
-    </h2>
+  <section id="experience" class="max-w-5xl mx-auto px-6 py-16">
+    <h2 class="text-2xl font-semibold text-gray-900 mb-10">Experience</h2>
 
-    <div class="space-y-6">
-      <!-- Solara -->
-      <article class="proj-card card-modern p-8 rounded-xl">
-        <div class="flex flex-col md:flex-row justify-between items-start gap-4 mb-6">
+    <div class="space-y-10">
+      <article>
+        <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
           <div>
-            <h3 class="text-xl font-bold text-white mb-2">Data Science Intern — Solara Health</h3>
-            <div class="muted text-sm">Melbourne, Australia • July 2025 – Present</div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-1">Data Science Intern</h3>
+            <div class="text-sm text-gray-600 mb-2">Solara Health • Melbourne, Australia</div>
+            <div class="text-sm text-gray-500">July 2025 – Present</div>
           </div>
-          <div class="text-sm muted">
-            <div>Team project • Industry-supervised</div>
-          </div>
+          <div class="text-sm text-gray-500">Team project • Industry-supervised</div>
         </div>
 
-        <ul class="space-y-3 text-gray-300 leading-relaxed">
-          <li class="flex items-start gap-3">
-            <span class="text-indigo-400 mt-1">▸</span>
-            <span>Built the ingestion pipeline (PDF/HTML/Markdown) with semantic chunking (LlamaIndex), SHA-256 deduplication, metadata tagging and deterministic version control for reproducible indexes.</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-indigo-400 mt-1">▸</span>
-            <span>Implemented semantic retrieval: MiniLM-based bi-encoder embeddings, pgvector (IVFFlat) indexing, and cross-encoder reranking for top-k precision.</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-indigo-400 mt-1">▸</span>
-            <span>Designed tenant-aware hierarchical routing with PostgreSQL Row-Level Security to ensure hospital-scoped retrieval (hospital → national → state).</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-indigo-400 mt-1">▸</span>
-            <span>Developed audit-ready citation formatting and source-tracing logic (date-extraction, fallback rules, hyperlinks) to support compliance and traceability.</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-indigo-400 mt-1">▸</span>
-            <span>Built a reproducible evaluation pipeline integrating RAGAS + semantic similarity proofs; produced metrics used for iterative improvement (faithfulness ~69.4%, context precision 92.7%, recall 91.2%).</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-indigo-400 mt-1">▸</span>
-            <span>Authored Pytest-based test suites for ingestion, retrieval, and moderation interactions; contributed to containerized CI workflows and sprint coordination.</span>
-          </li>
+        <ul class="space-y-2 text-sm text-gray-700 leading-relaxed">
+          <li>• Built ingestion pipeline (PDF/HTML/Markdown) with semantic chunking (LlamaIndex), SHA-256 deduplication, metadata tagging, and deterministic version control for reproducible indexes.</li>
+          <li>• Implemented semantic retrieval: MiniLM-based bi-encoder embeddings, pgvector (IVFFlat) indexing, and cross-encoder reranking for top-k precision.</li>
+          <li>• Designed tenant-aware hierarchical routing with PostgreSQL Row-Level Security to ensure hospital-scoped retrieval (hospital → national → state).</li>
+          <li>• Developed audit-ready citation formatting and source-tracing logic (date-extraction, fallback rules, hyperlinks) to support compliance and traceability.</li>
+          <li>• Built reproducible evaluation pipeline integrating RAGAS + semantic similarity proofs; produced metrics for iterative improvement (faithfulness ~69.4%, context precision 92.7%, recall 91.2%).</li>
+          <li>• Authored Pytest-based test suites for ingestion, retrieval, and moderation interactions; contributed to containerized CI workflows and sprint coordination.</li>
         </ul>
 
-        <div class="mt-6 flex flex-wrap gap-2">
-          <span class="chip">Python</span><span class="chip">PostgreSQL (pgvector)</span><span class="chip">FastAPI</span><span class="chip">Docker</span><span class="chip">RAGAS</span>
+        <div class="mt-4 flex flex-wrap gap-2">
+          <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">Python</span>
+          <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">PostgreSQL (pgvector)</span>
+          <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">FastAPI</span>
+          <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">Docker</span>
+          <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">RAGAS</span>
         </div>
       </article>
 
-      <!-- PrepInsta -->
-      <article class="card-modern p-8 rounded-xl">
-        <div class="flex justify-between items-start mb-6">
+      <article>
+        <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
           <div>
-            <h3 class="text-xl font-bold text-white mb-2">Data Analyst Intern — PrepInsta (remote)</h3>
-            <div class="muted text-sm">Dec 2023 – Feb 2024</div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-1">Data Analyst Intern</h3>
+            <div class="text-sm text-gray-600 mb-2">PrepInsta • Remote</div>
+            <div class="text-sm text-gray-500">December 2023 – February 2024</div>
           </div>
-          <div class="text-sm muted">Contract • Remote</div>
+          <div class="text-sm text-gray-500">Contract</div>
         </div>
 
-        <ul class="text-gray-300 space-y-3 leading-relaxed">
-          <li class="flex items-start gap-3">
-            <span class="text-indigo-400 mt-1">▸</span>
-            <span>Delivered 5+ stakeholder dashboards (Tableau) improving client engagement by ~10%.</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-indigo-400 mt-1">▸</span>
-            <span>Optimized SQL queries and ETL tasks, reducing report latency ~25%.</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-indigo-400 mt-1">▸</span>
-            <span>Automated web scraping and data cleaning pipelines in Python, cutting manual effort ~30%.</span>
-          </li>
+        <ul class="space-y-2 text-sm text-gray-700 leading-relaxed">
+          <li>• Delivered 5+ stakeholder dashboards (Tableau) improving client engagement by ~10%.</li>
+          <li>• Optimized SQL queries and ETL tasks, reducing report latency ~25%.</li>
+          <li>• Automated web scraping and data cleaning pipelines in Python, cutting manual effort ~30%.</li>
         </ul>
 
-        <div class="mt-6 flex gap-2">
-          <span class="chip">Tableau</span><span class="chip">SQL</span><span class="chip">Python</span>
+        <div class="mt-4 flex flex-wrap gap-2">
+          <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">Tableau</span>
+          <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">SQL</span>
+          <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">Python</span>
         </div>
       </article>
     </div>
   </section>
 
-  <!-- FEATURED PROJECT / ARCHITECTURE -->
-  <section id="projects" class="max-w-7xl mx-auto px-6 py-16 section-bg">
-    <h2 class="text-3xl md:text-4xl font-bold mb-10">
-      <span class="gradient-text">Strategic Projects</span>
-    </h2>
+  <div class="section-divider"></div>
 
-    <div class="grid md:grid-cols-2 gap-8">
-      <!-- Left: Solara hero card -->
-      <div class="card-modern rounded-xl p-8">
-        <div class="flex items-start justify-between mb-6">
-          <div>
-            <h3 class="text-xl font-bold text-white mb-2">Solara Healthcare RAG System (Featured)</h3>
-            <div class="muted text-sm">Production-aligned RAG pipeline for hospital-scoped retrieval</div>
-          </div>
-          <div class="text-sm">
-            <div class="text-xs muted">Team project (RMIT + Solara)</div>
+  <!-- PROJECTS -->
+  <section id="projects" class="max-w-5xl mx-auto px-6 py-16">
+    <h2 class="text-2xl font-semibold text-gray-900 mb-10">Projects</h2>
+
+    <div class="space-y-8">
+      <article class="border border-gray-200 rounded-lg p-6">
+        <div class="mb-4">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Solara Healthcare RAG System</h3>
+          <div class="text-sm text-gray-600 mb-3">Production-aligned RAG pipeline for hospital-scoped retrieval • Team project (RMIT + Solara)</div>
+          <p class="text-sm text-gray-700 leading-relaxed">
+            Built retrieval-augmented generation platform integrating document ingestion, semantic chunking, vector search, reranking, and evaluation. System focused on traceability (citations), tenant isolation, and reproducible evaluation for iterative improvement.
+          </p>
+        </div>
+        <div class="mb-4">
+          <div class="text-xs text-gray-500 mb-2">Key Metrics</div>
+          <div class="text-sm text-gray-700 space-y-1">
+            <div>Context precision: 92.7% • Context recall: 91.2% • Faithfulness (RAGAS): ~69.4%</div>
           </div>
         </div>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">Python</span>
+          <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">PostgreSQL</span>
+          <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">FastAPI</span>
+          <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">RAGAS</span>
+        </div>
+      </article>
 
-        <p class="text-gray-300 leading-relaxed mb-6">
-          Built a retrieval-augmented generation platform integrating document ingestion, semantic chunking, vector search, reranking, and evaluation. The system focused on traceability (citations), tenant isolation, and reproducible evaluation for iterative improvement.
+      <article class="border border-gray-200 rounded-lg p-6">
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Australian Retail Customer Segmentation</h3>
+        <div class="text-sm text-gray-600 mb-3">K-Means & RFM analysis</div>
+        <p class="text-sm text-gray-700 leading-relaxed mb-4">
+          Identified high-value customer segment representing ~15% of total revenue. Implemented data cleaning to correct invalid order IDs (72.5% corrected) enabling accurate RFM segmentation and targeted marketing insights.
         </p>
-
-        <div class="grid grid-cols-2 gap-4 mb-6">
-          <div class="arch-box relative z-10">
-            <!-- placeholder for architecture visual; replace with image/svg if available -->
-            <div class="text-center relative z-10">
-              <div class="font-bold text-white mb-2">Architecture</div>
-              <div class="mt-2 text-xs muted">Ingestion → Chunking → Embeddings → Retrieval → Rerank → LLM</div>
-            </div>
-          </div>
-          <div class="p-4 card-modern rounded-lg">
-            <div class="text-sm muted mb-3">Outcomes</div>
-            <ul class="text-gray-300 space-y-2 text-sm">
-              <li>• Context precision: <strong class="text-indigo-400">92.7%</strong></li>
-              <li>• Context recall: <strong class="text-indigo-400">91.2%</strong></li>
-              <li>• Faithfulness (RAGAS): <strong class="text-indigo-400">~69.4%</strong></li>
-              <li>• Evaluation-first approach: reproducible RAGAS workflows & dashboards</li>
-            </ul>
-          </div>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">Python</span>
+          <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">scikit-learn</span>
+          <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">RFM</span>
         </div>
+      </article>
 
-        <div class="flex flex-wrap gap-3">
-          <a href="#experience" class="text-sm text-indigo-400 hover:text-indigo-300 transition-colors">Read experience bullets →</a>
-          <a href="https://github.com/Eashwar-Subramanian" target="_blank" class="text-sm text-indigo-400 hover:text-indigo-300 transition-colors">Code (selected) →</a>
+      <article class="border border-gray-200 rounded-lg p-6">
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Climate Policy Forecasting Dashboard</h3>
+        <div class="text-sm text-gray-600 mb-3">SARIMA time-series forecasting</div>
+        <p class="text-sm text-gray-700 leading-relaxed mb-4">
+          Developed time-series forecasts (SARIMA) for climate indicators achieving ~1.2°C MAE. Deployed interactive Flask dashboard with geospatial visualisation for policy stakeholders.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">SARIMA</span>
+          <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">Flask</span>
+          <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">Folium</span>
         </div>
-      </div>
+      </article>
 
-      <!-- Right: Other projects -->
-      <div class="space-y-4">
-        <!-- Project card template -->
-        <div class="card-modern rounded-xl p-6">
-          <h4 class="font-bold text-white mb-2">Australian Retail Customer Segmentation</h4>
-          <div class="muted text-sm mb-3">K-Means & RFM analysis — Revenue impact</div>
-          <p class="text-gray-300 text-sm leading-relaxed mb-4">Identified a high-value customer segment representing ~15% of total revenue. Implemented data cleaning to correct invalid order IDs (72.5% corrected) enabling accurate RFM segmentation and targeted marketing insights.</p>
-          <div class="flex gap-2">
-            <span class="chip">Python</span><span class="chip">scikit-learn</span><span class="chip">RFM</span>
-          </div>
+      <article class="border border-gray-200 rounded-lg p-6">
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Sales Analytics Dashboard</h3>
+        <div class="text-sm text-gray-600 mb-3">Power BI & ETL automation</div>
+        <p class="text-sm text-gray-700 leading-relaxed mb-4">
+          Automated Power BI reports and ETL pipelines across 4 years of sales history identifying opportunities for ~7% revenue uplift.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">Power BI</span>
+          <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">MySQL</span>
         </div>
-
-        <div class="card-modern rounded-xl p-6">
-          <h4 class="font-bold text-white mb-2">Climate Policy Forecasting Dashboard</h4>
-          <div class="muted text-sm mb-3">SARIMA • Flask • Folium</div>
-          <p class="text-gray-300 text-sm leading-relaxed mb-4">Developed time-series forecasts (SARIMA) for climate indicators achieving ~1.2°C MAE. Deployed an interactive Flask dashboard with geospatial visualisation for policy stakeholders.</p>
-          <div class="flex gap-2">
-            <span class="chip">SARIMA</span><span class="chip">Folium</span><span class="chip">Flask</span>
-          </div>
-        </div>
-
-        <div class="card-modern rounded-xl p-6">
-          <h4 class="font-bold text-white mb-2">Sales Analytics Dashboard</h4>
-          <div class="muted text-sm mb-3">Power BI & ETL</div>
-          <p class="text-gray-300 text-sm leading-relaxed mb-4">Automated Power BI reports and ETL pipelines across 4 years of sales history identifying opportunities for ~7% revenue uplift.</p>
-          <div class="flex gap-2">
-            <span class="chip">Power BI</span><span class="chip">MySQL</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Two concise standout bullets for resume-style project listing -->
-    <div class="mt-10">
-      <h4 class="text-lg font-bold text-white mb-4">Resume-style highlights (short)</h4>
-      <ul class="text-gray-300 space-y-3 leading-relaxed">
-        <li class="flex items-start gap-3">
-          <span class="text-indigo-400 mt-1">▸</span>
-          <span>Engineered an end-to-end RAG pipeline with semantic chunking, vector search, and multi-tenant routing, enabling tenant-scoped retrieval and audit-ready citations.</span>
-        </li>
-        <li class="flex items-start gap-3">
-          <span class="text-indigo-400 mt-1">▸</span>
-          <span>Built a reproducible evaluation suite (RAGAS + semantic proofs) producing measurable benchmarks for faithfulness, precision and recall used to guide model/routing improvements.</span>
-        </li>
-      </ul>
+      </article>
     </div>
   </section>
 
-  <!-- TECHNICAL SNIPPETS / CODE EXAMPLES -->
-  <section class="max-w-7xl mx-auto px-6 py-16">
-    <h2 class="text-3xl md:text-4xl font-bold mb-10">
-      <span class="gradient-text">Technical Preview</span>
-    </h2>
+  <div class="section-divider"></div>
+
+  <!-- SKILLS -->
+  <section id="skills" class="max-w-5xl mx-auto px-6 py-16">
+    <h2 class="text-2xl font-semibold text-gray-900 mb-10">Technical Skills</h2>
 
     <div class="grid md:grid-cols-2 gap-8">
-      <div class="card-modern rounded-xl p-6">
-        <h4 class="font-bold text-white mb-4">Ingestion snippet (python)</h4>
-        <pre class="code mt-3"><code>def build_metadata_for_doc(path, tenant_id=None):
-    text = extract_text(path)
-    clean = normalize_text(text)
-    doc_hash = hashlib.sha256(clean.encode()).hexdigest()
-    metadata = {
-        "source_path": path,
-        "tenant_id": tenant_id,
-        "hash": doc_hash,
-        "published_date": extract_date(clean) or None
-    }
-    return clean, metadata
-</code></pre>
-        <div class="mt-4 text-sm muted">This code is representative of the deterministic ingestion approach used for deduplication and traceability.</div>
+      <div>
+        <h3 class="text-sm font-semibold text-gray-900 mb-3">Languages</h3>
+        <p class="text-sm text-gray-700">Python, SQL, R, Java</p>
       </div>
 
-      <div class="card-modern rounded-xl p-6">
-        <h4 class="font-bold text-white mb-4">Evaluation workflow (commands)</h4>
-        <pre class="code mt-3"><code>python scripts/eval_ragas_dataset_fixed.py \
-  --input data/queries.csv \
-  --out data/eval/ragas_ds
-
-python scripts/eval_rag_metrics_complete.py \
-  --dataset data/eval/ragas_ds \
-  --output data/eval/ragas_results_overall_final.json
-</code></pre>
-        <div class="mt-4 text-sm muted">Scripts collect LLM judgments and aggregate RAGAS metrics used in dashboards and CI checks.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SKILLS / TECHNOLOGY -->
-  <section id="skills" class="max-w-7xl mx-auto px-6 py-16 section-bg">
-    <h2 class="text-3xl md:text-4xl font-bold mb-10">
-      <span class="gradient-text">Technical Expertise</span>
-    </h2>
-
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="card-modern p-6 rounded-xl">
-        <h4 class="font-bold text-white mb-3">Languages</h4>
-        <p class="muted text-sm mb-4">Python, SQL, R, Java</p>
-        <div class="flex flex-wrap gap-2">
-          <span class="chip">Python</span> <span class="chip">SQL</span> <span class="chip">R</span>
-        </div>
+      <div>
+        <h3 class="text-sm font-semibold text-gray-900 mb-3">Cloud & DevOps</h3>
+        <p class="text-sm text-gray-700">AWS (Bedrock, EC2, S3, Lambda, Aurora), Docker, CI/CD, Git</p>
       </div>
 
-      <div class="card-modern p-6 rounded-xl">
-        <h4 class="font-bold text-white mb-3">Cloud & DevOps</h4>
-        <p class="muted text-sm mb-4">AWS (Bedrock, EC2, S3, Lambda, Aurora), Docker, CI/CD, Git</p>
-        <div class="flex flex-wrap gap-2">
-          <span class="chip">AWS</span> <span class="chip">Docker</span> <span class="chip">CI/CD</span>
-        </div>
+      <div>
+        <h3 class="text-sm font-semibold text-gray-900 mb-3">ML & Retrieval</h3>
+        <p class="text-sm text-gray-700">RAG, Sentence-Transformers (MiniLM), Cross-Encoders, Semantic Chunking, RAGAS</p>
       </div>
 
-      <div class="card-modern p-6 rounded-xl">
-        <h4 class="font-bold text-white mb-3">ML & Retrieval</h4>
-        <p class="muted text-sm mb-4">RAG, Sentence-Transformers (MiniLM), Cross-Encoders, Semantic Chunking, RAGAS</p>
-        <div class="flex flex-wrap gap-2">
-          <span class="chip">RAG</span> <span class="chip">MiniLM</span> <span class="chip">RAGAS</span>
-        </div>
+      <div>
+        <h3 class="text-sm font-semibold text-gray-900 mb-3">Databases</h3>
+        <p class="text-sm text-gray-700">PostgreSQL (pgvector, RLS, IVFFlat), MySQL, DynamoDB</p>
       </div>
 
-      <div class="card-modern p-6 rounded-xl">
-        <h4 class="font-bold text-white mb-3">Databases</h4>
-        <p class="muted text-sm">PostgreSQL (pgvector, RLS, IVFFlat), MySQL, DynamoDB</p>
+      <div>
+        <h3 class="text-sm font-semibold text-gray-900 mb-3">Analytics</h3>
+        <p class="text-sm text-gray-700">Power BI, Tableau, RFM Analysis, Time-Series (SARIMA)</p>
       </div>
 
-      <div class="card-modern p-6 rounded-xl">
-        <h4 class="font-bold text-white mb-3">Analytics</h4>
-        <p class="muted text-sm">Power BI, Tableau, RFM Analysis, Time-Series (SARIMA)</p>
-      </div>
-
-      <div class="card-modern p-6 rounded-xl">
-        <h4 class="font-bold text-white mb-3">Frameworks & Testing</h4>
-        <p class="muted text-sm">FastAPI, Flask, LangChain (where applicable), Pytest, Pydantic</p>
+      <div>
+        <h3 class="text-sm font-semibold text-gray-900 mb-3">Frameworks & Testing</h3>
+        <p class="text-sm text-gray-700">FastAPI, Flask, LangChain, Pytest, Pydantic</p>
       </div>
     </div>
   </section>
 
-  <!-- METRICS / IMPACT -->
-  <section class="max-w-7xl mx-auto px-6 py-16">
-    <h2 class="text-3xl md:text-4xl font-bold mb-10">
-      <span class="gradient-text">Select Impact Metrics</span>
-    </h2>
-
-    <div class="grid md:grid-cols-4 gap-6">
-      <div class="card-modern p-6 rounded-xl text-center">
-        <div class="text-4xl font-extrabold gradient-text mb-2">92.7%</div>
-        <div class="muted text-sm">Context Precision (RAG)</div>
-      </div>
-      <div class="card-modern p-6 rounded-xl text-center">
-        <div class="text-4xl font-extrabold gradient-text mb-2">91.2%</div>
-        <div class="muted text-sm">Context Recall (RAG)</div>
-      </div>
-      <div class="card-modern p-6 rounded-xl text-center">
-        <div class="text-4xl font-extrabold text-indigo-400 mb-2">69.4%</div>
-        <div class="muted text-sm">Faithfulness (RAGAS)</div>
-      </div>
-      <div class="card-modern p-6 rounded-xl text-center">
-        <div class="text-4xl font-extrabold text-pink-400 mb-2">15%</div>
-        <div class="muted text-sm">High-value customer segment (retail)</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- INSIGHTS / BLOG (placeholder) -->
-  <section id="insights" class="max-w-7xl mx-auto px-6 py-16 section-bg">
-    <h2 class="text-3xl md:text-4xl font-bold mb-10">
-      <span class="gradient-text">Latest Insights</span>
-    </h2>
-
-    <div class="grid md:grid-cols-3 gap-6">
-      <article class="card-modern rounded-xl p-6">
-        <h4 class="font-bold text-white mb-3">Building Compliant RAG Systems</h4>
-        <p class="muted text-sm leading-relaxed">Overview of a safe-by-design approach to retrieval systems, evaluation and traceability. (Coming soon — draft available on request)</p>
-      </article>
-
-      <article class="card-modern rounded-xl p-6">
-        <h4 class="font-bold text-white mb-3">From Data to Dashboard</h4>
-        <p class="muted text-sm leading-relaxed">Best practices for building automated ETL and Power BI reporting for small businesses. (Coming soon)</p>
-      </article>
-
-      <article class="card-modern rounded-xl p-6">
-        <h4 class="font-bold text-white mb-3">Time-Series for Policy</h4>
-        <p class="muted text-sm leading-relaxed">Practical notes on SARIMA modelling and communicating uncertainty to stakeholders. (Coming soon)</p>
-      </article>
-    </div>
-  </section>
+  <div class="section-divider"></div>
 
   <!-- CONTACT -->
-  <section id="contact" class="max-w-7xl mx-auto px-6 py-16">
-    <h2 class="text-3xl md:text-4xl font-bold mb-10">
-      <span class="gradient-text">Contact</span>
-    </h2>
-    <div class="grid md:grid-cols-2 gap-8">
-      <!-- contact info -->
-      <div class="card-modern rounded-xl p-8">
-        <h3 class="font-bold text-xl text-white mb-4">Get in touch</h3>
-        <p class="text-gray-300 leading-relaxed mb-6">I'm open to full-time and contract opportunities from Dec 2025. Happy to discuss data science, ML engineering, analytics, and cloud/production work.</p>
-
-        <div class="space-y-4 mb-6">
+  <section id="contact" class="max-w-5xl mx-auto px-6 py-16">
+    <h2 class="text-2xl font-semibold text-gray-900 mb-10">Contact</h2>
+    <div class="grid md:grid-cols-2 gap-12">
+      <div>
+        <p class="text-sm text-gray-700 leading-relaxed mb-6">
+          Open to full-time and contract opportunities from December 2025. Available to discuss data science, ML engineering, analytics, and cloud/production work.
+        </p>
+        <div class="space-y-4">
           <div>
-            <div class="text-sm muted mb-1">Email</div>
-            <div class="font-semibold text-white">eashwars2001@gmail.com</div>
+            <div class="text-xs text-gray-500 mb-1">Email</div>
+            <div class="text-sm text-gray-900">eashwars2001@gmail.com</div>
           </div>
           <div>
-            <div class="text-sm muted mb-1">Phone</div>
-            <div class="font-semibold text-white">+61 450 332 782</div>
+            <div class="text-xs text-gray-500 mb-1">Phone</div>
+            <div class="text-sm text-gray-900">+61 450 332 782</div>
           </div>
-        </div>
-
-        <div class="flex gap-3">
-          <a href="mailto:eashwars2001@gmail.com" class="btn-primary px-6 py-3 rounded-lg text-white font-semibold">Email me</a>
-          <a href="https://www.linkedin.com/in/eashwar-s-02461a1b3/" target="_blank" class="btn-secondary px-6 py-3 rounded-lg text-white">LinkedIn</a>
         </div>
       </div>
 
-      <!-- contact form -->
-      <div class="card-modern rounded-xl p-8">
-        <h3 class="font-bold text-xl text-white mb-4">Send a message</h3>
+      <div>
         <form class="space-y-4" action="https://formspree.io/f/xpznzpzp" method="POST">
           <div>
-            <label class="text-sm muted mb-2 block">Name *</label>
-            <input type="text" name="name" required class="w-full rounded-lg px-4 py-3" />
+            <label class="text-xs text-gray-700 mb-1 block">Name *</label>
+            <input type="text" name="name" required class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm" />
           </div>
           <div>
-            <label class="text-sm muted mb-2 block">Email *</label>
-            <input type="email" name="email" required class="w-full rounded-lg px-4 py-3" />
+            <label class="text-xs text-gray-700 mb-1 block">Email *</label>
+            <input type="email" name="email" required class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm" />
           </div>
           <div>
-            <label class="text-sm muted mb-2 block">Company</label>
-            <input type="text" name="company" class="w-full rounded-lg px-4 py-3" />
+            <label class="text-xs text-gray-700 mb-1 block">Company</label>
+            <input type="text" name="company" class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm" />
           </div>
           <div>
-            <label class="text-sm muted mb-2 block">Message *</label>
-            <textarea name="message" rows="4" required class="w-full rounded-lg px-4 py-3"></textarea>
+            <label class="text-xs text-gray-700 mb-1 block">Message *</label>
+            <textarea name="message" rows="4" required class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm"></textarea>
           </div>
           <div>
-            <button type="submit" class="btn-primary inline-flex items-center gap-2 px-6 py-3 rounded-lg text-white font-semibold">Send message</button>
-            <span class="muted text-xs ml-4 block mt-2">* Required fields. I respond within 3–5 business days.</span>
+            <button type="submit" class="px-4 py-2 bg-gray-900 text-white rounded-md text-sm font-medium">Send message</button>
+            <p class="text-xs text-gray-500 mt-2">* Required fields. I respond within 3–5 business days.</p>
           </div>
         </form>
       </div>
@@ -744,48 +307,19 @@ python scripts/eval_rag_metrics_complete.py \
   </section>
 
   <!-- FOOTER -->
-  <footer class="mt-16">
-    <div class="max-w-7xl mx-auto px-6 py-12 grid md:grid-cols-3 gap-8 border-t border-white/10">
-      <div>
-        <div class="font-bold text-lg gradient-text mb-2">Eashwar Subramanian</div>
-        <div class="text-sm muted">AI & Data Science • Melbourne, Australia</div>
-        <div class="mt-4 text-sm muted">© 2025 — All rights reserved</div>
-      </div>
-
-      <div>
-        <div class="font-bold text-white mb-3">Quick links</div>
-        <ul class="text-sm muted space-y-2">
-          <li><a href="#projects" class="hover:text-indigo-400 transition-colors">Projects</a></li>
-          <li><a href="#experience" class="hover:text-indigo-400 transition-colors">Experience</a></li>
-          <li><a href="#skills" class="hover:text-indigo-400 transition-colors">Skills</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <div class="font-bold text-white mb-3">Contact</div>
-        <div class="text-sm muted mb-4">eashwars2001@gmail.com</div>
-        <div class="flex gap-2">
-          <a href="https://github.com/Eashwar-Subramanian" target="_blank" class="chip">GitHub</a>
-          <a href="https://www.linkedin.com/in/eashwar-s-02461a1b3/" target="_blank" class="chip">LinkedIn</a>
-        </div>
-      </div>
+  <footer class="border-t border-gray-200 mt-16">
+    <div class="max-w-5xl mx-auto px-6 py-8">
+      <div class="text-sm text-gray-500">© 2025 Eashwar Subramanian. All rights reserved.</div>
     </div>
   </footer>
 
   <script>
-    // Mobile nav toggles
     const mobileBtn = document.getElementById('mobileBtn');
     const mobileNav = document.getElementById('mobileNav');
     const mobileClose = document.getElementById('mobileClose');
     mobileBtn?.addEventListener('click', () => mobileNav.classList.remove('hidden'));
     mobileClose?.addEventListener('click', () => mobileNav.classList.add('hidden'));
     mobileNav?.addEventListener('click', (e) => { if (e.target === mobileNav) mobileNav.classList.add('hidden'); });
-
-    // Accessibility: focus outlines for keyboard users
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Tab') document.documentElement.classList.add('user-is-tabbing');
-    });
   </script>
 </body>
 </html>
-

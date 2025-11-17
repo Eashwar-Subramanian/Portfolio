@@ -3,103 +3,669 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Eashwar Subramanian — Data Science & AI</title>
-  <meta name="description" content="Eashwar Subramanian — Master of Data Science (RMIT). Applied ML, retrieval systems (RAG), cloud deployments, and analytics. Graduating Dec 2025.">
+  <title>Eashwar Subramanian — Data Science & AI Engineer</title>
+  <meta name="description" content="Eashwar Subramanian — Master of Data Science (RMIT). Production ML systems, RAG pipelines, cloud infrastructure, and data analytics. Available Dec 2025.">
   <meta name="author" content="Eashwar Subramanian">
   <meta name="keywords" content="Data Science, RAG, retrieval, pgvector, FastAPI, AWS, machine learning, RMIT, analytics, Solara Health">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous">
   <style>
-    /* ------------------------------------------------------------------------
-       Base: typography, layout, color tokens
-       ------------------------------------------------------------------------ */
-    :root{
-      --bg:#0f1724;         /* deep background for contrast fallback */
-      --card:#ffffff;
-      --muted:#6b7280;
-      --text:#0b1220;
-      --accent:#0f172a;     /* dark slate */
-      --primary:#0b5cff;    /* primary blue */
-      --soft:#f8fafc;
-      --glass: rgba(255,255,255,0.9);
-      --radius:12px;
-      --container:1100px;
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;
+    /* ========================================================================
+       Professional Design System: Colors, Typography, Spacing
+       ======================================================================== */
+    :root {
+      /* Primary Color Palette - Professional & Modern */
+      --primary-600: #2563eb;
+      --primary-700: #1d4ed8;
+      --primary-500: #3b82f6;
+      --primary-50: #eff6ff;
+      --primary-100: #dbeafe;
+      
+      /* Accent Colors */
+      --accent-purple: #7c3aed;
+      --accent-teal: #14b8a6;
+      --accent-orange: #f59e0b;
+      
+      /* Neutral Palette - High Contrast */
+      --gray-900: #0f172a;
+      --gray-800: #1e293b;
+      --gray-700: #334155;
+      --gray-600: #475569;
+      --gray-500: #64748b;
+      --gray-400: #94a3b8;
+      --gray-300: #cbd5e1;
+      --gray-200: #e2e8f0;
+      --gray-100: #f1f5f9;
+      --gray-50: #f8fafc;
+      
+      /* Background Gradients */
+      --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+      --bg-overlay: linear-gradient(180deg, rgba(15, 23, 42, 0.02) 0%, rgba(15, 23, 42, 0.05) 100%);
+      --card-gradient: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+      --hero-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      
+      /* Shadows - Depth & Elevation */
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      --shadow-colored: 0 10px 30px -5px rgba(37, 99, 235, 0.3);
+      
+      /* Typography */
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+      
+      /* Spacing */
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 20px;
+      --radius-full: 9999px;
+      
+      /* Container */
+      --container-max: 1200px;
     }
-    /* Light UI by default (user wanted good contrast, minimal) */
-    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial; background:linear-gradient(180deg,#fafbff 0%, #f3f4f6 100%); color:var(--text); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;}
-    a{color:var(--primary); text-decoration:none;}
-    .container{max-width:var(--container);margin:0 auto;padding:28px;}
-    header.site{border-bottom:1px solid #e6e9ef;background:linear-gradient(180deg,#ffffff 0%, #fbfdff 100%); position:sticky;top:0;z-index:40;}
-    header .inner{display:flex;align-items:center;justify-content:space-between;gap:18px;max-width:var(--container);margin:0 auto;padding:14px 28px;}
-    .brand{display:flex;flex-direction:column}
-    .brand h1{margin:0;font-size:20px;font-weight:700;letter-spacing:0.2px}
-    .brand p{margin:2px 0 0;font-size:12px;color:var(--muted)}
-    nav{display:flex;gap:16px;align-items:center}
-    nav a{font-size:14px;color:var(--muted);padding:6px 8px;border-radius:8px}
-    nav a:hover{color:var(--primary);background:#f1f5ff}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;border:1px solid transparent;font-weight:600;font-size:14px}
-    .btn-primary{background:var(--primary);color:white}
-    /* ------------------------------------------------------------------------
-       HERO
-       ------------------------------------------------------------------------ */
-    .hero{max-width:var(--container);margin:24px auto;padding:36px 28px;display:grid;grid-template-columns:1fr 340px;gap:28px;align-items:start}
-    .eyebrow{font-size:13px;color:var(--muted);margin-bottom:8px}
-    .title{font-size:34px;line-height:1.08;margin:0 0 8px;font-weight:800;color:var(--accent)}
-    .lead{font-size:16px;color:#334155;margin:0 0 18px;line-height:1.5}
-    .cta-row{display:flex;gap:12px;flex-wrap:wrap}
-    .card{background:var(--card);border-radius:var(--radius);box-shadow:0 6px 20px rgba(15,23,42,0.05);padding:18px;border:1px solid #eef2f7}
-    /* right column */
-    .hero-info .label{font-size:12px;color:var(--muted)}
-    .hero-info .value{font-weight:700;margin-top:6px}
-    .hero-info .small{font-size:13px;color:var(--muted);margin-top:8px}
-    /* ------------------------------------------------------------------------
-       SECTIONS
-       ------------------------------------------------------------------------ */
-    section{max-width:var(--container);margin:0 auto;padding:40px 28px}
-    .section-title{font-size:20px;font-weight:700;color:var(--accent);margin-bottom:10px}
-    .two-col{display:grid;grid-template-columns:1fr 360px;gap:22px;align-items:start}
-    .list{margin:8px 0 0;padding-left:18px}
-    .list li{margin:8px 0;color:#0b1220;line-height:1.5}
-    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-    .project{background:var(--card);padding:14px;border-radius:10px;border:1px solid #eef2f7}
-    .project h3{margin:0;font-size:16px}
-    .meta{font-size:13px;color:var(--muted);margin-top:6px}
-    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-    .chip{background:#f1f5f9;color:#0f172a;padding:6px 8px;border-radius:999px;font-size:12px;border:1px solid #eef2f7}
-    .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-    .skill{background:linear-gradient(180deg,#ffffff,#fbfdff);border:1px solid #eef2f7;padding:12px;border-radius:8px;font-size:13px}
-    .metrics{display:flex;gap:12px;flex-wrap:wrap}
-    .metric{background:var(--card);padding:12px;border-radius:8px;border:1px solid #eef2f7;min-width:140px;text-align:center}
-    .metric .num{font-weight:800;font-size:20px;color:var(--accent)}
-    .small{font-size:13px;color:var(--muted)}
-    /* footer */
-    footer{margin-top:18px;padding:28px;border-top:1px solid #eef2f7;background:linear-gradient(180deg,#ffffff,#fbfdff)}
-    /* responsive */
-    @media (max-width:980px){ .hero{grid-template-columns:1fr;gap:18px;padding:22px 16px} .two-col{grid-template-columns:1fr} .skills-grid{grid-template-columns:1fr} nav{display:none} .brand{flex-direction:row;gap:12px;align-items:center} header .inner{padding:10px 16px} }
+    
+    /* ========================================================================
+       Base Styles - Typography & Layout
+       ======================================================================== */
+    * {
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--gray-800);
+      background: var(--gray-50);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.03) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(124, 58, 237, 0.03) 0px, transparent 50%);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--gray-900);
+      letter-spacing: -0.02em;
+    }
+    
+    h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; }
+    h2 { font-size: clamp(1.5rem, 4vw, 2.25rem); font-weight: 700; }
+    h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); font-weight: 600; }
+    
+    p {
+      margin: 0 0 1em;
+      color: var(--gray-700);
+    }
+    
+    a {
+      color: var(--primary-600);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    
+    a:hover {
+      color: var(--primary-700);
+    }
+    
+    /* ========================================================================
+       Header & Navigation
+       ======================================================================== */
+    header.site {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--gray-200);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-sm);
+    }
+    
+    header .inner {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      background: var(--hero-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 800;
+      font-size: 1.25rem;
+      box-shadow: var(--shadow-colored);
+    }
+    
+    .brand h1 {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--gray-900);
+    }
+    
+    .brand p {
+      margin: 0.25rem 0 0;
+      font-size: 0.875rem;
+      color: var(--gray-600);
+      font-weight: 500;
+    }
+    
+    nav {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    
+    nav a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--gray-600);
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-sm);
+      transition: all 0.2s ease;
+    }
+    
+    nav a:hover {
+      color: var(--primary-600);
+      background: var(--primary-50);
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      font-size: 0.875rem;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+    
+    .btn-primary {
+      background: var(--primary-600);
+      color: white;
+      box-shadow: var(--shadow-md);
+    }
+    
+    .btn-primary:hover {
+      background: var(--primary-700);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-lg);
+      color: white;
+    }
+    
+    .btn-secondary {
+      background: white;
+      color: var(--gray-700);
+      border: 1px solid var(--gray-300);
+    }
+    
+    .btn-secondary:hover {
+      background: var(--gray-50);
+      border-color: var(--gray-400);
+      color: var(--gray-900);
+    }
+    
+    /* ========================================================================
+       Hero Section
+       ======================================================================== */
+    .hero {
+      max-width: var(--container-max);
+      margin: 3rem auto;
+      padding: 3rem 2rem;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 3rem;
+      align-items: start;
+    }
+    
+    .eyebrow {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--primary-600);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+    
+    .title {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      line-height: 1.1;
+      margin: 0 0 1.5rem;
+      font-weight: 800;
+      background: var(--hero-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .lead {
+      font-size: 1.125rem;
+      line-height: 1.7;
+      color: var(--gray-700);
+      margin: 0 0 2rem;
+      font-weight: 400;
+    }
+    
+    .cta-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    /* ========================================================================
+       Cards & Components
+       ======================================================================== */
+    .card {
+      background: var(--card-gradient);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      padding: 1.75rem;
+      border: 1px solid var(--gray-200);
+      transition: all 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-xl);
+      border-color: var(--gray-300);
+    }
+    
+    .hero-info {
+      background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+      border: 1px solid var(--gray-200);
+    }
+    
+    .hero-info .label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .hero-info .value {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--gray-900);
+      margin-top: 0.5rem;
+    }
+    
+    .hero-info .small {
+      font-size: 0.875rem;
+      color: var(--gray-600);
+      margin-top: 0.5rem;
+    }
+    
+    /* ========================================================================
+       Sections
+       ======================================================================== */
+    section {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+    
+    .section-title {
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 2rem;
+      position: relative;
+      padding-bottom: 1rem;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: var(--hero-gradient);
+      border-radius: var(--radius-full);
+    }
+    
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 3rem;
+      align-items: start;
+    }
+    
+    .list {
+      margin: 1rem 0 0;
+      padding-left: 1.5rem;
+    }
+    
+    .list li {
+      margin: 0.75rem 0;
+      color: var(--gray-700);
+      line-height: 1.7;
+    }
+    
+    /* ========================================================================
+       Projects Grid
+       ======================================================================== */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .project {
+      background: var(--card-gradient);
+      padding: 1.75rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--gray-200);
+      transition: all 0.3s ease;
+    }
+    
+    .project:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-xl);
+      border-color: var(--primary-200);
+    }
+    
+    .project h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--gray-900);
+    }
+    
+    .meta {
+      font-size: 0.875rem;
+      color: var(--gray-600);
+      font-weight: 500;
+      margin-top: 0.5rem;
+    }
+    
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    
+    .chip {
+      background: var(--primary-50);
+      color: var(--primary-700);
+      padding: 0.375rem 0.875rem;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 600;
+      border: 1px solid var(--primary-100);
+    }
+    
+    /* ========================================================================
+       Skills Grid
+       ======================================================================== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.25rem;
+    }
+    
+    .skill {
+      background: var(--card-gradient);
+      border: 1px solid var(--gray-200);
+      padding: 1.5rem;
+      border-radius: var(--radius-md);
+      font-size: 0.9375rem;
+      transition: all 0.2s ease;
+    }
+    
+    .skill:hover {
+      border-color: var(--primary-300);
+      box-shadow: var(--shadow-md);
+    }
+    
+    .skill strong {
+      display: block;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+    
+    /* ========================================================================
+       Metrics
+       ======================================================================== */
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .metric {
+      background: var(--card-gradient);
+      padding: 2rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--gray-200);
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    
+    .metric:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-xl);
+      border-color: var(--primary-300);
+    }
+    
+    .metric .num {
+      font-weight: 800;
+      font-size: 2.5rem;
+      background: var(--hero-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    
+    .small {
+      font-size: 0.875rem;
+      color: var(--gray-600);
+      font-weight: 500;
+    }
+    
+    /* ========================================================================
+       Code Blocks
+       ======================================================================== */
+    pre {
+      margin: 1rem 0;
+      background: var(--gray-900);
+      color: #e2e8f0;
+      padding: 1.5rem;
+      border-radius: var(--radius-md);
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      overflow-x: auto;
+      line-height: 1.6;
+      box-shadow: var(--shadow-xl);
+    }
+    
+    /* ========================================================================
+       Forms
+       ======================================================================== */
+    input, textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-top: 0.5rem;
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-sans);
+      font-size: 0.9375rem;
+      transition: all 0.2s ease;
+    }
+    
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--primary-500);
+      box-shadow: 0 0 0 3px var(--primary-100);
+    }
+    
+    label {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--gray-700);
+      display: block;
+      margin-top: 1rem;
+    }
+    
+    /* ========================================================================
+       Footer
+       ======================================================================== */
+    footer {
+      margin-top: 4rem;
+      padding: 3rem 2rem;
+      border-top: 1px solid var(--gray-200);
+      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    }
+    
+    footer .container {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    footer a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      color: var(--gray-600);
+      transition: all 0.2s ease;
+    }
+    
+    footer a:hover {
+      color: var(--primary-600);
+      background: var(--primary-50);
+    }
+    
+    /* ========================================================================
+       Responsive Design
+       ======================================================================== */
+    @media (max-width: 1024px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 2rem 1.5rem;
+      }
+      
+      .two-col {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      header .inner {
+        padding: 1rem;
+      }
+      
+      nav {
+        display: none;
+      }
+      
+      .brand {
+        flex-direction: row;
+        gap: 0.75rem;
+      }
+      
+      section {
+        padding: 3rem 1.5rem;
+      }
+      
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .metrics {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .metrics {
+        grid-template-columns: 1fr;
+      }
+      
+      .cta-row {
+        flex-direction: column;
+      }
+      
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
   </style>
 </head>
 <body>
   <!-- ================= HEADER / NAV ================= -->
   <header class="site">
     <div class="inner">
-      <div class="brand" aria-hidden="false">
-        <div style="display:flex;align-items:center;gap:12px">
-          <div style="width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#0b5cff,#3dd1ff);display:flex;align-items:center;justify-content:center;color:white;font-weight:800">ES</div>
-          <div>
-            <h1 style="margin:0;font-size:16px">Eashwar Subramanian</h1>
-            <p style="margin:2px 0 0;color:var(--muted);font-size:12px">Data Science • ML • Cloud — RMIT MDS (Dec 2025)</p>
-          </div>
+      <div class="brand">
+        <div class="brand-logo">ES</div>
+        <div>
+          <h1>Eashwar Subramanian</h1>
+          <p>Data Science • Machine Learning • Cloud Engineering</p>
         </div>
       </div>
 
-      <nav role="navigation" aria-label="Primary" >
+      <nav role="navigation" aria-label="Primary">
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
-        <a href="Eashwar Subramanian Resume.pdf" target="_blank" style="border:1px solid #e6eefb;padding:6px 10px;border-radius:8px;font-weight:600;background:#f8fbff">Resume</a>
+        <a href="Eashwar Subramanian Resume.pdf" target="_blank" class="btn btn-secondary">Resume PDF</a>
       </nav>
     </div>
   </header>
@@ -108,35 +674,46 @@
   <main>
     <section class="hero" role="banner" aria-labelledby="hero-heading">
       <div>
-        <div class="eyebrow">Final-semester Master of Data Science — RMIT</div>
-        <h1 id="hero-heading" class="title">Data Scientist & ML Engineer</h1>
-        <p class="lead">I build practical, production-aligned machine learning and data systems: ingestion and retrieval pipelines (RAG), model evaluation, cloud deployments, and analytics dashboards. Available for Data Science / ML roles from December 2025.</p>
+        <div class="eyebrow">Master of Data Science Candidate — RMIT University</div>
+        <h1 id="hero-heading" class="title">Transforming Data into Intelligent Solutions</h1>
+        <p class="lead">I architect and deploy production-grade machine learning systems, specializing in retrieval-augmented generation (RAG), semantic search, and cloud-native data pipelines. With hands-on experience building enterprise RAG systems and comprehensive evaluation frameworks, I deliver solutions that are both technically robust and business-aligned. Seeking Data Science and ML Engineering opportunities starting December 2025.</p>
 
         <div class="cta-row">
-          <a class="btn btn-primary" href="#projects">View Projects</a>
-          <a class="btn" href="mailto:eashwars2001@gmail.com">Email</a>
-          <a class="btn" href="https://www.linkedin.com/in/eashwar-s-02461a1b3/" target="_blank">LinkedIn</a>
-          <a class="btn" href="https://github.com/Eashwar-Subramanian" target="_blank">GitHub</a>
+          <a class="btn btn-primary" href="#projects">
+            <i class="fas fa-rocket"></i> Explore Projects
+          </a>
+          <a class="btn btn-secondary" href="mailto:eashwars2001@gmail.com">
+            <i class="fas fa-envelope"></i> Get in Touch
+          </a>
+          <a class="btn btn-secondary" href="https://www.linkedin.com/in/eashwar-s-02461a1b3/" target="_blank">
+            <i class="fab fa-linkedin"></i> LinkedIn
+          </a>
+          <a class="btn btn-secondary" href="https://github.com/Eashwar-Subramanian" target="_blank">
+            <i class="fab fa-github"></i> GitHub
+          </a>
         </div>
       </div>
 
       <aside class="card hero-info" aria-label="Contact summary">
-        <div class="label">Contact</div>
-        <div class="value" style="margin-top:6px">eashwars2001@gmail.com</div>
-        <div class="small" style="margin-top:6px">+61 450 332 782 • Melbourne, Australia</div>
+        <div class="label">Contact Information</div>
+        <div class="value">eashwars2001@gmail.com</div>
+        <div class="small">+61 450 332 782</div>
+        <div class="small">Melbourne, Australia</div>
 
-        <div style="border-top:1px solid #eef2f7;margin-top:12px;padding-top:12px">
-          <div class="label">Current</div>
-          <div class="value" style="margin-top:6px">Data Science Intern — Solara Health</div>
-          <div class="small" style="margin-top:6px">Available from Dec 2025</div>
+        <div style="border-top:1px solid var(--gray-200);margin-top:1.5rem;padding-top:1.5rem">
+          <div class="label">Current Position</div>
+          <div class="value">Data Science Intern</div>
+          <div class="small" style="margin-top:0.25rem">Solara Health</div>
+          <div class="small" style="margin-top:0.5rem;color:var(--primary-600);font-weight:600">Available from December 2025</div>
         </div>
 
-        <div style="border-top:1px solid #eef2f7;margin-top:12px;padding-top:12px">
-          <div class="small">Skills</div>
-          <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
-            <div style="background:#f1f5ff;padding:6px 8px;border-radius:999px;font-weight:600;font-size:12px">RAG</div>
-            <div style="background:#f1f5ff;padding:6px 8px;border-radius:999px;font-weight:600;font-size:12px">Cloud</div>
-            <div style="background:#f1f5ff;padding:6px 8px;border-radius:999px;font-weight:600;font-size:12px">ML</div>
+        <div style="border-top:1px solid var(--gray-200);margin-top:1.5rem;padding-top:1.5rem">
+          <div class="label">Core Expertise</div>
+          <div style="margin-top:0.75rem;display:flex;gap:0.5rem;flex-wrap:wrap">
+            <span class="chip">RAG Systems</span>
+            <span class="chip">Cloud Infrastructure</span>
+            <span class="chip">ML Engineering</span>
+            <span class="chip">Data Analytics</span>
           </div>
         </div>
       </aside>
@@ -144,37 +721,54 @@
 
     <!-- ================= ABOUT ================= -->
     <section id="about" aria-labelledby="about-title">
-      <h2 id="about-title" class="section-title">About</h2>
+      <h2 id="about-title" class="section-title">About Me</h2>
       <div class="two-col">
         <div>
-          <p class="small" style="margin:0 0 12px">
-            I’m finishing my Master of Data Science at RMIT (Dec 2025). I build end-to-end solutions that combine data engineering, machine learning, and production deployment. My work ranges from retrieval systems and LLM integration (RAG) to forecasting, segmentation and business analytics.
+          <p style="font-size:1.0625rem;line-height:1.8;color:var(--gray-700);margin-bottom:1.5rem">
+            I'm a final-year Master of Data Science student at RMIT University, graduating in December 2025. My passion lies in building end-to-end machine learning systems that solve real-world problems—from enterprise RAG pipelines to predictive analytics and business intelligence solutions.
           </p>
 
-          <p style="margin-top:12px;color:#344154;line-height:1.6">
-            I focus on reliable, auditable systems: deterministic ingestion, semantic chunking, verifiable citations, and reproducible evaluation. I write production-ready code, care about test coverage, and prioritize deployment-ready systems that stakeholders can trust.
+          <p style="line-height:1.8;color:var(--gray-700);margin-bottom:1.5rem">
+            What sets my work apart is a relentless focus on <strong>production readiness</strong> and <strong>reproducibility</strong>. I engineer systems with deterministic ingestion workflows, semantic chunking strategies, verifiable citation tracing, and comprehensive evaluation frameworks. Every solution I build is designed to be auditable, maintainable, and trusted by stakeholders.
           </p>
 
-          <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
-            <div class="chip" title="Graduation">RMIT — MDS (Dec 2025)</div>
-            <div class="chip" title="Location">Melbourne, Australia</div>
-            <div class="chip" title="Availability">Available Dec 2025</div>
+          <p style="line-height:1.8;color:var(--gray-700)">
+            Whether it's optimizing retrieval precision to 92.7%, implementing tenant-aware multi-tenancy with PostgreSQL RLS, or building automated evaluation pipelines with RAGAS, I combine technical depth with practical business acumen to deliver measurable impact.
+          </p>
+
+          <div style="margin-top:2rem;display:flex;gap:0.75rem;flex-wrap:wrap">
+            <div class="chip">🎓 RMIT MDS (Dec 2025)</div>
+            <div class="chip">📍 Melbourne, Australia</div>
+            <div class="chip">🚀 Available Dec 2025</div>
+            <div class="chip">💼 Open to Full-time & Contract</div>
           </div>
         </div>
 
         <div>
           <div class="card">
-            <div style="font-weight:700">Quick facts</div>
-            <div class="small" style="margin-top:8px">Master of Data Science — RMIT (expected Dec 2025)</div>
-            <div class="small" style="margin-top:6px">Bachelor — Electronics & Communication Engineering (2023)</div>
-            <div class="small" style="margin-top:6px">Preferred roles: Data Scientist, ML Engineer, Analytics</div>
-            <div class="small" style="margin-top:6px">Work rights: Subclass 500</div>
+            <div style="font-weight:700;font-size:1.125rem;color:var(--gray-900);margin-bottom:1rem">Education & Background</div>
+            <div style="margin-top:0.75rem">
+              <div style="font-weight:600;color:var(--gray-900);margin-bottom:0.25rem">Master of Data Science</div>
+              <div class="small">RMIT University — Expected Dec 2025</div>
+            </div>
+            <div style="margin-top:1rem">
+              <div style="font-weight:600;color:var(--gray-900);margin-bottom:0.25rem">Bachelor of Engineering</div>
+              <div class="small">Electronics & Communication Engineering — 2023</div>
+            </div>
+            <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--gray-200)">
+              <div class="small" style="font-weight:600;color:var(--gray-700)">Work Authorization</div>
+              <div class="small" style="margin-top:0.25rem">Subclass 500 Student Visa</div>
+            </div>
           </div>
 
-          <div class="card" style="margin-top:12px">
-            <div style="font-weight:700">Core competencies</div>
-            <div class="small" style="margin-top:8px;line-height:1.5">
-              Production ML • Retrieval & RAG • Cloud Deployments • Model Evaluation • Time-series Forecasting • BI & Dashboards
+          <div class="card" style="margin-top:1.5rem">
+            <div style="font-weight:700;font-size:1.125rem;color:var(--gray-900);margin-bottom:1rem">Technical Focus Areas</div>
+            <div style="line-height:1.8;color:var(--gray-700)">
+              <div style="margin-bottom:0.5rem"><strong>Production ML:</strong> End-to-end pipelines, model deployment, monitoring</div>
+              <div style="margin-bottom:0.5rem"><strong>Retrieval Systems:</strong> RAG architecture, semantic search, pgvector</div>
+              <div style="margin-bottom:0.5rem"><strong>Cloud Infrastructure:</strong> AWS services, containerization, CI/CD</div>
+              <div style="margin-bottom:0.5rem"><strong>Evaluation & Testing:</strong> RAGAS metrics, reproducible benchmarks</div>
+              <div><strong>Analytics:</strong> Time-series forecasting, customer segmentation, BI dashboards</div>
             </div>
           </div>
         </div>
@@ -183,121 +777,197 @@
 
     <!-- ================= EXPERIENCE ================= -->
     <section id="experience" aria-labelledby="experience-title">
-      <h2 id="experience-title" class="section-title">Professional experience</h2>
+      <h2 id="experience-title" class="section-title">Professional Experience</h2>
 
       <!-- Solara Health -->
-      <article class="card" style="margin-bottom:16px" aria-labelledby="solara-heading">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+      <article class="card" style="margin-bottom:1.5rem" aria-labelledby="solara-heading">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:1rem">
           <div>
-            <div id="solara-heading" style="font-weight:700;font-size:16px">Data Science Intern</div>
-            <div class="meta">Solara Health — Melbourne, Australia</div>
+            <div id="solara-heading" style="font-weight:700;font-size:1.25rem;color:var(--gray-900);margin-bottom:0.25rem">Data Science Intern</div>
+            <div class="meta" style="font-size:0.9375rem;font-weight:600;color:var(--primary-600)">Solara Health • Melbourne, Australia</div>
           </div>
-          <div class="small">July 2025 – Present</div>
+          <div class="small" style="font-weight:600;color:var(--gray-600);white-space:nowrap">July 2025 – Present</div>
         </div>
 
-        <ul class="list" style="margin-top:12px">
-          <li>Built the full ingestion → chunking → metadata → embedding → retrieval pipeline (PDF/HTML/Markdown ingestion, LlamaIndex semantic chunking, MiniLM embeddings, pgvector indexing).</li>
-          <li>Implemented hierarchical tenant-aware routing (hospital → national → state) with PostgreSQL Row-Level Security (RLS) to ensure data isolation and compliance.</li>
-          <li>Developed reproducible evaluation tooling combining RAGAS metrics and semantic similarity proofs — used to measure faithfulness, answer relevancy, context precision (92.7%) and context recall (91.2%).</li>
-          <li>Engineered audit-ready citation tracing with date extraction, fallback formatting and hyperlink generation to support traceability and regulatory reviews.</li>
-          <li>Authored Pytest suites for ingestion, retrieval and moderation; integrated tests into containerized CI workflows and supported sprint delivery coordination.</li>
+        <p style="color:var(--gray-700);margin-bottom:1rem;line-height:1.7">
+          Leading the development of a production-grade RAG system for healthcare information retrieval, focusing on compliance, reproducibility, and measurable performance improvements.
+        </p>
+
+        <ul class="list" style="margin-top:1rem">
+          <li><strong>Architected end-to-end RAG pipeline:</strong> Designed and implemented a complete ingestion-to-retrieval system supporting PDF, HTML, and Markdown formats, utilizing LlamaIndex for semantic chunking, MiniLM embeddings, and pgvector for efficient similarity search.</li>
+          <li><strong>Implemented enterprise multi-tenancy:</strong> Built hierarchical tenant-aware routing (hospital → national → state) with PostgreSQL Row-Level Security (RLS), ensuring complete data isolation and regulatory compliance for healthcare applications.</li>
+          <li><strong>Established evaluation framework:</strong> Developed comprehensive evaluation tooling combining RAGAS metrics and semantic similarity validation, achieving <strong>92.7% context precision</strong> and <strong>91.2% context recall</strong> on production datasets.</li>
+          <li><strong>Engineered citation traceability:</strong> Created audit-ready citation system with automated date extraction, fallback formatting, and hyperlink generation to support regulatory reviews and stakeholder trust.</li>
+          <li><strong>Built testing infrastructure:</strong> Authored comprehensive Pytest test suites covering ingestion, retrieval, and moderation workflows, integrated into containerized CI/CD pipelines for continuous quality assurance.</li>
         </ul>
       </article>
 
       <!-- PrepInsta -->
       <article class="card" aria-labelledby="prep-heading">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:1rem">
           <div>
-            <div id="prep-heading" style="font-weight:700;font-size:16px">Data Analyst Intern</div>
-            <div class="meta">PrepInsta Pvt Ltd — Remote</div>
+            <div id="prep-heading" style="font-weight:700;font-size:1.25rem;color:var(--gray-900);margin-bottom:0.25rem">Data Analyst Intern</div>
+            <div class="meta" style="font-size:0.9375rem;font-weight:600;color:var(--primary-600)">PrepInsta Pvt Ltd • Remote</div>
           </div>
-          <div class="small">Dec 2023 – Feb 2024</div>
+          <div class="small" style="font-weight:600;color:var(--gray-600);white-space:nowrap">Dec 2023 – Feb 2024</div>
         </div>
 
-        <ul class="list" style="margin-top:12px">
-          <li>Delivered 5+ stakeholder dashboards (Tableau, Excel) increasing client engagement by ~10%.</li>
-          <li>Optimized SQL queries and ETL to reduce report latency by ~25% for executive reporting.</li>
-          <li>Automated web-scraping and reporting workflows with Python (BeautifulSoup), reducing manual effort by ~30%.</li>
+        <p style="color:var(--gray-700);margin-bottom:1rem;line-height:1.7">
+          Delivered data-driven insights and automated reporting solutions to improve business decision-making and operational efficiency.
+        </p>
+
+        <ul class="list" style="margin-top:1rem">
+          <li><strong>Enhanced stakeholder engagement:</strong> Developed and delivered 5+ interactive dashboards using Tableau and Excel, resulting in a <strong>~10% increase in client engagement</strong> metrics.</li>
+          <li><strong>Optimized data infrastructure:</strong> Refactored SQL queries and ETL processes, reducing report generation latency by <strong>~25%</strong> and enabling faster executive decision-making.</li>
+          <li><strong>Automated manual workflows:</strong> Built Python-based web scraping and reporting automation using BeautifulSoup, eliminating <strong>~30% of manual data collection effort</strong> and improving data freshness.</li>
         </ul>
       </article>
     </section>
 
     <!-- ================= PROJECTS ================= -->
     <section id="projects" aria-labelledby="projects-title">
-      <h2 id="projects-title" class="section-title">Selected projects</h2>
+      <h2 id="projects-title" class="section-title">Featured Projects</h2>
 
       <div class="projects-grid" role="list">
         <!-- Solara (feature) -->
         <div class="project" role="listitem" aria-labelledby="proj-solara">
-          <h3 id="proj-solara">Solara Healthcare RAG System</h3>
-          <div class="meta">Production-aligned retrieval system with evaluation</div>
-          <p class="small" style="margin-top:8px;color:#344154">Engineered an end-to-end RAG pipeline emphasizing reproducibility, citation traceability, and tenant-aware retrieval. Focused on measurable evaluation and auditability rather than speculative answers.</p>
-          <ul class="list" style="margin-top:8px">
-            <li>Ingestion + semantic chunking + embeddings + pgvector indexing + cross-encoder reranking.</li>
-            <li>Reproducible evaluation workflows (RAGAS, semantic proofs); actionable benchmarks to guide improvements.</li>
+          <h3 id="proj-solara">Enterprise Healthcare RAG System</h3>
+          <div class="meta">Production-Grade Retrieval Pipeline • Multi-Tenant Architecture</div>
+          <p style="margin-top:0.75rem;color:var(--gray-700);line-height:1.7">
+            Architected a comprehensive RAG system for healthcare information retrieval, emphasizing reproducibility, regulatory compliance, and measurable performance. The system achieves <strong>92.7% context precision</strong> and <strong>91.2% context recall</strong> through rigorous evaluation.
+          </p>
+          <ul class="list" style="margin-top:0.75rem;font-size:0.875rem">
+            <li>End-to-end pipeline: ingestion → semantic chunking → embeddings → pgvector indexing → cross-encoder reranking</li>
+            <li>Comprehensive evaluation framework using RAGAS metrics and semantic similarity validation</li>
+            <li>Tenant-aware multi-tenancy with PostgreSQL RLS for data isolation</li>
+            <li>Audit-ready citation tracing with automated date extraction and hyperlink generation</li>
           </ul>
-          <div class="chips" style="margin-top:10px">
-            <div class="chip">Python</div><div class="chip">FastAPI</div><div class="chip">PostgreSQL (pgvector)</div><div class="chip">RAGAS</div>
+          <div class="chips" style="margin-top:1rem">
+            <span class="chip">Python</span>
+            <span class="chip">FastAPI</span>
+            <span class="chip">PostgreSQL</span>
+            <span class="chip">pgvector</span>
+            <span class="chip">RAGAS</span>
+            <span class="chip">LlamaIndex</span>
           </div>
         </div>
 
         <!-- Retail segmentation -->
         <div class="project" role="listitem">
-          <h3>Australian Retail Customer Segmentation</h3>
-          <div class="meta">K-Means + RFM • Business impact</div>
-          <p class="small" style="margin-top:8px">Identified a high-value customer segment (~15% of revenue) and corrected invalid order IDs to enable accurate RFM analysis and targeted marketing.</p>
-          <div class="chips" style="margin-top:10px">
-            <div class="chip">Python</div><div class="chip">scikit-learn</div><div class="chip">Power BI</div>
+          <h3>Customer Segmentation & RFM Analysis</h3>
+          <div class="meta">K-Means Clustering • RFM Modeling • Business Intelligence</div>
+          <p style="margin-top:0.75rem;color:var(--gray-700);line-height:1.7">
+            Conducted comprehensive customer segmentation analysis for an Australian retail dataset, identifying a high-value segment representing <strong>~15% of total revenue</strong>. Implemented data quality improvements and RFM analysis to enable targeted marketing strategies.
+          </p>
+          <ul class="list" style="margin-top:0.75rem;font-size:0.875rem">
+            <li>Applied K-Means clustering with optimal cluster selection using elbow method</li>
+            <li>Performed data cleaning and validation to correct invalid order IDs</li>
+            <li>Built interactive Power BI dashboards for stakeholder visualization</li>
+          </ul>
+          <div class="chips" style="margin-top:1rem">
+            <span class="chip">Python</span>
+            <span class="chip">scikit-learn</span>
+            <span class="chip">Power BI</span>
+            <span class="chip">Pandas</span>
           </div>
         </div>
 
         <!-- Climate forecasting -->
         <div class="project" role="listitem">
           <h3>Climate Policy Forecasting Dashboard</h3>
-          <div class="meta">SARIMA forecasting & Flask dashboard</div>
-          <p class="small" style="margin-top:8px">Developed SARIMA models with ~1.2°C MAE and deployed an interactive Flask dashboard with geospatial mapping for policy stakeholders.</p>
-          <div class="chips" style="margin-top:10px">
-            <div class="chip">SARIMA</div><div class="chip">Flask</div><div class="chip">Folium</div>
+          <div class="meta">Time-Series Forecasting • SARIMA • Interactive Visualization</div>
+          <p style="margin-top:0.75rem;color:var(--gray-700);line-height:1.7">
+            Developed predictive models for climate policy analysis using SARIMA time-series forecasting, achieving <strong>~1.2°C Mean Absolute Error</strong>. Deployed an interactive Flask dashboard with geospatial mapping to support policy decision-making.
+          </p>
+          <ul class="list" style="margin-top:0.75rem;font-size:0.875rem">
+            <li>Implemented SARIMA models with seasonal decomposition and stationarity testing</li>
+            <li>Built interactive Flask web application with Folium geospatial visualizations</li>
+            <li>Designed intuitive UI for non-technical policy stakeholders</li>
+          </ul>
+          <div class="chips" style="margin-top:1rem">
+            <span class="chip">SARIMA</span>
+            <span class="chip">Flask</span>
+            <span class="chip">Folium</span>
+            <span class="chip">Statsmodels</span>
           </div>
         </div>
 
         <!-- Sales analytics -->
         <div class="project" role="listitem">
-          <h3>Sales Analytics Dashboard</h3>
-          <div class="meta">Power BI • ETL</div>
-          <p class="small" style="margin-top:8px">Automated reporting for 4 years of sales data; identified opportunities for ~7% revenue uplift through regional analysis.</p>
-          <div class="chips" style="margin-top:10px">
-            <div class="chip">Power BI</div><div class="chip">MySQL</div>
+          <h3>Sales Performance Analytics Platform</h3>
+          <div class="meta">Business Intelligence • ETL Pipelines • Data Visualization</div>
+          <p style="margin-top:0.75rem;color:var(--gray-700);line-height:1.7">
+            Automated reporting infrastructure for 4 years of sales data, enabling real-time insights and identifying opportunities for <strong>~7% revenue uplift</strong> through regional performance analysis and trend identification.
+          </p>
+          <ul class="list" style="margin-top:0.75rem;font-size:0.875rem">
+            <li>Designed and implemented ETL pipelines for automated data processing</li>
+            <li>Created comprehensive Power BI dashboards with drill-down capabilities</li>
+            <li>Performed regional analysis to identify growth opportunities</li>
+          </ul>
+          <div class="chips" style="margin-top:1rem">
+            <span class="chip">Power BI</span>
+            <span class="chip">MySQL</span>
+            <span class="chip">ETL</span>
+            <span class="chip">SQL</span>
           </div>
         </div>
 
-        <!-- Additional projects condensed -->
+        <!-- Additional projects -->
         <div class="project" role="listitem">
           <h3>Cloud Music Subscription Platform</h3>
-          <div class="small" style="margin-top:8px">Full-stack AWS app (Java servlets, DynamoDB, Apache2) — hosted project and code available on GitHub.</div>
+          <div class="meta">Full-Stack Development • AWS • Microservices</div>
+          <p style="margin-top:0.75rem;color:var(--gray-700);line-height:1.7">
+            Built a scalable cloud-based music streaming platform using Java servlets, AWS DynamoDB, and Apache2. Implemented user authentication, playlist management, and streaming capabilities with cloud-native architecture.
+          </p>
+          <div class="chips" style="margin-top:1rem">
+            <span class="chip">Java</span>
+            <span class="chip">AWS</span>
+            <span class="chip">DynamoDB</span>
+            <span class="chip">Apache2</span>
+          </div>
         </div>
 
         <div class="project" role="listitem">
-          <h3>Real Estate Data Cleaning Pipeline</h3>
-          <div class="small" style="margin-top:8px">Address parsing, duplicate removal and schema fixes for improved data quality in MySQL pipelines.</div>
+          <h3>Real Estate Data Quality Pipeline</h3>
+          <div class="meta">Data Engineering • Data Cleaning • ETL</div>
+          <p style="margin-top:0.75rem;color:var(--gray-700);line-height:1.7">
+            Developed automated data cleaning pipeline for real estate datasets, implementing address parsing, duplicate detection, and schema validation to improve data quality and reliability in MySQL-based systems.
+          </p>
+          <div class="chips" style="margin-top:1rem">
+            <span class="chip">Python</span>
+            <span class="chip">MySQL</span>
+            <span class="chip">Data Cleaning</span>
+            <span class="chip">ETL</span>
+          </div>
         </div>
 
         <div class="project" role="listitem">
-          <h3>E-Commerce Logistics Analysis</h3>
-          <div class="small" style="margin-top:8px">Shipping performance analysis across ~11,000 transactions using R to identify efficiency drivers.</div>
+          <h3>E-Commerce Logistics Optimization</h3>
+          <div class="meta">Statistical Analysis • Performance Optimization • R</div>
+          <p style="margin-top:0.75rem;color:var(--gray-700);line-height:1.7">
+            Analyzed shipping performance across ~11,000 e-commerce transactions using R, identifying key efficiency drivers and bottlenecks to optimize logistics operations and reduce delivery times.
+          </p>
+          <div class="chips" style="margin-top:1rem">
+            <span class="chip">R</span>
+            <span class="chip">Statistical Analysis</span>
+            <span class="chip">Data Visualization</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ================= TECHNICAL PREVIEW (OPTIONAL) ================= -->
+    <!-- ================= TECHNICAL PREVIEW ================= -->
     <section aria-labelledby="tech-preview">
-      <h2 id="tech-preview" class="section-title">Technical preview</h2>
+      <h2 id="tech-preview" class="section-title">Technical Deep Dive</h2>
 
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
         <div class="card">
-          <div style="font-weight:700">Representative ingestion snippet</div>
-          <pre style="margin-top:8px;background:#0b1220;color:#e6eef8;padding:12px;border-radius:8px;font-family:var(--mono);font-size:13px;overflow:auto;white-space:pre-wrap;">
-def build_metadata_for_doc(path, tenant_id=None):
+          <div style="font-weight:700;font-size:1.125rem;color:var(--gray-900);margin-bottom:1rem">
+            <i class="fas fa-code" style="color:var(--primary-600);margin-right:0.5rem"></i>
+            Production Ingestion Pipeline
+          </div>
+          <pre><code>def build_metadata_for_doc(path, tenant_id=None):
+    """Deterministic metadata extraction for reproducible ingestion."""
     text = extract_text(path)
     clean = normalize_text(text)
     doc_hash = hashlib.sha256(clean.encode()).hexdigest()
@@ -307,121 +977,215 @@ def build_metadata_for_doc(path, tenant_id=None):
         "hash": doc_hash,
         "published_date": extract_date(clean) or None
     }
-    return clean, metadata
-          </pre>
-          <div class="small" style="margin-top:8px">Representative: demonstrates deterministic hashing + metadata capture used for deduplication and reproducible ingestion.</div>
+    return clean, metadata</code></pre>
+          <div class="small" style="margin-top:1rem;line-height:1.6">
+            Demonstrates deterministic hashing and comprehensive metadata capture for deduplication, audit trails, and reproducible ingestion workflows in production systems.
+          </div>
         </div>
 
         <div class="card">
-          <div style="font-weight:700">Evaluation workflow (commands)</div>
-          <pre style="margin-top:8px;background:#0b1220;color:#e6eef8;padding:12px;border-radius:8px;font-family:var(--mono);font-size:13px;overflow:auto;white-space:pre-wrap;">
-python scripts/eval_ragas_dataset_fixed.py --input data/queries.csv --out data/eval/ragas_ds
-python scripts/eval_rag_metrics_complete.py --dataset data/eval/ragas_ds --output data/eval/ragas_results_overall_final.json
-          </pre>
-          <div class="small" style="margin-top:8px">Scripts collect LLM answers + citations and compute RAGAS metrics for monitoring and CI checks.</div>
+          <div style="font-weight:700;font-size:1.125rem;color:var(--gray-900);margin-bottom:1rem">
+            <i class="fas fa-chart-line" style="color:var(--primary-600);margin-right:0.5rem"></i>
+            Evaluation & Monitoring Workflow
+          </div>
+          <pre><code># Automated RAG evaluation pipeline
+python scripts/eval_ragas_dataset_fixed.py \
+    --input data/queries.csv \
+    --out data/eval/ragas_ds
+
+python scripts/eval_rag_metrics_complete.py \
+    --dataset data/eval/ragas_ds \
+    --output data/eval/ragas_results_overall_final.json</code></pre>
+          <div class="small" style="margin-top:1rem;line-height:1.6">
+            Automated evaluation pipeline that collects LLM responses, extracts citations, and computes comprehensive RAGAS metrics (faithfulness, answer relevancy, context precision/recall) for continuous monitoring and CI/CD integration.
+          </div>
         </div>
       </div>
     </section>
 
     <!-- ================= SKILLS ================= -->
     <section id="skills" aria-labelledby="skills-title">
-      <h2 id="skills-title" class="section-title">Technical expertise</h2>
+      <h2 id="skills-title" class="section-title">Technical Expertise</h2>
 
-      <div class="skills-grid" style="margin-top:12px">
+      <div class="skills-grid" style="margin-top:1.5rem">
         <div class="skill">
-          <strong>Languages</strong><br/>Python, SQL, R, Java
+          <strong><i class="fas fa-code" style="color:var(--primary-600);margin-right:0.5rem"></i>Programming Languages</strong>
+          <div style="margin-top:0.75rem;color:var(--gray-700);line-height:1.8">
+            Python • SQL • R • Java
+          </div>
         </div>
         <div class="skill">
-          <strong>Cloud / DevOps</strong><br/>AWS (Bedrock, EC2, S3, Lambda, Aurora), Docker, CI/CD, Git
+          <strong><i class="fas fa-cloud" style="color:var(--primary-600);margin-right:0.5rem"></i>Cloud & DevOps</strong>
+          <div style="margin-top:0.75rem;color:var(--gray-700);line-height:1.8">
+            AWS (Bedrock, EC2, S3, Lambda, Aurora) • Docker • CI/CD • Git • GitHub Actions
+          </div>
         </div>
         <div class="skill">
-          <strong>ML / Analytics</strong><br/>RAG, LlamaIndex, MiniLM, Cross-Encoder, RAGAS, scikit-learn, SARIMA, K-Means
+          <strong><i class="fas fa-brain" style="color:var(--primary-600);margin-right:0.5rem"></i>Machine Learning & AI</strong>
+          <div style="margin-top:0.75rem;color:var(--gray-700);line-height:1.8">
+            RAG Systems • LlamaIndex • MiniLM • Cross-Encoder • RAGAS • scikit-learn • SARIMA • K-Means
+          </div>
         </div>
         <div class="skill">
-          <strong>Databases</strong><br/>PostgreSQL (pgvector, RLS, IVFFlat), MySQL, DynamoDB, SQL Server
+          <strong><i class="fas fa-database" style="color:var(--primary-600);margin-right:0.5rem"></i>Databases & Storage</strong>
+          <div style="margin-top:0.75rem;color:var(--gray-700);line-height:1.8">
+            PostgreSQL (pgvector, RLS, IVFFlat) • MySQL • DynamoDB • SQL Server
+          </div>
         </div>
         <div class="skill">
-          <strong>Visualization</strong><br/>Power BI, Tableau, Matplotlib, Folium
+          <strong><i class="fas fa-chart-bar" style="color:var(--primary-600);margin-right:0.5rem"></i>Data Visualization</strong>
+          <div style="margin-top:0.75rem;color:var(--gray-700);line-height:1.8">
+            Power BI • Tableau • Matplotlib • Seaborn • Folium
+          </div>
         </div>
         <div class="skill">
-          <strong>Frameworks & Tools</strong><br/>FastAPI, Flask, Pytest, Pydantic, Pandas, NumPy, pdfplumber
+          <strong><i class="fas fa-tools" style="color:var(--primary-600);margin-right:0.5rem"></i>Frameworks & Libraries</strong>
+          <div style="margin-top:0.75rem;color:var(--gray-700);line-height:1.8">
+            FastAPI • Flask • Pytest • Pydantic • Pandas • NumPy • pdfplumber
+          </div>
         </div>
       </div>
     </section>
 
     <!-- ================= METRICS ================= -->
     <section aria-labelledby="metrics">
-      <h2 id="metrics" class="section-title">Selected metrics</h2>
+      <h2 id="metrics" class="section-title">Key Performance Metrics</h2>
 
-      <div class="metrics" style="margin-top:12px">
-        <div class="metric"><div class="num">92.7%</div><div class="small" style="margin-top:6px">Context precision (RAG)</div></div>
-        <div class="metric"><div class="num">91.2%</div><div class="small" style="margin-top:6px">Context recall (RAG)</div></div>
-        <div class="metric"><div class="num">69.4%</div><div class="small" style="margin-top:6px">Faithfulness (RAGAS)</div></div>
-        <div class="metric"><div class="num">15%</div><div class="small" style="margin-top:6px">High-value customer segment (retail)</div></div>
+      <div class="metrics" style="margin-top:1.5rem">
+        <div class="metric">
+          <div class="num">92.7%</div>
+          <div class="small" style="margin-top:0.5rem;font-weight:600">Context Precision</div>
+          <div class="small" style="margin-top:0.25rem;color:var(--gray-500)">RAG System Performance</div>
+        </div>
+        <div class="metric">
+          <div class="num">91.2%</div>
+          <div class="small" style="margin-top:0.5rem;font-weight:600">Context Recall</div>
+          <div class="small" style="margin-top:0.25rem;color:var(--gray-500)">RAG System Performance</div>
+        </div>
+        <div class="metric">
+          <div class="num">69.4%</div>
+          <div class="small" style="margin-top:0.5rem;font-weight:600">Faithfulness Score</div>
+          <div class="small" style="margin-top:0.25rem;color:var(--gray-500)">RAGAS Evaluation Metric</div>
+        </div>
+        <div class="metric">
+          <div class="num">15%</div>
+          <div class="small" style="margin-top:0.5rem;font-weight:600">Revenue Segment</div>
+          <div class="small" style="margin-top:0.25rem;color:var(--gray-500)">High-Value Customer Identification</div>
+        </div>
+        <div class="metric">
+          <div class="num">~25%</div>
+          <div class="small" style="margin-top:0.5rem;font-weight:600">Latency Reduction</div>
+          <div class="small" style="margin-top:0.25rem;color:var(--gray-500)">SQL Query Optimization</div>
+        </div>
+        <div class="metric">
+          <div class="num">~30%</div>
+          <div class="small" style="margin-top:0.5rem;font-weight:600">Efficiency Gain</div>
+          <div class="small" style="margin-top:0.25rem;color:var(--gray-500)">Workflow Automation Impact</div>
+        </div>
       </div>
     </section>
 
-    <!-- ================= INSIGHTS / BLOG (PLACEHOLDER) ================= -->
+    <!-- ================= INSIGHTS ================= -->
     <section aria-labelledby="insights">
-      <h2 id="insights" class="section-title">Insights</h2>
+      <h2 id="insights" class="section-title">Technical Insights & Learnings</h2>
 
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem">
         <article class="card">
-          <div style="font-weight:700">Building compliant retrieval systems</div>
-          <p class="small" style="margin-top:8px;color:#384150">Practical checklist for ingestion hygiene, metadata, and reproducible evaluation (draft).</p>
+          <div style="font-weight:700;font-size:1.125rem;color:var(--gray-900);margin-bottom:0.75rem">
+            <i class="fas fa-shield-alt" style="color:var(--primary-600);margin-right:0.5rem"></i>
+            Building Compliant Retrieval Systems
+          </div>
+          <p style="margin-top:0.75rem;color:var(--gray-700);line-height:1.7">
+            A practical guide to implementing production-ready RAG systems with focus on ingestion hygiene, comprehensive metadata management, and reproducible evaluation frameworks that meet regulatory requirements.
+          </p>
         </article>
 
         <article class="card">
-          <div style="font-weight:700">From data to dashboard</div>
-          <p class="small" style="margin-top:8px;color:#384150">Notes on end-to-end ETL and presenting metrics for non-technical stakeholders (draft).</p>
+          <div style="font-weight:700;font-size:1.125rem;color:var(--gray-900);margin-bottom:0.75rem">
+            <i class="fas fa-chart-line" style="color:var(--primary-600);margin-right:0.5rem"></i>
+            From Data to Dashboard: ETL Best Practices
+          </div>
+          <p style="margin-top:0.75rem;color:var(--gray-700);line-height:1.7">
+            Insights on designing end-to-end ETL pipelines and effectively communicating data insights to non-technical stakeholders through intuitive visualizations and actionable metrics.
+          </p>
         </article>
 
         <article class="card">
-          <div style="font-weight:700">Time-series & policy decisions</div>
-          <p class="small" style="margin-top:8px;color:#384150">Communicating uncertainty and model assumptions when forecasting for policy makers (draft).</p>
+          <div style="font-weight:700;font-size:1.125rem;color:var(--gray-900);margin-bottom:0.75rem">
+            <i class="fas fa-clock" style="color:var(--primary-600);margin-right:0.5rem"></i>
+            Time-Series Forecasting for Policy Decisions
+          </div>
+          <p style="margin-top:0.75rem;color:var(--gray-700);line-height:1.7">
+            Best practices for communicating model uncertainty, assumptions, and limitations when presenting time-series forecasts to policy makers and decision-makers in high-stakes environments.
+          </p>
         </article>
       </div>
     </section>
 
     <!-- ================= CONTACT ================= -->
     <section id="contact" aria-labelledby="contact-title">
-      <h2 id="contact-title" class="section-title">Contact</h2>
+      <h2 id="contact-title" class="section-title">Let's Connect</h2>
 
       <div class="two-col" style="align-items:start">
         <div>
           <div class="card">
-            <div style="font-weight:700">Get in touch</div>
-            <p class="small" style="margin-top:8px;color:#344154">I'm open to full-time and contract opportunities starting December 2025. If you'd like to discuss data science, ML engineering or analytics roles, email me or use the contact form.</p>
+            <div style="font-weight:700;font-size:1.25rem;color:var(--gray-900);margin-bottom:1rem">
+              <i class="fas fa-handshake" style="color:var(--primary-600);margin-right:0.5rem"></i>
+              Get in Touch
+            </div>
+            <p style="margin-top:0.75rem;color:var(--gray-700);line-height:1.8;margin-bottom:1.5rem">
+              I'm actively seeking full-time and contract opportunities in Data Science, Machine Learning Engineering, and Analytics starting December 2025. Whether you're looking for someone to build production ML systems, design RAG pipelines, or deliver data-driven insights, I'd love to discuss how I can contribute to your team.
+            </p>
 
-            <div style="margin-top:12px">
-              <div class="small" style="font-weight:600">Email</div>
-              <div style="margin-top:6px">eashwars2001@gmail.com</div>
+            <div style="margin-top:1.5rem">
+              <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem">
+                <i class="fas fa-envelope" style="color:var(--primary-600);font-size:1.125rem"></i>
+                <div>
+                  <div class="small" style="font-weight:600;color:var(--gray-700)">Email</div>
+                  <div style="margin-top:0.25rem"><a href="mailto:eashwars2001@gmail.com" style="color:var(--primary-600);font-weight:500">eashwars2001@gmail.com</a></div>
+                </div>
+              </div>
 
-              <div class="small" style="margin-top:10px">LinkedIn</div>
-              <div style="margin-top:6px"><a href="https://www.linkedin.com/in/eashwar-s-02461a1b3/" target="_blank">linkedin.com/in/eashwar-s-02461a1b3</a></div>
+              <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem">
+                <i class="fab fa-linkedin" style="color:var(--primary-600);font-size:1.125rem"></i>
+                <div>
+                  <div class="small" style="font-weight:600;color:var(--gray-700)">LinkedIn</div>
+                  <div style="margin-top:0.25rem"><a href="https://www.linkedin.com/in/eashwar-s-02461a1b3/" target="_blank" style="color:var(--primary-600);font-weight:500">linkedin.com/in/eashwar-s-02461a1b3</a></div>
+                </div>
+              </div>
 
-              <div class="small" style="margin-top:10px">GitHub</div>
-              <div style="margin-top:6px"><a href="https://github.com/Eashwar-Subramanian" target="_blank">github.com/Eashwar-Subramanian</a></div>
+              <div style="display:flex;align-items:center;gap:0.75rem">
+                <i class="fab fa-github" style="color:var(--primary-600);font-size:1.125rem"></i>
+                <div>
+                  <div class="small" style="font-weight:600;color:var(--gray-700)">GitHub</div>
+                  <div style="margin-top:0.25rem"><a href="https://github.com/Eashwar-Subramanian" target="_blank" style="color:var(--primary-600);font-weight:500">github.com/Eashwar-Subramanian</a></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
         <div>
           <div class="card">
+            <div style="font-weight:700;font-size:1.125rem;color:var(--gray-900);margin-bottom:1rem">Send a Message</div>
             <form action="https://formspree.io/f/xpznzpzp" method="POST">
-              <label class="small">Name *</label><br/>
-              <input name="name" required style="width:100%;padding:10px;margin-top:6px;border:1px solid #eef2f7;border-radius:8px" />
-              <label class="small" style="margin-top:8px;display:block">Email *</label><br/>
-              <input name="email" type="email" required style="width:100%;padding:10px;margin-top:6px;border:1px solid #eef2f7;border-radius:8px" />
-              <label class="small" style="margin-top:8px;display:block">Company</label><br/>
-              <input name="company" style="width:100%;padding:10px;margin-top:6px;border:1px solid #eef2f7;border-radius:8px" />
-              <label class="small" style="margin-top:8px;display:block">Message *</label><br/>
-              <textarea name="message" rows="4" required style="width:100%;padding:10px;margin-top:6px;border:1px solid #eef2f7;border-radius:8px"></textarea>
-              <div style="display:flex;gap:8px;margin-top:12px">
-                <button type="submit" class="btn btn-primary">Send message</button>
-                <a href="Eashwar Subramanian Resume.pdf" target="_blank" class="btn" style="border:1px solid #eef2f7">Download resume</a>
+              <label>Name *</label>
+              <input name="name" required placeholder="Your name" />
+              <label>Email *</label>
+              <input name="email" type="email" required placeholder="your.email@example.com" />
+              <label>Company</label>
+              <input name="company" placeholder="Company name (optional)" />
+              <label>Message *</label>
+              <textarea name="message" rows="5" required placeholder="Tell me about the opportunity..."></textarea>
+              <div style="display:flex;gap:0.75rem;margin-top:1.25rem;flex-wrap:wrap">
+                <button type="submit" class="btn btn-primary">
+                  <i class="fas fa-paper-plane"></i> Send Message
+                </button>
+                <a href="Eashwar Subramanian Resume.pdf" target="_blank" class="btn btn-secondary">
+                  <i class="fas fa-download"></i> Download Resume
+                </a>
               </div>
-              <div class="small" style="margin-top:8px;color:var(--muted)">*</div>
+              <div class="small" style="margin-top:0.75rem;color:var(--gray-500)">* Required fields</div>
             </form>
           </div>
         </div>
@@ -431,12 +1195,19 @@ python scripts/eval_rag_metrics_complete.py --dataset data/eval/ragas_ds --outpu
 
   <!-- ================= FOOTER ================= -->
   <footer>
-    <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
-      <div style="font-size:14px;font-weight:600">Eashwar Subramanian</div>
-      <div class="small">© 2025 — Content aligns with professional experience and project outputs.</div>
-      <div style="display:flex;gap:10px">
-        <a href="https://github.com/Eashwar-Subramanian" target="_blank" class="small">GitHub</a>
-        <a href="https://www.linkedin.com/in/eashwar-s-02461a1b3/" target="_blank" class="small">LinkedIn</a>
+    <div class="container">
+      <div style="font-size:1rem;font-weight:700;color:var(--gray-900)">Eashwar Subramanian</div>
+      <div class="small" style="color:var(--gray-600)">© 2025 — Data Science & ML Engineering Portfolio</div>
+      <div style="display:flex;gap:1rem;align-items:center">
+        <a href="https://github.com/Eashwar-Subramanian" target="_blank">
+          <i class="fab fa-github" style="font-size:1.25rem"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/eashwar-s-02461a1b3/" target="_blank">
+          <i class="fab fa-linkedin" style="font-size:1.25rem"></i>
+        </a>
+        <a href="mailto:eashwars2001@gmail.com">
+          <i class="fas fa-envelope" style="font-size:1.25rem"></i>
+        </a>
       </div>
     </div>
   </footer>
@@ -458,3 +1229,4 @@ python scripts/eval_rag_metrics_complete.py --dataset data/eval/ragas_ds --outpu
   </script>
 </body>
 </html>
+

@@ -1,540 +1,302 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Eashwar Subramanian – Healthcare AI Specialist & Data Scientist. TGA-compliant systems, Australian market focus. Currently at Solara Health, Melbourne.">
-    <meta name="keywords" content="healthcare AI, data science, TGA compliance, RAG pipelines, Australian data analyst, Melbourne, RMIT, regulatory compliance">
-    <meta name="author" content="Eashwar Subramanian">
-    <title>Eashwar Subramanian | Healthcare AI Specialist</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        html { scroll-behavior: smooth; }
-        .gradient-bg { background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #3b82f6 100%); }
-        .card-hover { transition: all 0.3s ease; }
-        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
-        .btn-primary { 
-            background: linear-gradient(45deg, #059669, #10b981);
-            transition: all 0.3s ease;
-        }
-        .btn-primary:hover { 
-            background: linear-gradient(45deg, #047857, #059669);
-            transform: translateY(-2px);
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Eashwar Subramanian — AI & Data Science</title>
+  <meta name="description" content="Eashwar Subramanian — Master of Data Science (RMIT). End-to-end ML, retrieval systems, cloud & analytics. Graduating Dec 2025.">
+  <meta name="author" content="Eashwar Subramanian">
+  <meta name="keywords" content="Data Science, RAG, retrieval, pgvector, FastAPI, AWS, machine learning, RMIT, analytics">
+  <link rel="icon" href="data:,">
+  <style>
+    /* Minimal, professional style */
+    :root{
+      --bg:#ffffff;
+      --muted:#6b7280;
+      --accent:#111827;
+      --card:#f8fafc;
+      --border:#e6e9ef;
+      --maxw:1000px;
+      --radius:8px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    html,body{height:100%;margin:0;background:var(--bg);color:var(--accent);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--maxw);margin:0 auto;padding:28px;}
+    header.site-header{border-bottom:1px solid var(--border);padding:28px 0;display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;flex-direction:column}
+    .brand h1{margin:0;font-size:20px;font-weight:700;letter-spacing:0.2px}
+    .brand p{margin:2px 0 0;font-size:13px;color:var(--muted)}
+    nav{display:flex;gap:18px;align-items:center}
+    nav a{font-size:13px;color:var(--muted)}
+    /* hero */
+    .hero{padding:40px 0;display:flex;gap:28px;align-items:flex-start}
+    .hero-left{flex:1}
+    .hero-right{width:270px;border:1px solid var(--border);border-radius:var(--radius);padding:18px;background:var(--card)}
+    .headline{font-size:28px;font-weight:700;margin:0 0 6px}
+    .sub{margin:0 0 12px;color:var(--muted);font-size:14px}
+    .cta {margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
+    .btn {padding:10px 14px;border-radius:6px;border:1px solid #111827;font-weight:600;font-size:13px;background:transparent}
+    .btn-primary{background:#111827;color:white;border-color:#111827}
+    /* sections */
+    section{padding:28px 0;border-bottom:1px solid var(--border)}
+    h2{font-size:18px;margin:0 0 12px}
+    .muted{color:var(--muted);font-size:13px}
+    .two-col{display:grid;grid-template-columns:1fr 360px;gap:24px;align-items:start}
+    .card{background:#fff;border:1px solid var(--border);padding:16px;border-radius:var(--radius)}
+    ul.simple{margin:8px 0 0;padding-left:18px}
+    li{margin:8px 0;color:var(--accent);line-height:1.45}
+    .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .skill-box{background:#fff;border:1px solid var(--border);padding:12px;border-radius:8px;font-size:13px}
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+    .project{background:#fff;border:1px solid var(--border);padding:14px;border-radius:8px}
+    .small{font-size:13px;color:var(--muted)}
+    .footer{padding:20px 0;text-align:center;color:var(--muted);font-size:13px}
+    /* responsive */
+    @media (max-width:900px){ .two-col{grid-template-columns:1fr} .hero-right{width:100%} .skills-grid{grid-template-columns:1fr} nav{display:none} header.site-header{flex-direction:column;align-items:flex-start} }
+  </style>
 </head>
-<body class="bg-gray-50 font-sans">
-    <!-- Navigation -->
-    <nav class="bg-white shadow-lg sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="flex justify-between items-center py-4">
-                <div class="text-xl font-bold text-gray-800">Eashwar Subramanian</div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="text-gray-600 hover:text-blue-600 transition">Home</a>
-                    <a href="#about" class="text-gray-600 hover:text-blue-600 transition">About</a>
-                    <a href="#experience" class="text-gray-600 hover:text-blue-600 transition">Experience</a>
-                    <a href="#projects" class="text-gray-600 hover:text-blue-600 transition">Projects</a>
-                    <a href="#contact" class="text-gray-600 hover:text-blue-600 transition">Contact</a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <header id="home" class="gradient-bg text-white py-20">
-        <div class="max-w-6xl mx-auto px-4 text-center">
-            <h1 class="text-5xl font-bold mb-4">Eashwar Subramanian</h1>
-            <p class="text-xl mb-2 text-blue-100">Healthcare AI Specialist | TGA-Compliant Systems Developer</p>
-            <p class="text-lg mb-6 text-blue-200">Building production-grade AI solutions for Australian healthcare compliance</p>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-                <span class="flex items-center text-blue-100">
-                    <i class="fas fa-map-marker-alt mr-2"></i>Melbourne, VIC, Australia
-                </span>
-                <span class="flex items-center text-blue-100">
-                    <i class="fas fa-envelope mr-2"></i>eashwars2001@gmail.com
-                </span>
-                <span class="flex items-center text-blue-100">
-                    <i class="fas fa-phone mr-2"></i>+61 450 332 782
-                </span>
-            </div>
-            <div class="flex justify-center gap-6 mb-8">
-                <a href="https://github.com/Eashwar-Subramanian" target="_blank" 
-                   class="text-white hover:text-blue-200 text-xl transition">
-                    <i class="fab fa-github"></i> GitHub
-                </a>
-                <a href="https://www.linkedin.com/in/eashwar-s-02461a1b3/" target="_blank" 
-                   class="text-white hover:text-blue-200 text-xl transition">
-                    <i class="fab fa-linkedin"></i> LinkedIn
-                </a>
-            </div>
-            <div class="flex justify-center gap-4">
-                <a href="#projects" class="btn-primary text-white py-3 px-8 rounded-lg font-semibold">
-                    View Projects
-                </a>
-                <a href="Eashwar Subramanian Resume.pdf" target="_blank" 
-                   class="bg-transparent border-2 border-white text-white py-3 px-8 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition">
-                    Download Resume
-                </a>
-            </div>
-        </div>
+<body>
+  <div class="container">
+    <!-- Header / Nav -->
+    <header class="site-header">
+      <div class="brand">
+        <h1>Eashwar Subramanian</h1>
+        <p>Data Science • AI • Cloud — Graduating Dec 2025 • Melbourne</p>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+        <a href="Eashwar Subramanian Resume.pdf" target="_blank">Resume</a>
+      </nav>
     </header>
 
-    <!-- About Section -->
-    <section id="about" class="py-16 bg-white">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-4xl font-bold text-gray-800 mb-12 text-center">About Me</h2>
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <p class="text-lg text-gray-600 mb-6">
-                        Final-semester Master of Data Science student at RMIT University with specialized experience in healthcare AI compliance. Currently developing TGA-compliant RAG pipelines at Solara Health, focusing on medical chatbot safety and regulatory adherence.
-                    </p>
-                    <p class="text-lg text-gray-600 mb-6">
-                        My expertise centers on production-grade AI systems for Australian healthcare, customer segmentation driving revenue optimization, and climate forecasting for government policy support. I combine technical depth in Python, AWS, and machine learning with practical understanding of business impact and regulatory requirements.
-                    </p>
-                    <div class="grid grid-cols-2 gap-4 text-sm">
-                        <div class="bg-blue-50 p-4 rounded-lg">
-                            <i class="fas fa-briefcase text-blue-600 mb-2"></i>
-                            <div class="font-semibold text-gray-800">Current Role</div>
-                            <div class="text-gray-600">Data Science Intern at Solara Health</div>
-                        </div>
-                        <div class="bg-green-50 p-4 rounded-lg">
-                            <i class="fas fa-graduation-cap text-green-600 mb-2"></i>
-                            <div class="font-semibold text-gray-800">Education</div>
-                            <div class="text-gray-600">M.S. Data Science, RMIT (Dec 2025)</div>
-                        </div>
-                        <div class="bg-purple-50 p-4 rounded-lg">
-                            <i class="fas fa-certificate text-purple-600 mb-2"></i>
-                            <div class="font-semibold text-gray-800">Specialization</div>
-                            <div class="text-gray-600">Healthcare AI & Compliance</div>
-                        </div>
-                        <div class="bg-orange-50 p-4 rounded-lg">
-                            <i class="fas fa-users text-orange-600 mb-2"></i>
-                            <div class="font-semibold text-gray-800">Community</div>
-                            <div class="text-gray-600">Data Science Melbourne Meetup</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-gray-100 p-8 rounded-lg">
-                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Core Competencies</h3>
-                    <div class="space-y-4">
-                        <div>
-                            <div class="font-semibold text-gray-800 mb-2">Healthcare AI & Compliance</div>
-                            <div class="text-gray-600 text-sm">TGA-compliant RAG systems, medical chatbot development, regulatory safeguards, crisis escalation protocols</div>
-                        </div>
-                        <div>
-                            <div class="font-semibold text-gray-800 mb-2">Business Intelligence</div>
-                            <div class="text-gray-600 text-sm">Customer segmentation, revenue optimization, RFM analysis, policy-grade forecasting</div>
-                        </div>
-                        <div>
-                            <div class="font-semibold text-gray-800 mb-2">Technical Leadership</div>
-                            <div class="text-gray-600 text-sm">Production pipeline development, automated testing (Pytest), Docker CI/CD, agile workflows</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Hero -->
+    <section class="hero" id="home">
+      <div class="hero-left">
+        <div class="headline">AI & Data Science — applied ML, retrieval, cloud, analytics</div>
+        <p class="sub">Final-semester Master of Data Science (RMIT). I build end-to-end, production-oriented ML and data systems — ingestion, retrieval, evaluation, deployment and analytics. Seeking Data Science / ML / Analytics roles from late 2025.</p>
+
+        <div class="cta">
+          <a class="btn btn-primary" href="#projects">View Projects</a>
+          <a class="btn" href="mailto:eashwars2001@gmail.com">Email</a>
+          <a class="btn" href="https://www.linkedin.com/in/eashwar-s-02461a1b3/" target="_blank">LinkedIn</a>
+          <a class="btn" href="https://github.com/Eashwar-Subramanian" target="_blank">GitHub</a>
         </div>
+      </div>
+
+      <aside class="hero-right">
+        <div style="font-size:13px;color:var(--muted)">Contact</div>
+        <div style="margin-top:6px;font-weight:600">eashwars2001@gmail.com</div>
+        <div class="muted" style="margin-top:6px">+61 450 332 782 • Melbourne, Australia</div>
+
+        <div style="margin-top:12px;border-top:1px solid var(--border);padding-top:12px">
+          <div class="small">Current</div>
+          <div style="font-weight:600;margin-top:4px">Data Science Intern — Solara Health</div>
+          <div class="small" style="margin-top:6px">Expected availability: Dec 2025</div>
+        </div>
+      </aside>
     </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="py-16 bg-gray-50">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-4xl font-bold text-gray-800 mb-12 text-center">Professional Experience</h2>
-            <div class="space-y-8">
-                <!-- Current Role -->
-                <div class="bg-white p-8 rounded-lg shadow-md card-hover">
-                    <div class="flex flex-col md:flex-row justify-between items-start mb-4">
-                        <div>
-                            <h3 class="text-2xl font-bold text-gray-800">Data Science Intern</h3>
-                            <p class="text-xl text-blue-600 font-semibold">Solara Health</p>
-                        </div>
-                        <div class="text-right">
-                            <p class="text-gray-600">July 2025 – Present</p>
-                            <p class="text-gray-600">Melbourne, Australia</p>
-                        </div>
-                    </div>
-                    <ul class="space-y-2 text-gray-600">
-                        <li>• Implementing TGA-compliant RAG pipelines ensuring healthcare chatbot responses meet Australian regulatory standards</li>
-                        <li>• Built comprehensive test suites (Pytest + FastAPI) covering API schema, routing logic, and disclaimer enforcement</li>
-                        <li>• Designed patient query classification system for treatment options, side effects, logistics, and support categories</li>
-                        <li>• Integrated crisis escalation protocols and refusal mechanisms for regulatory compliance</li>
-                        <li>• Delivered traceable AI outputs with citations improving stakeholder trust and audit capabilities</li>
-                    </ul>
-                </div>
+    <!-- About -->
+    <section id="about">
+      <div class="two-col">
+        <div>
+          <h2>About</h2>
+          <p class="muted">I’m completing my Master of Data Science at RMIT (Dec 2025). I combine applied machine learning, data engineering and cloud deployment to deliver measurable outcomes — retrieval systems, model evaluation, forecasting, and analytics. My recent internship was focused on a healthcare RAG project; I also have experience in retail analytics, forecasting and dashboarding.</p>
 
-                <!-- Previous Role -->
-                <div class="bg-white p-8 rounded-lg shadow-md card-hover">
-                    <div class="flex flex-col md:flex-row justify-between items-start mb-4">
-                        <div>
-                            <h3 class="text-2xl font-bold text-gray-800">Data Analyst Intern</h3>
-                            <p class="text-xl text-blue-600 font-semibold">PrepInsta Pvt Ltd</p>
-                        </div>
-                        <div class="text-right">
-                            <p class="text-gray-600">Dec 2023 – Feb 2024</p>
-                            <p class="text-gray-600">Remote, India</p>
-                        </div>
-                    </div>
-                    <ul class="space-y-2 text-gray-600">
-                        <li>• Developed 5+ stakeholder dashboards (Tableau, Excel) increasing client engagement by 10%</li>
-                        <li>• Optimized SQL query performance reducing data retrieval time by 25% for executive reporting</li>
-                        <li>• Automated reporting workflows with Python (Beautiful Soup) cutting manual effort by 30%</li>
-                    </ul>
-                </div>
-            </div>
+          <h2 style="margin-top:18px">What I do</h2>
+          <ul class="simple">
+            <li>Build production-aligned ML systems: ingestion, feature pipelines, model evaluation, APIs and deployment.</li>
+            <li>Design retrieval pipelines and evaluation (RAG, pgvector, embeddings, RAGAS metrics).</li>
+            <li>Deliver analytics & dashboarding for stakeholders (Power BI, Tableau) and time-series forecasting (SARIMA).</li>
+          </ul>
         </div>
+
+        <div>
+          <div class="card">
+            <div style="font-weight:700">Quick facts</div>
+            <div class="small" style="margin-top:8px">Master of Data Science — RMIT (Graduating Dec 2025)</div>
+            <div class="small" style="margin-top:6px">Bachelor of Electronics & Communication Engineering — RSET (2023)</div>
+            <div class="small" style="margin-top:6px">Open to: Data Science, ML Engineer, Analytics roles</div>
+            <div class="small" style="margin-top:6px">Work rights: Subclass 500</div>
+          </div>
+
+          <div class="card" style="margin-top:12px">
+            <div style="font-weight:700">Core strengths</div>
+            <div class="small" style="margin-top:8px">Production ML • Retrieval Systems • Cloud • Evaluation & Testing • Analytics</div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-16 bg-white">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-4xl font-bold text-gray-800 mb-12 text-center">Strategic Projects</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
-                <!-- Featured Project 1 -->
-                <div class="bg-gray-50 rounded-lg shadow-md card-hover overflow-hidden">
-                    <div class="p-6">
-                        <div class="w-full h-48 bg-blue-100 rounded-lg mb-4 flex items-center justify-center">
-                            <i class="fas fa-users text-4xl text-blue-600"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-800 mb-3">Australian Retail Customer Segmentation</h3>
-                        <p class="text-gray-600 mb-4">
-                            Identified high-value customer segment representing 15% of total revenue through K-Means clustering and RFM analysis of 5,000 transactions.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Python</span>
-                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">K-Means</span>
-                            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">RFM Analysis</span>
-                            <span class="bg-orange-100 text-orange-800 px-2 py-1 rounded text-xs">Power BI</span>
-                        </div>
-                        <a href="https://github.com/Eashwar-Subramanian/retail-customer-segmentation-australia" 
-                           target="_blank" class="text-blue-600 hover:text-blue-800 font-semibold">
-                            View Project →
-                        </a>
-                    </div>
-                </div>
+    <!-- Experience -->
+    <section id="experience">
+      <h2>Professional Experience</h2>
 
-                <!-- Featured Project 2 -->
-                <div class="bg-gray-50 rounded-lg shadow-md card-hover overflow-hidden">
-                    <div class="p-6">
-                        <div class="w-full h-48 bg-green-100 rounded-lg mb-4 flex items-center justify-center">
-                            <i class="fas fa-cloud-sun text-4xl text-green-600"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-800 mb-3">Climate Policy Forecasting Dashboard</h3>
-                        <p class="text-gray-600 mb-4">
-                            SARIMA forecasting system achieving 1.2°C MAE for Australian government climate policy decisions with interactive mapping.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Python</span>
-                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">SARIMA</span>
-                            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">Flask</span>
-                            <span class="bg-orange-100 text-orange-800 px-2 py-1 rounded text-xs">Folium</span>
-                        </div>
-                        <a href="https://github.com/Eashwar-Subramanian/climate-policy-forecasting-dashboard" 
-                           target="_blank" class="text-blue-600 hover:text-blue-800 font-semibold">
-                            View Project →
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Featured Project 3 -->
-                <div class="bg-gray-50 rounded-lg shadow-md card-hover overflow-hidden">
-                    <div class="p-6">
-                        <div class="w-full h-48 bg-purple-100 rounded-lg mb-4 flex items-center justify-center">
-                            <i class="fas fa-chart-line text-4xl text-purple-600"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-800 mb-3">Sales Analytics Dashboard</h3>
-                        <p class="text-gray-600 mb-4">
-                            Analyzed 4-year sales history identifying regions with 7% revenue uplift potential through automated Power BI reporting.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Power BI</span>
-                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">MySQL</span>
-                            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">ETL</span>
-                        </div>
-                        <a href="https://github.com/Eashwar-Subramanian/sales-analytics-dashboard-powerbi" 
-                           target="_blank" class="text-blue-600 hover:text-blue-800 font-semibold">
-                            View Project →
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Additional Projects -->
-                <div class="bg-gray-50 rounded-lg shadow-md card-hover overflow-hidden">
-                    <div class="p-6">
-                        <div class="w-full h-48 bg-red-100 rounded-lg mb-4 flex items-center justify-center">
-                            <i class="fas fa-cloud text-4xl text-red-600"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-800 mb-3">Cloud Music Subscription Platform</h3>
-                        <p class="text-gray-600 mb-4">
-                            Full-stack AWS application with Java servlets, DynamoDB storage, and Apache2 reverse proxy configuration.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Java</span>
-                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">AWS</span>
-                            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">DynamoDB</span>
-                        </div>
-                        <a href="https://github.com/Eashwar-Subramanian/cloud-music-subscription-app" 
-                           target="_blank" class="text-blue-600 hover:text-blue-800 font-semibold">
-                            View Project →
-                        </a>
-                    </div>
-                </div>
-
-                <div class="bg-gray-50 rounded-lg shadow-md card-hover overflow-hidden">
-                    <div class="p-6">
-                        <div class="w-full h-48 bg-yellow-100 rounded-lg mb-4 flex items-center justify-center">
-                            <i class="fas fa-database text-4xl text-yellow-600"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-800 mb-3">Real Estate Data Cleaning Pipeline</h3>
-                        <p class="text-gray-600 mb-4">
-                            Comprehensive data quality improvement system with address parsing, duplicate removal, and schema optimization.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">MySQL</span>
-                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">Data Quality</span>
-                        </div>
-                        <a href="https://github.com/Eashwar-Subramanian/real-estate-data-cleaning-mysql" 
-                           target="_blank" class="text-blue-600 hover:text-blue-800 font-semibold">
-                            View Project →
-                        </a>
-                    </div>
-                </div>
-
-                <div class="bg-gray-50 rounded-lg shadow-md card-hover overflow-hidden">
-                    <div class="p-6">
-                        <div class="w-full h-48 bg-indigo-100 rounded-lg mb-4 flex items-center justify-center">
-                            <i class="fas fa-truck text-4xl text-indigo-600"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-800 mb-3">E-Commerce Logistics Analysis</h3>
-                        <p class="text-gray-600 mb-4">
-                            Shipping performance optimization analysis identifying delivery efficiency factors across 10,999+ transactions using R.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">R</span>
-                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">Logistics</span>
-                            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">ggplot2</span>
-                        </div>
-                        <a href="https://github.com/Eashwar-Subramanian/ecommerce-shipping-analysis-r" 
-                           target="_blank" class="text-blue-600 hover:text-blue-800 font-semibold">
-                            View Project →
-                        </a>
-                    </div>
-                </div>
+      <div style="margin-top:12px">
+        <div class="card" style="margin-bottom:12px">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+            <div>
+              <div style="font-weight:700">Data Science Intern</div>
+              <div class="muted" style="margin-top:4px">Solara Health — Melbourne, Australia</div>
             </div>
+            <div class="small muted">July 2025 – Present</div>
+          </div>
+
+          <ul class="simple" style="margin-top:12px">
+            <li>Built the full ingestion pipeline (PDF/HTML/Markdown) with semantic chunking (LlamaIndex), SHA-256 deduplication, metadata tagging and deterministic version control for reproducible indexes.</li>
+            <li>Implemented semantic retrieval: MiniLM-based bi-encoder embeddings, pgvector (IVFFlat) indexing, and cross-encoder reranking for top-k precision.</li>
+            <li>Designed tenant-aware hierarchical routing with PostgreSQL Row-Level Security to ensure hospital-scoped retrieval (hospital → national → state).</li>
+            <li>Developed audit-ready citation formatting and source-tracing logic (date extraction, fallback rules, hyperlinks) to support compliance and traceability.</li>
+            <li>Built a reproducible evaluation pipeline integrating RAGAS and semantic similarity proofs; produced metrics used for iterative improvement (faithfulness ~69.4%, context precision 92.7%, recall 91.2%).</li>
+            <li>Authored Pytest suites for ingestion, retrieval and moderation interactions; contributed to containerized CI workflows and sprint coordination.</li>
+          </ul>
         </div>
+
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+            <div>
+              <div style="font-weight:700">Data Analyst Intern</div>
+              <div class="muted" style="margin-top:4px">PrepInsta Pvt Ltd — Remote</div>
+            </div>
+            <div class="small muted">Dec 2023 – Feb 2024</div>
+          </div>
+
+          <ul class="simple" style="margin-top:12px">
+            <li>Delivered 5+ stakeholder dashboards (Tableau, Excel) increasing client engagement by ~10%.</li>
+            <li>Optimized SQL query performance reducing data retrieval time by ~25% for executive reporting.</li>
+            <li>Automated reporting workflows with Python (BeautifulSoup) cutting manual effort by ~30%.</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
-    <!-- Skills Section -->
-    <section class="py-16 bg-gray-50">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-4xl font-bold text-gray-800 mb-12 text-center">Technical Expertise</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">
-                        <i class="fas fa-code text-blue-600 mr-2"></i>Programming & Analytics
-                    </h3>
-                    <ul class="space-y-2 text-gray-600">
-                        <li>• Python (Pandas, NumPy, Scikit-learn, Statsmodels)</li>
-                        <li>• SQL (MySQL, SQL Server, DynamoDB)</li>
-                        <li>• R (dplyr, ggplot2, tidyr)</li>
-                        <li>• Java (Servlets, Spring)</li>
-                        <li>• Machine Learning & Statistical Analysis</li>
-                    </ul>
-                </div>
-                
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">
-                        <i class="fas fa-cloud text-green-600 mr-2"></i>Cloud & DevOps
-                    </h3>
-                    <ul class="space-y-2 text-gray-600">
-                        <li>• AWS (EC2, S3, Lambda, DynamoDB)</li>
-                        <li>• Docker & CI/CD Pipelines</li>
-                        <li>• FastAPI & Flask Development</li>
-                        <li>• Git & Version Control</li>
-                        <li>• Apache2 & Jetty Server Management</li>
-                    </ul>
-                </div>
-                
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">
-                        <i class="fas fa-chart-bar text-purple-600 mr-2"></i>Visualization & Specialized
-                    </h3>
-                    <ul class="space-y-2 text-gray-600">
-                        <li>• Power BI & Tableau Dashboards</li>
-                        <li>• Healthcare AI & RAG Systems</li>
-                        <li>• Regulatory Compliance (TGA)</li>
-                        <li>• Time Series Forecasting (SARIMA)</li>
-                        <li>• Customer Segmentation (RFM, K-Means)</li>
-                    </ul>
-                </div>
-            </div>
+    <!-- Projects -->
+    <section id="projects">
+      <h2>Selected Projects</h2>
+
+      <div class="projects-grid" style="margin-top:12px">
+        <!-- Solara as featured but concise -->
+        <div class="project">
+          <div style="font-weight:700">Solara Healthcare RAG System</div>
+          <div class="small muted" style="margin-top:6px">Team project — Production-aligned retrieval and evaluation</div>
+          <p style="margin-top:10px" class="muted">Engineered an end-to-end Retrieval-Augmented Generation (RAG) pipeline with semantic chunking, vector embeddings, hierarchical routing and citation tracing. Focused on reproducible evaluation and auditability.</p>
+          <ul class="simple" style="margin-top:8px">
+            <li>Engineered ingestion, chunking, metadata governance and vector retrieval supporting tenant-scoped responses.</li>
+            <li>Built an evaluation suite (RAGAS + semantic proofs) producing measurable benchmarks for faithfulness and retrieval (context precision 92.7%, recall 91.2%).</li>
+          </ul>
+          <div style="margin-top:10px" class="small muted">Tech: Python, FastAPI, PostgreSQL (pgvector), Docker, RAGAS</div>
         </div>
+
+        <!-- Retail segmentation -->
+        <div class="project">
+          <div style="font-weight:700">Australian Retail Customer Segmentation</div>
+          <div class="small muted" style="margin-top:6px">K-Means & RFM analysis</div>
+          <p style="margin-top:10px" class="muted">Identified a high-value customer segment representing ~15% of total revenue and corrected invalid order IDs enabling accurate RFM analysis.</p>
+          <div style="margin-top:10px" class="small muted">Tech: Python, scikit-learn, Power BI</div>
+        </div>
+
+        <!-- Climate forecasting -->
+        <div class="project">
+          <div style="font-weight:700">Climate Policy Forecasting Dashboard</div>
+          <div class="small muted" style="margin-top:6px">SARIMA forecasting & Flask dashboard</div>
+          <p style="margin-top:10px" class="muted">Built SARIMA models achieving ~1.2°C MAE and deployed an interactive Flask dashboard with geospatial mapping for policy stakeholders.</p>
+          <div style="margin-top:10px" class="small muted">Tech: Python, SARIMA, Flask, Folium</div>
+        </div>
+
+        <!-- Sales analytics -->
+        <div class="project">
+          <div style="font-weight:700">Sales Analytics Dashboard</div>
+          <div class="small muted" style="margin-top:6px">Power BI & ETL</div>
+          <p style="margin-top:10px" class="muted">Automated reporting across 4 years of sales history, highlighting regions with ~7% revenue uplift potential.</p>
+          <div style="margin-top:10px" class="small muted">Tech: Power BI, MySQL</div>
+        </div>
+
+        <!-- Other compact projects -->
+        <div class="project">
+          <div style="font-weight:700">Cloud Music Subscription Platform</div>
+          <p class="small muted" style="margin-top:8px">Full-stack AWS application using Java servlets and DynamoDB. (Project code on GitHub)</p>
+        </div>
+
+        <div class="project">
+          <div style="font-weight:700">Real Estate Data Cleaning Pipeline</div>
+          <p class="small muted" style="margin-top:8px">Address parsing, duplicate removal and schema optimisation in MySQL for improved data quality.</p>
+        </div>
+
+        <div class="project">
+          <div style="font-weight:700">E-Commerce Logistics Analysis</div>
+          <p class="small muted" style="margin-top:8px">Shipping performance analysis across ~11k transactions using R and ggplot2.</p>
+        </div>
+      </div>
     </section>
 
-    <!-- Testimonial/Stats Section -->
-    <section class="py-16 bg-blue-50">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-4xl font-bold text-gray-800 mb-12 text-center">Professional Impact</h2>
-            <div class="grid md:grid-cols-4 gap-8 text-center">
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <div class="text-3xl font-bold text-blue-600 mb-2">15%</div>
-                    <div class="text-gray-600">Revenue segment identified through customer analytics</div>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <div class="text-3xl font-bold text-green-600 mb-2">1.2°C</div>
-                    <div class="text-gray-600">Climate forecasting accuracy (MAE) for policy decisions</div>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <div class="text-3xl font-bold text-purple-600 mb-2">7%</div>
-                    <div class="text-gray-600">Projected revenue uplift through data-driven insights</div>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <div class="text-3xl font-bold text-orange-600 mb-2">TGA</div>
-                    <div class="text-gray-600">Compliant healthcare AI systems developed</div>
-                </div>
-            </div>
+    <!-- Skills -->
+    <section id="skills">
+      <h2>Technical Expertise</h2>
+      <div class="skills-grid" style="margin-top:12px">
+        <div class="skill-box">
+          <strong>Languages:</strong><br/>Python, SQL, R, Java
         </div>
+        <div class="skill-box">
+          <strong>Cloud/DevOps:</strong><br/>AWS (Bedrock, EC2, S3, Lambda, Aurora), Docker, CI/CD, Git
+        </div>
+        <div class="skill-box">
+          <strong>ML / Analytics:</strong><br/>RAG (Retrieval-Augmented Generation), Semantic Chunking (LlamaIndex), Sentence Transformers (MiniLM), Cross-Encoder Reranking, RAGAS, Scikit-learn, SARIMA, K-Means
+        </div>
+        <div class="skill-box">
+          <strong>Databases:</strong><br/>PostgreSQL (pgvector, RLS, IVFFlat), MySQL, DynamoDB, SQL Server
+        </div>
+        <div class="skill-box">
+          <strong>Visualization:</strong><br/>Power BI, Tableau, Matplotlib, Folium
+        </div>
+        <div class="skill-box">
+          <strong>Frameworks / Tools:</strong><br/>FastAPI, Flask, Pytest, Pydantic, Pandas, NumPy, pdfplumber, BeautifulSoup4
+        </div>
+      </div>
     </section>
 
-    <!-- Blog/Insights Section -->
-    <section class="py-16 bg-white">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-4xl font-bold text-gray-800 mb-12 text-center">Latest Insights</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <article class="bg-gray-50 rounded-lg shadow-md card-hover p-6">
-                    <div class="w-full h-32 bg-blue-100 rounded-lg mb-4 flex items-center justify-center">
-                        <i class="fas fa-heartbeat text-2xl text-blue-600"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Building TGA-Compliant AI Systems</h3>
-                    <p class="text-gray-600 text-sm mb-3">
-                        Key considerations for developing healthcare AI that meets Australian regulatory standards, from my experience at Solara Health.
-                    </p>
-                    <div class="text-xs text-gray-500">Coming Soon</div>
-                </article>
-                
-                <article class="bg-gray-50 rounded-lg shadow-md card-hover p-6">
-                    <div class="w-full h-32 bg-green-100 rounded-lg mb-4 flex items-center justify-center">
-                        <i class="fas fa-users text-2xl text-green-600"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Customer Segmentation for Australian Retailers</h3>
-                    <p class="text-gray-600 text-sm mb-3">
-                        How RFM analysis revealed hidden revenue opportunities in Australian retail customer data.
-                    </p>
-                    <div class="text-xs text-gray-500">Coming Soon</div>
-                </article>
-                
-                <article class="bg-gray-50 rounded-lg shadow-md card-hover p-6">
-                    <div class="w-full h-32 bg-purple-100 rounded-lg mb-4 flex items-center justify-center">
-                        <i class="fas fa-cloud-sun text-2xl text-purple-600"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">SARIMA for Climate Policy Forecasting</h3>
-                    <p class="text-gray-600 text-sm mb-3">
-                        Technical deep-dive into time-series forecasting for Australian government climate decision support.
-                    </p>
-                    <div class="text-xs text-gray-500">Coming Soon</div>
-                </article>
-            </div>
-        </div>
+    <!-- Impact / Metrics -->
+    <section>
+      <h2>Selected Metrics & Impact</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:12px">
+        <div class="card" style="min-width:160px"><div style="font-weight:700">92.7%</div><div class="small" style="margin-top:6px">Context precision (RAG)</div></div>
+        <div class="card" style="min-width:160px"><div style="font-weight:700">91.2%</div><div class="small" style="margin-top:6px">Context recall (RAG)</div></div>
+        <div class="card" style="min-width:160px"><div style="font-weight:700">69.4%</div><div class="small" style="margin-top:6px">Faithfulness (RAGAS)</div></div>
+        <div class="card" style="min-width:160px"><div style="font-weight:700">15%</div><div class="small" style="margin-top:6px">High-value retail segment identified</div></div>
+      </div>
     </section>
 
-    <!-- Contact Form Section -->
-    <section id="contact" class="py-16 gradient-bg text-white">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl font-bold mb-4">Let's Connect</h2>
-                <p class="text-xl text-blue-100">
-                    Interested in healthcare AI, data analytics, or regulatory compliance projects? Let's discuss opportunities.
-                </p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 gap-12">
-                <!-- Contact Info -->
-                <div>
-                    <h3 class="text-2xl font-bold mb-6">Get in Touch</h3>
-                    <div class="space-y-6">
-                        <div class="flex items-center">
-                            <i class="fas fa-briefcase text-2xl mr-4 text-blue-300"></i>
-                            <div>
-                                <div class="font-semibold">Open to Opportunities</div>
-                                <div class="text-blue-200 text-sm">Part-time, contract, or full-time roles in Melbourne</div>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-center">
-                            <i class="fas fa-map-marker-alt text-2xl mr-4 text-blue-300"></i>
-                            <div>
-                                <div class="font-semibold">Location</div>
-                                <div class="text-blue-200 text-sm">Melbourne, Victoria, Australia</div>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-center">
-                            <i class="fas fa-graduation-cap text-2xl mr-4 text-blue-300"></i>
-                            <div>
-                                <div class="font-semibold">Availability</div>
-                                <div class="text-blue-200 text-sm">Final semester - Available December 2025</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-8 flex gap-4">
-                        <a href="mailto:eashwars2001@gmail.com" 
-                           class="btn-primary text-white py-3 px-6 rounded-lg font-semibold">
-                            <i class="fas fa-envelope mr-2"></i>Email Me
-                        </a>
-                        <a href="https://www.linkedin.com/in/eashwar-s-02461a1b3/" target="_blank"
-                           class="bg-transparent border-2 border-white text-white py-3 px-6 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition">
-                            <i class="fab fa-linkedin mr-2"></i>LinkedIn
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Contact Form -->
-                <div class="bg-white/10 backdrop-blur rounded-lg p-6">
-                    <h3 class="text-xl font-bold mb-6">Send a Message</h3>
-                    <form action="https://formspree.io/f/xpznzpzp" method="POST" class="space-y-4">
-                        <div>
-                            <label for="name" class="block text-sm font-semibold mb-2">Name *</label>
-                            <input type="text" id="name" name="name" required
-                                   class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-blue-200 focus:outline-none focus:border-white">
-                        </div>
-                        
-                        <div>
-                            <label for="email" class="block text-sm font-semibold mb-2">Email *</label>
-                            <input type="email" id="email" name="email" required
-                                   class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-blue-200 focus:outline-none focus:border-white">
-                        </div>
-                        
-                        <div>
-                            <label for="company" class="block text-sm font-semibold mb-2">Company</label>
-                            <input type="text" id="company" name="company"
-                                   class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-blue-200 focus:outline-none focus:border-white">
-                        </div>
-                        
-                        <div>
-                            <label for="message" class="block text-sm font-semibold mb-2">Message *</label>
-                            <textarea id="message" name="message" rows="4" required
-                                      class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-blue-200 focus:outline-none focus:border-white resize-none"></textarea>
-                        </div>
-                        
-                        <button type="submit" 
-                                class="w-full btn-primary text-white py-3 px-6 rounded-lg font-semibold">
-                            <i class="fas fa-paper-plane mr-2"></i>Send Message
-                        </button>
-                    </form>
-                    <p class="text-xs text-blue-200 mt-3">* Required fields. Your information is kept confidential.</p>
-                </div>
-            </div>
+    <!-- Contact -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <div style="display:grid;grid-template-columns:1fr 360px;gap:18px;margin-top:12px">
+        <div>
+          <p class="muted">I'm open to Data Science, ML Engineering, and Analytics roles from Dec 2025. I respond promptly to hiring and collaboration enquiries.</p>
+          <p style="margin-top:12px"><strong>Email:</strong> eashwars2001@gmail.com<br/><strong>Phone:</strong> +61 450 332 782<br/><strong>Location:</strong> Melbourne, Australia</p>
+          <p style="margin-top:12px"><a href="Eashwar Subramanian Resume.pdf" target="_blank" class="btn">Download resume</a></p>
         </div>
+
+        <div class="card">
+          <form action="https://formspree.io/f/xpznzpzp" method="POST">
+            <div style="margin-bottom:8px"><label class="small">Name *</label><br/><input name="name" required style="width:100%;padding:8px;border:1px solid var(--border);border-radius:6px"/></div>
+            <div style="margin-bottom:8px"><label class="small">Email *</label><br/><input name="email" type="email" required style="width:100%;padding:8px;border:1px solid var(--border);border-radius:6px"/></div>
+            <div style="margin-bottom:8px"><label class="small">Company</label><br/><input name="company" style="width:100%;padding:8px;border:1px solid var(--border);border-radius:6px"/></div>
+            <div style="margin-bottom:8px"><label class="small">Message *</label><br/><textarea name="message" rows="4" required style="width:100%;padding:8px;border:1px solid var(--border);border-radius:6px"></textarea></div>
+            <div><button type="submit" class="btn btn-primary" style="cursor:pointer">Send message</button></div>
+            <div class="small muted" style="margin-top:8px">* Required fields. Your information is kept confidential.</div>
+          </form>
+        </div>
+      </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-6 bg-gray-800 text-white text-center">
-        <div class="max-w-6xl mx-auto px-4">
-            <p class="text-gray-400">© 2025 Eashwar Subramanian. Healthcare AI Specialist & Data Scientist.</p>
-            <p class="text-gray-500 text-sm mt-2">Last updated: January 2025</p>
-        </div>
+    <footer class="footer">
+      © 2025 Eashwar Subramanian — Master of Data Science (RMIT). Content based on professional experience and projects.
     </footer>
+  </div>
 </body>
 </html>
-

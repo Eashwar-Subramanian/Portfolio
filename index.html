@@ -3,84 +3,116 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Eashwar Subramanian — AI & Data Science</title>
-  <meta name="description" content="Eashwar Subramanian — Master of Data Science (RMIT). End-to-end ML, retrieval systems, cloud & analytics. Graduating Dec 2025.">
+  <title>Eashwar Subramanian — Data Science & AI</title>
+  <meta name="description" content="Eashwar Subramanian — Master of Data Science (RMIT). Applied ML, retrieval systems (RAG), cloud deployments, and analytics. Graduating Dec 2025.">
   <meta name="author" content="Eashwar Subramanian">
-  <meta name="keywords" content="Data Science, RAG, retrieval, pgvector, FastAPI, AWS, machine learning, RMIT, analytics">
-  <link rel="icon" href="data:,">
+  <meta name="keywords" content="Data Science, RAG, retrieval, pgvector, FastAPI, AWS, machine learning, RMIT, analytics, Solara Health">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="" crossorigin="anonymous">
   <style>
-    /* Minimal, professional style */
+    /* ------------------------------------------------------------------------
+       Base: typography, layout, color tokens
+       ------------------------------------------------------------------------ */
     :root{
-      --bg:#ffffff;
+      --bg:#0f1724;         /* deep background for contrast fallback */
+      --card:#ffffff;
       --muted:#6b7280;
-      --accent:#111827;
-      --card:#f8fafc;
-      --border:#e6e9ef;
-      --maxw:1000px;
-      --radius:8px;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      --text:#0b1220;
+      --accent:#0f172a;     /* dark slate */
+      --primary:#0b5cff;    /* primary blue */
+      --soft:#f8fafc;
+      --glass: rgba(255,255,255,0.9);
+      --radius:12px;
+      --container:1100px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;
     }
-    html,body{height:100%;margin:0;background:var(--bg);color:var(--accent);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
-    a{color:inherit;text-decoration:none}
-    .container{max-width:var(--maxw);margin:0 auto;padding:28px;}
-    header.site-header{border-bottom:1px solid var(--border);padding:28px 0;display:flex;align-items:center;justify-content:space-between;gap:16px}
+    /* Light UI by default (user wanted good contrast, minimal) */
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial; background:linear-gradient(180deg,#fafbff 0%, #f3f4f6 100%); color:var(--text); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;}
+    a{color:var(--primary); text-decoration:none;}
+    .container{max-width:var(--container);margin:0 auto;padding:28px;}
+    header.site{border-bottom:1px solid #e6e9ef;background:linear-gradient(180deg,#ffffff 0%, #fbfdff 100%); position:sticky;top:0;z-index:40;}
+    header .inner{display:flex;align-items:center;justify-content:space-between;gap:18px;max-width:var(--container);margin:0 auto;padding:14px 28px;}
     .brand{display:flex;flex-direction:column}
     .brand h1{margin:0;font-size:20px;font-weight:700;letter-spacing:0.2px}
-    .brand p{margin:2px 0 0;font-size:13px;color:var(--muted)}
-    nav{display:flex;gap:18px;align-items:center}
-    nav a{font-size:13px;color:var(--muted)}
-    /* hero */
-    .hero{padding:40px 0;display:flex;gap:28px;align-items:flex-start}
-    .hero-left{flex:1}
-    .hero-right{width:270px;border:1px solid var(--border);border-radius:var(--radius);padding:18px;background:var(--card)}
-    .headline{font-size:28px;font-weight:700;margin:0 0 6px}
-    .sub{margin:0 0 12px;color:var(--muted);font-size:14px}
-    .cta {margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
-    .btn {padding:10px 14px;border-radius:6px;border:1px solid #111827;font-weight:600;font-size:13px;background:transparent}
-    .btn-primary{background:#111827;color:white;border-color:#111827}
-    /* sections */
-    section{padding:28px 0;border-bottom:1px solid var(--border)}
-    h2{font-size:18px;margin:0 0 12px}
-    .muted{color:var(--muted);font-size:13px}
-    .two-col{display:grid;grid-template-columns:1fr 360px;gap:24px;align-items:start}
-    .card{background:#fff;border:1px solid var(--border);padding:16px;border-radius:var(--radius)}
-    ul.simple{margin:8px 0 0;padding-left:18px}
-    li{margin:8px 0;color:var(--accent);line-height:1.45}
+    .brand p{margin:2px 0 0;font-size:12px;color:var(--muted)}
+    nav{display:flex;gap:16px;align-items:center}
+    nav a{font-size:14px;color:var(--muted);padding:6px 8px;border-radius:8px}
+    nav a:hover{color:var(--primary);background:#f1f5ff}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;border:1px solid transparent;font-weight:600;font-size:14px}
+    .btn-primary{background:var(--primary);color:white}
+    /* ------------------------------------------------------------------------
+       HERO
+       ------------------------------------------------------------------------ */
+    .hero{max-width:var(--container);margin:24px auto;padding:36px 28px;display:grid;grid-template-columns:1fr 340px;gap:28px;align-items:start}
+    .eyebrow{font-size:13px;color:var(--muted);margin-bottom:8px}
+    .title{font-size:34px;line-height:1.08;margin:0 0 8px;font-weight:800;color:var(--accent)}
+    .lead{font-size:16px;color:#334155;margin:0 0 18px;line-height:1.5}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap}
+    .card{background:var(--card);border-radius:var(--radius);box-shadow:0 6px 20px rgba(15,23,42,0.05);padding:18px;border:1px solid #eef2f7}
+    /* right column */
+    .hero-info .label{font-size:12px;color:var(--muted)}
+    .hero-info .value{font-weight:700;margin-top:6px}
+    .hero-info .small{font-size:13px;color:var(--muted);margin-top:8px}
+    /* ------------------------------------------------------------------------
+       SECTIONS
+       ------------------------------------------------------------------------ */
+    section{max-width:var(--container);margin:0 auto;padding:40px 28px}
+    .section-title{font-size:20px;font-weight:700;color:var(--accent);margin-bottom:10px}
+    .two-col{display:grid;grid-template-columns:1fr 360px;gap:22px;align-items:start}
+    .list{margin:8px 0 0;padding-left:18px}
+    .list li{margin:8px 0;color:#0b1220;line-height:1.5}
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+    .project{background:var(--card);padding:14px;border-radius:10px;border:1px solid #eef2f7}
+    .project h3{margin:0;font-size:16px}
+    .meta{font-size:13px;color:var(--muted);margin-top:6px}
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+    .chip{background:#f1f5f9;color:#0f172a;padding:6px 8px;border-radius:999px;font-size:12px;border:1px solid #eef2f7}
     .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-    .skill-box{background:#fff;border:1px solid var(--border);padding:12px;border-radius:8px;font-size:13px}
-    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
-    .project{background:#fff;border:1px solid var(--border);padding:14px;border-radius:8px}
+    .skill{background:linear-gradient(180deg,#ffffff,#fbfdff);border:1px solid #eef2f7;padding:12px;border-radius:8px;font-size:13px}
+    .metrics{display:flex;gap:12px;flex-wrap:wrap}
+    .metric{background:var(--card);padding:12px;border-radius:8px;border:1px solid #eef2f7;min-width:140px;text-align:center}
+    .metric .num{font-weight:800;font-size:20px;color:var(--accent)}
     .small{font-size:13px;color:var(--muted)}
-    .footer{padding:20px 0;text-align:center;color:var(--muted);font-size:13px}
+    /* footer */
+    footer{margin-top:18px;padding:28px;border-top:1px solid #eef2f7;background:linear-gradient(180deg,#ffffff,#fbfdff)}
     /* responsive */
-    @media (max-width:900px){ .two-col{grid-template-columns:1fr} .hero-right{width:100%} .skills-grid{grid-template-columns:1fr} nav{display:none} header.site-header{flex-direction:column;align-items:flex-start} }
+    @media (max-width:980px){ .hero{grid-template-columns:1fr;gap:18px;padding:22px 16px} .two-col{grid-template-columns:1fr} .skills-grid{grid-template-columns:1fr} nav{display:none} .brand{flex-direction:row;gap:12px;align-items:center} header .inner{padding:10px 16px} }
   </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Header / Nav -->
-    <header class="site-header">
-      <div class="brand">
-        <h1>Eashwar Subramanian</h1>
-        <p>Data Science • AI • Cloud — Graduating Dec 2025 • Melbourne</p>
+  <!-- ================= HEADER / NAV ================= -->
+  <header class="site">
+    <div class="inner">
+      <div class="brand" aria-hidden="false">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div style="width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#0b5cff,#3dd1ff);display:flex;align-items:center;justify-content:center;color:white;font-weight:800">ES</div>
+          <div>
+            <h1 style="margin:0;font-size:16px">Eashwar Subramanian</h1>
+            <p style="margin:2px 0 0;color:var(--muted);font-size:12px">Data Science • ML • Cloud — RMIT MDS (Dec 2025)</p>
+          </div>
+        </div>
       </div>
-      <nav>
+
+      <nav role="navigation" aria-label="Primary" >
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
-        <a href="Eashwar Subramanian Resume.pdf" target="_blank">Resume</a>
+        <a href="Eashwar Subramanian Resume.pdf" target="_blank" style="border:1px solid #e6eefb;padding:6px 10px;border-radius:8px;font-weight:600;background:#f8fbff">Resume</a>
       </nav>
-    </header>
+    </div>
+  </header>
 
-    <!-- Hero -->
-    <section class="hero" id="home">
-      <div class="hero-left">
-        <div class="headline">AI & Data Science — applied ML, retrieval, cloud, analytics</div>
-        <p class="sub">Final-semester Master of Data Science (RMIT). I build end-to-end, production-oriented ML and data systems — ingestion, retrieval, evaluation, deployment and analytics. Seeking Data Science / ML / Analytics roles from late 2025.</p>
+  <!-- ================= HERO ================= -->
+  <main>
+    <section class="hero" role="banner" aria-labelledby="hero-heading">
+      <div>
+        <div class="eyebrow">Final-semester Master of Data Science — RMIT</div>
+        <h1 id="hero-heading" class="title">Data Scientist & ML Engineer</h1>
+        <p class="lead">I build practical, production-aligned machine learning and data systems: ingestion and retrieval pipelines (RAG), model evaluation, cloud deployments, and analytics dashboards. Available for Data Science / ML roles from December 2025.</p>
 
-        <div class="cta">
+        <div class="cta-row">
           <a class="btn btn-primary" href="#projects">View Projects</a>
           <a class="btn" href="mailto:eashwars2001@gmail.com">Email</a>
           <a class="btn" href="https://www.linkedin.com/in/eashwar-s-02461a1b3/" target="_blank">LinkedIn</a>
@@ -88,215 +120,341 @@
         </div>
       </div>
 
-      <aside class="hero-right">
-        <div style="font-size:13px;color:var(--muted)">Contact</div>
-        <div style="margin-top:6px;font-weight:600">eashwars2001@gmail.com</div>
-        <div class="muted" style="margin-top:6px">+61 450 332 782 • Melbourne, Australia</div>
+      <aside class="card hero-info" aria-label="Contact summary">
+        <div class="label">Contact</div>
+        <div class="value" style="margin-top:6px">eashwars2001@gmail.com</div>
+        <div class="small" style="margin-top:6px">+61 450 332 782 • Melbourne, Australia</div>
 
-        <div style="margin-top:12px;border-top:1px solid var(--border);padding-top:12px">
-          <div class="small">Current</div>
-          <div style="font-weight:600;margin-top:4px">Data Science Intern — Solara Health</div>
-          <div class="small" style="margin-top:6px">Expected availability: Dec 2025</div>
+        <div style="border-top:1px solid #eef2f7;margin-top:12px;padding-top:12px">
+          <div class="label">Current</div>
+          <div class="value" style="margin-top:6px">Data Science Intern — Solara Health</div>
+          <div class="small" style="margin-top:6px">Available from Dec 2025</div>
+        </div>
+
+        <div style="border-top:1px solid #eef2f7;margin-top:12px;padding-top:12px">
+          <div class="small">Skills</div>
+          <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
+            <div style="background:#f1f5ff;padding:6px 8px;border-radius:999px;font-weight:600;font-size:12px">RAG</div>
+            <div style="background:#f1f5ff;padding:6px 8px;border-radius:999px;font-weight:600;font-size:12px">Cloud</div>
+            <div style="background:#f1f5ff;padding:6px 8px;border-radius:999px;font-weight:600;font-size:12px">ML</div>
+          </div>
         </div>
       </aside>
     </section>
 
-    <!-- About -->
-    <section id="about">
+    <!-- ================= ABOUT ================= -->
+    <section id="about" aria-labelledby="about-title">
+      <h2 id="about-title" class="section-title">About</h2>
       <div class="two-col">
         <div>
-          <h2>About</h2>
-          <p class="muted">I’m completing my Master of Data Science at RMIT (Dec 2025). I combine applied machine learning, data engineering and cloud deployment to deliver measurable outcomes — retrieval systems, model evaluation, forecasting, and analytics. My recent internship was focused on a healthcare RAG project; I also have experience in retail analytics, forecasting and dashboarding.</p>
+          <p class="small" style="margin:0 0 12px">
+            I’m finishing my Master of Data Science at RMIT (Dec 2025). I build end-to-end solutions that combine data engineering, machine learning, and production deployment. My work ranges from retrieval systems and LLM integration (RAG) to forecasting, segmentation and business analytics.
+          </p>
 
-          <h2 style="margin-top:18px">What I do</h2>
-          <ul class="simple">
-            <li>Build production-aligned ML systems: ingestion, feature pipelines, model evaluation, APIs and deployment.</li>
-            <li>Design retrieval pipelines and evaluation (RAG, pgvector, embeddings, RAGAS metrics).</li>
-            <li>Deliver analytics & dashboarding for stakeholders (Power BI, Tableau) and time-series forecasting (SARIMA).</li>
-          </ul>
+          <p style="margin-top:12px;color:#344154;line-height:1.6">
+            I focus on reliable, auditable systems: deterministic ingestion, semantic chunking, verifiable citations, and reproducible evaluation. I write production-ready code, care about test coverage, and prioritize deployment-ready systems that stakeholders can trust.
+          </p>
+
+          <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+            <div class="chip" title="Graduation">RMIT — MDS (Dec 2025)</div>
+            <div class="chip" title="Location">Melbourne, Australia</div>
+            <div class="chip" title="Availability">Available Dec 2025</div>
+          </div>
         </div>
 
         <div>
           <div class="card">
             <div style="font-weight:700">Quick facts</div>
-            <div class="small" style="margin-top:8px">Master of Data Science — RMIT (Graduating Dec 2025)</div>
-            <div class="small" style="margin-top:6px">Bachelor of Electronics & Communication Engineering — RSET (2023)</div>
-            <div class="small" style="margin-top:6px">Open to: Data Science, ML Engineer, Analytics roles</div>
+            <div class="small" style="margin-top:8px">Master of Data Science — RMIT (expected Dec 2025)</div>
+            <div class="small" style="margin-top:6px">Bachelor — Electronics & Communication Engineering (2023)</div>
+            <div class="small" style="margin-top:6px">Preferred roles: Data Scientist, ML Engineer, Analytics</div>
             <div class="small" style="margin-top:6px">Work rights: Subclass 500</div>
           </div>
 
           <div class="card" style="margin-top:12px">
-            <div style="font-weight:700">Core strengths</div>
-            <div class="small" style="margin-top:8px">Production ML • Retrieval Systems • Cloud • Evaluation & Testing • Analytics</div>
+            <div style="font-weight:700">Core competencies</div>
+            <div class="small" style="margin-top:8px;line-height:1.5">
+              Production ML • Retrieval & RAG • Cloud Deployments • Model Evaluation • Time-series Forecasting • BI & Dashboards
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Experience -->
-    <section id="experience">
-      <h2>Professional Experience</h2>
+    <!-- ================= EXPERIENCE ================= -->
+    <section id="experience" aria-labelledby="experience-title">
+      <h2 id="experience-title" class="section-title">Professional experience</h2>
 
-      <div style="margin-top:12px">
-        <div class="card" style="margin-bottom:12px">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
-            <div>
-              <div style="font-weight:700">Data Science Intern</div>
-              <div class="muted" style="margin-top:4px">Solara Health — Melbourne, Australia</div>
-            </div>
-            <div class="small muted">July 2025 – Present</div>
+      <!-- Solara Health -->
+      <article class="card" style="margin-bottom:16px" aria-labelledby="solara-heading">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+          <div>
+            <div id="solara-heading" style="font-weight:700;font-size:16px">Data Science Intern</div>
+            <div class="meta">Solara Health — Melbourne, Australia</div>
           </div>
-
-          <ul class="simple" style="margin-top:12px">
-            <li>Built the full ingestion pipeline (PDF/HTML/Markdown) with semantic chunking (LlamaIndex), SHA-256 deduplication, metadata tagging and deterministic version control for reproducible indexes.</li>
-            <li>Implemented semantic retrieval: MiniLM-based bi-encoder embeddings, pgvector (IVFFlat) indexing, and cross-encoder reranking for top-k precision.</li>
-            <li>Designed tenant-aware hierarchical routing with PostgreSQL Row-Level Security to ensure hospital-scoped retrieval (hospital → national → state).</li>
-            <li>Developed audit-ready citation formatting and source-tracing logic (date extraction, fallback rules, hyperlinks) to support compliance and traceability.</li>
-            <li>Built a reproducible evaluation pipeline integrating RAGAS and semantic similarity proofs; produced metrics used for iterative improvement (faithfulness ~69.4%, context precision 92.7%, recall 91.2%).</li>
-            <li>Authored Pytest suites for ingestion, retrieval and moderation interactions; contributed to containerized CI workflows and sprint coordination.</li>
-          </ul>
+          <div class="small">July 2025 – Present</div>
         </div>
 
-        <div class="card">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
-            <div>
-              <div style="font-weight:700">Data Analyst Intern</div>
-              <div class="muted" style="margin-top:4px">PrepInsta Pvt Ltd — Remote</div>
-            </div>
-            <div class="small muted">Dec 2023 – Feb 2024</div>
-          </div>
+        <ul class="list" style="margin-top:12px">
+          <li>Built the full ingestion → chunking → metadata → embedding → retrieval pipeline (PDF/HTML/Markdown ingestion, LlamaIndex semantic chunking, MiniLM embeddings, pgvector indexing).</li>
+          <li>Implemented hierarchical tenant-aware routing (hospital → national → state) with PostgreSQL Row-Level Security (RLS) to ensure data isolation and compliance.</li>
+          <li>Developed reproducible evaluation tooling combining RAGAS metrics and semantic similarity proofs — used to measure faithfulness, answer relevancy, context precision (92.7%) and context recall (91.2%).</li>
+          <li>Engineered audit-ready citation tracing with date extraction, fallback formatting and hyperlink generation to support traceability and regulatory reviews.</li>
+          <li>Authored Pytest suites for ingestion, retrieval and moderation; integrated tests into containerized CI workflows and supported sprint delivery coordination.</li>
+        </ul>
+      </article>
 
-          <ul class="simple" style="margin-top:12px">
-            <li>Delivered 5+ stakeholder dashboards (Tableau, Excel) increasing client engagement by ~10%.</li>
-            <li>Optimized SQL query performance reducing data retrieval time by ~25% for executive reporting.</li>
-            <li>Automated reporting workflows with Python (BeautifulSoup) cutting manual effort by ~30%.</li>
-          </ul>
+      <!-- PrepInsta -->
+      <article class="card" aria-labelledby="prep-heading">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+          <div>
+            <div id="prep-heading" style="font-weight:700;font-size:16px">Data Analyst Intern</div>
+            <div class="meta">PrepInsta Pvt Ltd — Remote</div>
+          </div>
+          <div class="small">Dec 2023 – Feb 2024</div>
         </div>
-      </div>
+
+        <ul class="list" style="margin-top:12px">
+          <li>Delivered 5+ stakeholder dashboards (Tableau, Excel) increasing client engagement by ~10%.</li>
+          <li>Optimized SQL queries and ETL to reduce report latency by ~25% for executive reporting.</li>
+          <li>Automated web-scraping and reporting workflows with Python (BeautifulSoup), reducing manual effort by ~30%.</li>
+        </ul>
+      </article>
     </section>
 
-    <!-- Projects -->
-    <section id="projects">
-      <h2>Selected Projects</h2>
+    <!-- ================= PROJECTS ================= -->
+    <section id="projects" aria-labelledby="projects-title">
+      <h2 id="projects-title" class="section-title">Selected projects</h2>
 
-      <div class="projects-grid" style="margin-top:12px">
-        <!-- Solara as featured but concise -->
-        <div class="project">
-          <div style="font-weight:700">Solara Healthcare RAG System</div>
-          <div class="small muted" style="margin-top:6px">Team project — Production-aligned retrieval and evaluation</div>
-          <p style="margin-top:10px" class="muted">Engineered an end-to-end Retrieval-Augmented Generation (RAG) pipeline with semantic chunking, vector embeddings, hierarchical routing and citation tracing. Focused on reproducible evaluation and auditability.</p>
-          <ul class="simple" style="margin-top:8px">
-            <li>Engineered ingestion, chunking, metadata governance and vector retrieval supporting tenant-scoped responses.</li>
-            <li>Built an evaluation suite (RAGAS + semantic proofs) producing measurable benchmarks for faithfulness and retrieval (context precision 92.7%, recall 91.2%).</li>
+      <div class="projects-grid" role="list">
+        <!-- Solara (feature) -->
+        <div class="project" role="listitem" aria-labelledby="proj-solara">
+          <h3 id="proj-solara">Solara Healthcare RAG System</h3>
+          <div class="meta">Production-aligned retrieval system with evaluation</div>
+          <p class="small" style="margin-top:8px;color:#344154">Engineered an end-to-end RAG pipeline emphasizing reproducibility, citation traceability, and tenant-aware retrieval. Focused on measurable evaluation and auditability rather than speculative answers.</p>
+          <ul class="list" style="margin-top:8px">
+            <li>Ingestion + semantic chunking + embeddings + pgvector indexing + cross-encoder reranking.</li>
+            <li>Reproducible evaluation workflows (RAGAS, semantic proofs); actionable benchmarks to guide improvements.</li>
           </ul>
-          <div style="margin-top:10px" class="small muted">Tech: Python, FastAPI, PostgreSQL (pgvector), Docker, RAGAS</div>
+          <div class="chips" style="margin-top:10px">
+            <div class="chip">Python</div><div class="chip">FastAPI</div><div class="chip">PostgreSQL (pgvector)</div><div class="chip">RAGAS</div>
+          </div>
         </div>
 
         <!-- Retail segmentation -->
-        <div class="project">
-          <div style="font-weight:700">Australian Retail Customer Segmentation</div>
-          <div class="small muted" style="margin-top:6px">K-Means & RFM analysis</div>
-          <p style="margin-top:10px" class="muted">Identified a high-value customer segment representing ~15% of total revenue and corrected invalid order IDs enabling accurate RFM analysis.</p>
-          <div style="margin-top:10px" class="small muted">Tech: Python, scikit-learn, Power BI</div>
+        <div class="project" role="listitem">
+          <h3>Australian Retail Customer Segmentation</h3>
+          <div class="meta">K-Means + RFM • Business impact</div>
+          <p class="small" style="margin-top:8px">Identified a high-value customer segment (~15% of revenue) and corrected invalid order IDs to enable accurate RFM analysis and targeted marketing.</p>
+          <div class="chips" style="margin-top:10px">
+            <div class="chip">Python</div><div class="chip">scikit-learn</div><div class="chip">Power BI</div>
+          </div>
         </div>
 
         <!-- Climate forecasting -->
-        <div class="project">
-          <div style="font-weight:700">Climate Policy Forecasting Dashboard</div>
-          <div class="small muted" style="margin-top:6px">SARIMA forecasting & Flask dashboard</div>
-          <p style="margin-top:10px" class="muted">Built SARIMA models achieving ~1.2°C MAE and deployed an interactive Flask dashboard with geospatial mapping for policy stakeholders.</p>
-          <div style="margin-top:10px" class="small muted">Tech: Python, SARIMA, Flask, Folium</div>
+        <div class="project" role="listitem">
+          <h3>Climate Policy Forecasting Dashboard</h3>
+          <div class="meta">SARIMA forecasting & Flask dashboard</div>
+          <p class="small" style="margin-top:8px">Developed SARIMA models with ~1.2°C MAE and deployed an interactive Flask dashboard with geospatial mapping for policy stakeholders.</p>
+          <div class="chips" style="margin-top:10px">
+            <div class="chip">SARIMA</div><div class="chip">Flask</div><div class="chip">Folium</div>
+          </div>
         </div>
 
         <!-- Sales analytics -->
-        <div class="project">
-          <div style="font-weight:700">Sales Analytics Dashboard</div>
-          <div class="small muted" style="margin-top:6px">Power BI & ETL</div>
-          <p style="margin-top:10px" class="muted">Automated reporting across 4 years of sales history, highlighting regions with ~7% revenue uplift potential.</p>
-          <div style="margin-top:10px" class="small muted">Tech: Power BI, MySQL</div>
+        <div class="project" role="listitem">
+          <h3>Sales Analytics Dashboard</h3>
+          <div class="meta">Power BI • ETL</div>
+          <p class="small" style="margin-top:8px">Automated reporting for 4 years of sales data; identified opportunities for ~7% revenue uplift through regional analysis.</p>
+          <div class="chips" style="margin-top:10px">
+            <div class="chip">Power BI</div><div class="chip">MySQL</div>
+          </div>
         </div>
 
-        <!-- Other compact projects -->
-        <div class="project">
-          <div style="font-weight:700">Cloud Music Subscription Platform</div>
-          <p class="small muted" style="margin-top:8px">Full-stack AWS application using Java servlets and DynamoDB. (Project code on GitHub)</p>
+        <!-- Additional projects condensed -->
+        <div class="project" role="listitem">
+          <h3>Cloud Music Subscription Platform</h3>
+          <div class="small" style="margin-top:8px">Full-stack AWS app (Java servlets, DynamoDB, Apache2) — hosted project and code available on GitHub.</div>
         </div>
 
-        <div class="project">
-          <div style="font-weight:700">Real Estate Data Cleaning Pipeline</div>
-          <p class="small muted" style="margin-top:8px">Address parsing, duplicate removal and schema optimisation in MySQL for improved data quality.</p>
+        <div class="project" role="listitem">
+          <h3>Real Estate Data Cleaning Pipeline</h3>
+          <div class="small" style="margin-top:8px">Address parsing, duplicate removal and schema fixes for improved data quality in MySQL pipelines.</div>
         </div>
 
-        <div class="project">
-          <div style="font-weight:700">E-Commerce Logistics Analysis</div>
-          <p class="small muted" style="margin-top:8px">Shipping performance analysis across ~11k transactions using R and ggplot2.</p>
+        <div class="project" role="listitem">
+          <h3>E-Commerce Logistics Analysis</h3>
+          <div class="small" style="margin-top:8px">Shipping performance analysis across ~11,000 transactions using R to identify efficiency drivers.</div>
         </div>
       </div>
     </section>
 
-    <!-- Skills -->
-    <section id="skills">
-      <h2>Technical Expertise</h2>
-      <div class="skills-grid" style="margin-top:12px">
-        <div class="skill-box">
-          <strong>Languages:</strong><br/>Python, SQL, R, Java
-        </div>
-        <div class="skill-box">
-          <strong>Cloud/DevOps:</strong><br/>AWS (Bedrock, EC2, S3, Lambda, Aurora), Docker, CI/CD, Git
-        </div>
-        <div class="skill-box">
-          <strong>ML / Analytics:</strong><br/>RAG (Retrieval-Augmented Generation), Semantic Chunking (LlamaIndex), Sentence Transformers (MiniLM), Cross-Encoder Reranking, RAGAS, Scikit-learn, SARIMA, K-Means
-        </div>
-        <div class="skill-box">
-          <strong>Databases:</strong><br/>PostgreSQL (pgvector, RLS, IVFFlat), MySQL, DynamoDB, SQL Server
-        </div>
-        <div class="skill-box">
-          <strong>Visualization:</strong><br/>Power BI, Tableau, Matplotlib, Folium
-        </div>
-        <div class="skill-box">
-          <strong>Frameworks / Tools:</strong><br/>FastAPI, Flask, Pytest, Pydantic, Pandas, NumPy, pdfplumber, BeautifulSoup4
-        </div>
-      </div>
-    </section>
+    <!-- ================= TECHNICAL PREVIEW (OPTIONAL) ================= -->
+    <section aria-labelledby="tech-preview">
+      <h2 id="tech-preview" class="section-title">Technical preview</h2>
 
-    <!-- Impact / Metrics -->
-    <section>
-      <h2>Selected Metrics & Impact</h2>
-      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:12px">
-        <div class="card" style="min-width:160px"><div style="font-weight:700">92.7%</div><div class="small" style="margin-top:6px">Context precision (RAG)</div></div>
-        <div class="card" style="min-width:160px"><div style="font-weight:700">91.2%</div><div class="small" style="margin-top:6px">Context recall (RAG)</div></div>
-        <div class="card" style="min-width:160px"><div style="font-weight:700">69.4%</div><div class="small" style="margin-top:6px">Faithfulness (RAGAS)</div></div>
-        <div class="card" style="min-width:160px"><div style="font-weight:700">15%</div><div class="small" style="margin-top:6px">High-value retail segment identified</div></div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact">
-      <h2>Contact</h2>
-      <div style="display:grid;grid-template-columns:1fr 360px;gap:18px;margin-top:12px">
-        <div>
-          <p class="muted">I'm open to Data Science, ML Engineering, and Analytics roles from Dec 2025. I respond promptly to hiring and collaboration enquiries.</p>
-          <p style="margin-top:12px"><strong>Email:</strong> eashwars2001@gmail.com<br/><strong>Phone:</strong> +61 450 332 782<br/><strong>Location:</strong> Melbourne, Australia</p>
-          <p style="margin-top:12px"><a href="Eashwar Subramanian Resume.pdf" target="_blank" class="btn">Download resume</a></p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <div class="card">
+          <div style="font-weight:700">Representative ingestion snippet</div>
+          <pre style="margin-top:8px;background:#0b1220;color:#e6eef8;padding:12px;border-radius:8px;font-family:var(--mono);font-size:13px;overflow:auto;white-space:pre-wrap;">
+def build_metadata_for_doc(path, tenant_id=None):
+    text = extract_text(path)
+    clean = normalize_text(text)
+    doc_hash = hashlib.sha256(clean.encode()).hexdigest()
+    metadata = {
+        "source_path": path,
+        "tenant_id": tenant_id,
+        "hash": doc_hash,
+        "published_date": extract_date(clean) or None
+    }
+    return clean, metadata
+          </pre>
+          <div class="small" style="margin-top:8px">Representative: demonstrates deterministic hashing + metadata capture used for deduplication and reproducible ingestion.</div>
         </div>
 
         <div class="card">
-          <form action="https://formspree.io/f/xpznzpzp" method="POST">
-            <div style="margin-bottom:8px"><label class="small">Name *</label><br/><input name="name" required style="width:100%;padding:8px;border:1px solid var(--border);border-radius:6px"/></div>
-            <div style="margin-bottom:8px"><label class="small">Email *</label><br/><input name="email" type="email" required style="width:100%;padding:8px;border:1px solid var(--border);border-radius:6px"/></div>
-            <div style="margin-bottom:8px"><label class="small">Company</label><br/><input name="company" style="width:100%;padding:8px;border:1px solid var(--border);border-radius:6px"/></div>
-            <div style="margin-bottom:8px"><label class="small">Message *</label><br/><textarea name="message" rows="4" required style="width:100%;padding:8px;border:1px solid var(--border);border-radius:6px"></textarea></div>
-            <div><button type="submit" class="btn btn-primary" style="cursor:pointer">Send message</button></div>
-            <div class="small muted" style="margin-top:8px">* Required fields. Your information is kept confidential.</div>
-          </form>
+          <div style="font-weight:700">Evaluation workflow (commands)</div>
+          <pre style="margin-top:8px;background:#0b1220;color:#e6eef8;padding:12px;border-radius:8px;font-family:var(--mono);font-size:13px;overflow:auto;white-space:pre-wrap;">
+python scripts/eval_ragas_dataset_fixed.py --input data/queries.csv --out data/eval/ragas_ds
+python scripts/eval_rag_metrics_complete.py --dataset data/eval/ragas_ds --output data/eval/ragas_results_overall_final.json
+          </pre>
+          <div class="small" style="margin-top:8px">Scripts collect LLM answers + citations and compute RAGAS metrics for monitoring and CI checks.</div>
         </div>
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-      © 2025 Eashwar Subramanian — Master of Data Science (RMIT). Content based on professional experience and projects.
-    </footer>
-  </div>
+    <!-- ================= SKILLS ================= -->
+    <section id="skills" aria-labelledby="skills-title">
+      <h2 id="skills-title" class="section-title">Technical expertise</h2>
+
+      <div class="skills-grid" style="margin-top:12px">
+        <div class="skill">
+          <strong>Languages</strong><br/>Python, SQL, R, Java
+        </div>
+        <div class="skill">
+          <strong>Cloud / DevOps</strong><br/>AWS (Bedrock, EC2, S3, Lambda, Aurora), Docker, CI/CD, Git
+        </div>
+        <div class="skill">
+          <strong>ML / Analytics</strong><br/>RAG, LlamaIndex, MiniLM, Cross-Encoder, RAGAS, scikit-learn, SARIMA, K-Means
+        </div>
+        <div class="skill">
+          <strong>Databases</strong><br/>PostgreSQL (pgvector, RLS, IVFFlat), MySQL, DynamoDB, SQL Server
+        </div>
+        <div class="skill">
+          <strong>Visualization</strong><br/>Power BI, Tableau, Matplotlib, Folium
+        </div>
+        <div class="skill">
+          <strong>Frameworks & Tools</strong><br/>FastAPI, Flask, Pytest, Pydantic, Pandas, NumPy, pdfplumber
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= METRICS ================= -->
+    <section aria-labelledby="metrics">
+      <h2 id="metrics" class="section-title">Selected metrics</h2>
+
+      <div class="metrics" style="margin-top:12px">
+        <div class="metric"><div class="num">92.7%</div><div class="small" style="margin-top:6px">Context precision (RAG)</div></div>
+        <div class="metric"><div class="num">91.2%</div><div class="small" style="margin-top:6px">Context recall (RAG)</div></div>
+        <div class="metric"><div class="num">69.4%</div><div class="small" style="margin-top:6px">Faithfulness (RAGAS)</div></div>
+        <div class="metric"><div class="num">15%</div><div class="small" style="margin-top:6px">High-value customer segment (retail)</div></div>
+      </div>
+    </section>
+
+    <!-- ================= INSIGHTS / BLOG (PLACEHOLDER) ================= -->
+    <section aria-labelledby="insights">
+      <h2 id="insights" class="section-title">Insights</h2>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px">
+        <article class="card">
+          <div style="font-weight:700">Building compliant retrieval systems</div>
+          <p class="small" style="margin-top:8px;color:#384150">Practical checklist for ingestion hygiene, metadata, and reproducible evaluation (draft).</p>
+        </article>
+
+        <article class="card">
+          <div style="font-weight:700">From data to dashboard</div>
+          <p class="small" style="margin-top:8px;color:#384150">Notes on end-to-end ETL and presenting metrics for non-technical stakeholders (draft).</p>
+        </article>
+
+        <article class="card">
+          <div style="font-weight:700">Time-series & policy decisions</div>
+          <p class="small" style="margin-top:8px;color:#384150">Communicating uncertainty and model assumptions when forecasting for policy makers (draft).</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title" class="section-title">Contact</h2>
+
+      <div class="two-col" style="align-items:start">
+        <div>
+          <div class="card">
+            <div style="font-weight:700">Get in touch</div>
+            <p class="small" style="margin-top:8px;color:#344154">I'm open to full-time and contract opportunities starting December 2025. If you'd like to discuss data science, ML engineering or analytics roles, email me or use the contact form.</p>
+
+            <div style="margin-top:12px">
+              <div class="small" style="font-weight:600">Email</div>
+              <div style="margin-top:6px">eashwars2001@gmail.com</div>
+
+              <div class="small" style="margin-top:10px">LinkedIn</div>
+              <div style="margin-top:6px"><a href="https://www.linkedin.com/in/eashwar-s-02461a1b3/" target="_blank">linkedin.com/in/eashwar-s-02461a1b3</a></div>
+
+              <div class="small" style="margin-top:10px">GitHub</div>
+              <div style="margin-top:6px"><a href="https://github.com/Eashwar-Subramanian" target="_blank">github.com/Eashwar-Subramanian</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="card">
+            <form action="https://formspree.io/f/xpznzpzp" method="POST">
+              <label class="small">Name *</label><br/>
+              <input name="name" required style="width:100%;padding:10px;margin-top:6px;border:1px solid #eef2f7;border-radius:8px" />
+              <label class="small" style="margin-top:8px;display:block">Email *</label><br/>
+              <input name="email" type="email" required style="width:100%;padding:10px;margin-top:6px;border:1px solid #eef2f7;border-radius:8px" />
+              <label class="small" style="margin-top:8px;display:block">Company</label><br/>
+              <input name="company" style="width:100%;padding:10px;margin-top:6px;border:1px solid #eef2f7;border-radius:8px" />
+              <label class="small" style="margin-top:8px;display:block">Message *</label><br/>
+              <textarea name="message" rows="4" required style="width:100%;padding:10px;margin-top:6px;border:1px solid #eef2f7;border-radius:8px"></textarea>
+              <div style="display:flex;gap:8px;margin-top:12px">
+                <button type="submit" class="btn btn-primary">Send message</button>
+                <a href="Eashwar Subramanian Resume.pdf" target="_blank" class="btn" style="border:1px solid #eef2f7">Download resume</a>
+              </div>
+              <div class="small" style="margin-top:8px;color:var(--muted)">*</div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+      <div style="font-size:14px;font-weight:600">Eashwar Subramanian</div>
+      <div class="small">© 2025 — Content aligns with professional experience and project outputs.</div>
+      <div style="display:flex;gap:10px">
+        <a href="https://github.com/Eashwar-Subramanian" target="_blank" class="small">GitHub</a>
+        <a href="https://www.linkedin.com/in/eashwar-s-02461a1b3/" target="_blank" class="small">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Minimal JS for smooth anchor scrolling (optional) -->
+  <script>
+    (function(){
+      document.querySelectorAll('a[href^="#"]').forEach(a=>{
+        a.addEventListener('click',function(e){
+          const href=this.getAttribute('href');
+          if(href.length>1){
+            e.preventDefault();
+            const el=document.querySelector(href);
+            if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+          }
+        });
+      });
+    })();
+  </script>
 </body>
 </html>

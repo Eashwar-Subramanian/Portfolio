@@ -768,25 +768,53 @@
     </section>
 
     <!-- ================= EXPERIENCE ================= -->
+        <!-- ================= EXPERIENCE ================= -->
     <section id="experience" aria-labelledby="experience-title">
       <h2 id="experience-title" class="section-title">Professional Experience</h2>
+
+      <!-- Culture Infusion -->
+      <article class="card" style="margin-bottom:1.5rem" aria-labelledby="ci-heading">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:1rem">
+          <div>
+            <div id="ci-heading" style="font-weight:700;font-size:1.25rem;color:var(--gray-900);margin-bottom:0.25rem">
+              Data Science Intern
+            </div>
+            <div class="meta" style="font-size:0.9375rem;font-weight:600;color:var(--primary-600)">
+              Cultural Infusion • Melbourne, Australia
+            </div>
+          </div>
+          <div class="small" style="font-weight:600;color:var(--gray-600);white-space:nowrap">
+            Jan 2026 – Apr 2026
+          </div>
+        </div>
+
+        <p style="color:var(--gray-700);margin-bottom:1rem;line-height:1.7">
+          Offer secured; internship commencing January 2026, contributing to data science and AI projects in the DEI and cultural analytics space.
+        </p>
+      </article>
 
       <!-- Solara Health -->
       <article class="card" style="margin-bottom:1.5rem" aria-labelledby="solara-heading">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:1rem">
           <div>
-            <div id="solara-heading" style="font-weight:700;font-size:1.25rem;color:var(--gray-900);margin-bottom:0.25rem">Data Science Intern</div>
-            <div class="meta" style="font-size:0.9375rem;font-weight:600;color:var(--primary-600)">Solara Health • Melbourne, Australia</div>
+            <div id="solara-heading" style="font-weight:700;font-size:1.25rem;color:var(--gray-900);margin-bottom:0.25rem">
+              Data Science Intern
+            </div>
+            <div class="meta" style="font-size:0.9375rem;font-weight:600;color:var(--primary-600)">
+              Solara Health • Melbourne, Australia
+            </div>
           </div>
-          <div class="small" style="font-weight:600;color:var(--gray-600);white-space:nowrap">July 2025 – Nov 2025</div>
+          <div class="small" style="font-weight:600;color:var(--gray-600);white-space:nowrap">
+            July 2025 – Nov 2025
+          </div>
         </div>
 
         <ul class="list" style="margin-top:1rem">
-          <li>Contributed to an end-to-end RAG pipeline including document ingestion, semantic chunking, embeddings, and retrieval logic.</li>
-          <li>Built evaluation scripts using RAGAS to measure faithfulness, precision, and recall.</li>
-          <li>Helped structure metadata, citation extraction, and document versioning for clearer traceability.</li>
-          <li>Assisted with debugging retrieval issues across embeddings, vector search, and chunk quality.</li>
-          <li>Collaborated in a multi-developer team using Git, Jira, and code reviews.</li>
+          <li>Built the full ingestion and semantic chunking pipeline (PDF/HTML parsing, MiniLM embeddings, metadata governance, deduplication via SHA-256), enabling clinically reliable document retrieval across three data tiers.</li>
+          <li>Designed tenant-aware retrieval logic using hierarchical routing (hospital → national → state) and PostgreSQL RLS, ensuring TGA-compliant information segregation across multi-hospital deployments.</li>
+          <li>Implemented the end-to-end evaluation framework (RAGAS), generating quantifiable metrics for faithfulness (69.4%), answer relevancy (54.3%), context precision (92.7%), and recall (91.2%).</li>
+          <li>Performed exploratory analysis on document distributions, metadata patterns, and retrieval behaviours, providing insights that guided chunking thresholds, embedding selection, and ingestion priorities.</li>
+          <li>Led Sprint 4 delivery, resolving merge conflicts, coordinating Jira tasks, and unblocking the pipeline for cross-functional contributors.</li>
         </ul>
       </article>
 
@@ -794,23 +822,30 @@
       <article class="card" aria-labelledby="prep-heading">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:1rem">
           <div>
-            <div id="prep-heading" style="font-weight:700;font-size:1.25rem;color:var(--gray-900);margin-bottom:0.25rem">Data Analyst Intern</div>
-            <div class="meta" style="font-size:0.9375rem;font-weight:600;color:var(--primary-600)">PrepInsta Pvt Ltd • Remote</div>
+            <div id="prep-heading" style="font-weight:700;font-size:1.25rem;color:var(--gray-900);margin-bottom:0.25rem">
+              Data Analyst Intern
+            </div>
+            <div class="meta" style="font-size:0.9375rem;font-weight:600;color:var(--primary-600)">
+              PrepInsta Pvt Ltd • Remote (India)
+            </div>
           </div>
-          <div class="small" style="font-weight:600;color:var(--gray-600);white-space:nowrap">Dec 2023 – Feb 2024</div>
+          <div class="small" style="font-weight:600;color:var(--gray-600);white-space:nowrap">
+            Dec 2023 – Feb 2024
+          </div>
         </div>
 
         <p style="color:var(--gray-700);margin-bottom:1rem;line-height:1.7">
-          Delivered data-driven insights and automated reporting solutions to improve business decision-making and operational efficiency.
+          Delivered dashboards, performance improvements, and automation to support data-driven decision-making for stakeholders.
         </p>
 
         <ul class="list" style="margin-top:1rem">
-          <li><strong>Enhanced stakeholder engagement:</strong> Developed and delivered 5+ interactive dashboards using Tableau and Excel, resulting in a <strong>~10% increase in client engagement</strong> metrics.</li>
-          <li><strong>Optimized data infrastructure:</strong> Refactored SQL queries and ETL processes, reducing report generation latency by <strong>~25%</strong> and enabling faster executive decision-making.</li>
-          <li><strong>Automated manual workflows:</strong> Built Python-based web scraping and reporting automation using BeautifulSoup, eliminating <strong>~30% of manual data collection effort</strong> and improving data freshness.</li>
+          <li>Delivered 5+ stakeholder dashboards (Tableau, Excel), increasing client engagement by <strong>~10%</strong> through clearer performance visibility.</li>
+          <li>Optimised SQL query performance, reducing data retrieval time by <strong>~25%</strong> for executive reporting and recurring analytics.</li>
+          <li>Automated reporting workflows with Python (BeautifulSoup), cutting manual effort by <strong>~30%</strong> and improving report freshness.</li>
         </ul>
       </article>
     </section>
+
 
     <!-- ================= PROJECTS ================= -->
     <section id="projects" aria-labelledby="projects-title">
@@ -1092,4 +1127,5 @@
   </script>
 </body>
 </html>
+
 

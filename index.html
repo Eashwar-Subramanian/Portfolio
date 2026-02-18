@@ -195,18 +195,38 @@
     }
 
     nav#primary-nav a {
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: var(--gray-600);
-      padding: 0.5rem 1rem;
-      border-radius: var(--radius-sm);
-      transition: all 0.2s ease;
-    }
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--gray-600);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+}
 
-    nav#primary-nav a:hover {
-      color: var(--primary-600);
-      background: var(--primary-50);
-    }
+nav#primary-nav a:hover {
+  color: var(--primary-600);
+  background: var(--primary-50);
+}
+
+/* Make .btn links in nav look like real buttons (fix specificity clash) */
+nav#primary-nav a.btn {
+  padding: 0.75rem 1.25rem;
+  font-weight: 600;
+  background: transparent;
+}
+
+nav#primary-nav a.btn.btn-secondary {
+  background: white;
+  color: var(--gray-700);
+  border: 1px solid var(--gray-300);
+}
+
+nav#primary-nav a.btn.btn-secondary:hover {
+  background: var(--gray-50);
+  border-color: var(--gray-400);
+  color: var(--gray-900);
+}
+
 
     .btn {
       display: inline-flex;
@@ -644,6 +664,7 @@
              Make sure the PDF filename in your repo EXACTLY matches this.
              If your file has spaces or a different name, update the href. -->
         <a href="Eashwar-Subramanian-Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Resume PDF</a>
+
       </nav>
     </div>
   </header>
@@ -1022,10 +1043,13 @@
             <div style="font-weight:700;font-size:1.125rem;color:var(--gray-900);margin-bottom:1rem">Send a Message</div>
 
             <form action="https://formspree.io/f/xpznzpzp" method="POST">
+              <input type="hidden" name="_subject" value="New message from portfolio site" />
+              <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
               <div class="form-grid">
                 <div class="field">
                   <label for="name">Name<span class="req">*</span></label>
-                  <input id="name" name="name" required placeholder="Your name" autocomplete="name" />
+                  <input id="name" name="name" type="text" required placeholder="Your name" autocomplete="name" />
                 </div>
             
                 <div class="field">
@@ -1035,7 +1059,7 @@
             
                 <div class="field field--full">
                   <label for="company">Company</label>
-                  <input id="company" name="company" placeholder="Company name (optional)" autocomplete="organization" />
+                  <input id="company" name="company" type="text" placeholder="Company name (optional)" autocomplete="organization" />
                 </div>
             
                 <div class="field field--full">
@@ -1046,11 +1070,14 @@
             
               <div class="form-actions">
                 <button type="submit" class="btn btn-primary">Send Message</button>
-                <a href="Eashwar-Subramanian-Resume.pdf" target="_blank" class="btn btn-secondary">Resume PDF</a>
+                <a href="Eashwar-Subramanian-Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Resume PDF</a>
+
               </div>
             
-              <div class="form-hint">* Required fields</div>
+             
+             <div class="form-hint">* Required fields</div>
             </form>
+
 
           </div>
         </div>
@@ -1125,5 +1152,6 @@
   </script>
 </body>
 </html>
+
 
 

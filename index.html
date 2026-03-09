@@ -645,7 +645,7 @@ nav#primary-nav a.btn.btn-secondary:hover {
         <div class="brand-logo" aria-hidden="true">ES</div>
         <div>
           <h1>Eashwar Subramanian</h1>
-          <p>Data Analyst / Data Scientist • SQL • Python • Data Quality • Reporting</p>
+          <p>Data Analyst / Data Scientist • Tableau • Power BI • SQL • Python • Data Quality</p>
         </div>
       </div>
 
@@ -699,10 +699,11 @@ nav#primary-nav a.btn.btn-secondary:hover {
         <div style="border-top:1px solid var(--gray-200);margin-top:1.5rem;padding-top:1.5rem">
           <div class="label">Focus Areas</div>
           <div style="margin-top:0.75rem;display:flex;gap:0.5rem;flex-wrap:wrap">
+            <span class="chip">Tableau</span>
+            <span class="chip">Power BI</span>
             <span class="chip">SQL</span>
             <span class="chip">Python</span>
             <span class="chip">Data Quality</span>
-            <span class="chip">Governance</span>
             <span class="chip">Dashboards</span>
             <span class="chip">ML & Forecasting</span>
           </div>
@@ -855,101 +856,146 @@ nav#primary-nav a.btn.btn-secondary:hover {
 
     <!-- ================= PROJECTS ================= -->
     <section id="projects" aria-labelledby="projects-title">
-      <h2 id="projects-title" class="section-title">Featured Projects</h2>
-      <p style="color:var(--gray-600);margin-bottom:2rem;max-width:820px">
-        Selected projects demonstrating applied analytics, data engineering, and evaluation-focused ML systems. Full code and additional work are on my GitHub.
+  <h2 id="projects-title" class="section-title">Featured Projects</h2>
+  <p style="color:var(--gray-600);margin-bottom:2rem;max-width:820px">
+    Selected work across Business Intelligence, analytics delivery, and applied data systems. Each project links directly to the proof (repo / live demo).
+  </p>
+
+  <div class="projects-grid" role="list">
+
+    <!-- Featured: Tableau BI Dashboard -->
+    <div class="project featured" role="listitem" aria-labelledby="proj-tableau">
+      <h3 id="proj-tableau" style="font-size:1.5rem;margin-bottom:0.75rem">Sales & Customer Performance Dashboards (Tableau | Superstore)</h3>
+      <div class="meta" style="font-size:1rem;margin-bottom:1rem">
+        KPI banners • Monthly sparklines (min/max) • Bar-in-bar comparisons • Weekly trends (avg lines) • Parameters • Show/Hide filters
+      </div>
+
+      <p style="margin-top:0.75rem;color:var(--gray-700);line-height:1.7;font-size:1.0625rem">
+        Built an end-to-end Tableau BI dashboard focused on executive KPIs and performance diagnostics.
+        The Sales dashboard includes KPI tiles for Sales/Profit/Quantity with monthly sparklines and min/max markers,
+        sub-category bar-in-bar comparisons (current year vs previous year), and weekly trend views with average reference lines.
+        Interactivity includes a Select Year parameter, a show/hide filter panel, and dashboard navigation.
       </p>
 
-      <div class="projects-grid" role="list">
-        <!-- Featured: Solara -->
-        <div class="project featured" role="listitem" aria-labelledby="proj-solara">
-          <h3 id="proj-solara" style="font-size:1.5rem;margin-bottom:0.75rem">Solara Healthcare RAG System</h3>
-          <div class="meta" style="font-size:1rem;margin-bottom:1rem">
-            Data governance, ingestion pipelines, multi-tenant controls, reproducible evaluation
-          </div>
-
-          <p style="margin-top:0.75rem;color:var(--gray-700);line-height:1.7;font-size:1.0625rem">
-            Built a healthcare knowledge system with strong data governance (metadata tracking, deduplication, tenant isolation) and audit-friendly evaluation.
-            Implemented reproducible monitoring runs and tracked quality using evaluation metrics over time.
-          </p>
-
-          <div class="chips" style="margin-top:1.25rem">
-            <span class="chip">Python</span>
-            <span class="chip">PostgreSQL</span>
-            <span class="chip">pgvector</span>
-            <span class="chip">FastAPI</span>
-            <span class="chip">RAG</span>
-            <span class="chip">RAGAS</span>
-            <span class="chip">Pytest</span>
-          </div>
-
-          <div style="margin-top:1.25rem;display:flex;gap:0.75rem;flex-wrap:wrap">
-            <a class="btn btn-secondary" href="https://github.com/Eashwar-Subramanian" target="_blank" rel="noopener noreferrer">
-              View on GitHub
-            </a>
-          </div>
-        </div>
-
-        <!-- Retail segmentation -->
-        <div class="project" role="listitem">
-          <h3>Customer Segmentation & RFM Analysis</h3>
-          <div class="meta">K-Means • RFM • Power BI/Tableau Reporting</div>
-          <p style="margin-top:0.75rem;color:var(--gray-700);line-height:1.7">
-            Segmented Australian retail customers and identified a high-value segment representing ~15% of revenue.
-            Improved data quality (invalid order IDs) to enable accurate RFM analysis and reporting.
-          </p>
-          <div class="chips" style="margin-top:1rem">
-            <span class="chip">Python</span>
-            <span class="chip">scikit-learn</span>
-            <span class="chip">RFM</span>
-            <span class="chip">Power BI</span>
-          </div>
-        </div>
-
-        <!-- Climate forecasting -->
-        <div class="project" role="listitem">
-          <h3>Climate Policy Forecasting Dashboard</h3>
-          <div class="meta">SARIMA • Flask • Folium Mapping</div>
-          <p style="margin-top:0.75rem;color:var(--gray-700);line-height:1.7">
-            Built time-series forecasting and an interactive dashboard with geospatial exploration to support stakeholder understanding of trends and uncertainty.
-          </p>
-          <div class="chips" style="margin-top:1rem">
-            <span class="chip">SARIMA</span>
-            <span class="chip">Flask</span>
-            <span class="chip">Folium</span>
-            <span class="chip">Statsmodels</span>
-          </div>
-        </div>
-
-        <!-- Optional / general projects (kept, but wording made conservative & factual) -->
-        <div class="project" role="listitem">
-          <h3>Cloud Music Subscription Platform</h3>
-          <div class="meta">AWS • DynamoDB • Java</div>
-          <p style="margin-top:0.75rem;color:var(--gray-700);line-height:1.7">
-            Built a cloud-based platform prototype using Java and AWS services, focusing on data storage, basic APIs, and cloud-native architecture concepts.
-          </p>
-          <div class="chips" style="margin-top:1rem">
-            <span class="chip">Java</span>
-            <span class="chip">AWS</span>
-            <span class="chip">DynamoDB</span>
-          </div>
-        </div>
-
-        <div class="project" role="listitem">
-          <h3>Real Estate Data Quality Pipeline</h3>
-          <div class="meta">Data Cleaning • Duplicate Detection • ETL</div>
-          <p style="margin-top:0.75rem;color:var(--gray-700);line-height:1.7">
-            Developed an automated data cleaning workflow, implementing parsing, duplicate detection, and schema validation to improve data consistency.
-          </p>
-          <div class="chips" style="margin-top:1rem">
-            <span class="chip">Python</span>
-            <span class="chip">MySQL</span>
-            <span class="chip">ETL</span>
-            <span class="chip">Validation</span>
-          </div>
-        </div>
+      <div class="chips" style="margin-top:1.25rem">
+        <span class="chip">Tableau</span>
+        <span class="chip">Business Intelligence</span>
+        <span class="chip">Parameters</span>
+        <span class="chip">Reference Lines</span>
+        <span class="chip">UI/UX</span>
       </div>
-    </section>
+
+      <div style="margin-top:1.25rem;display:flex;gap:0.75rem;flex-wrap:wrap">
+        <a class="btn btn-secondary" href="https://github.com/Eashwar-Subramanian/sales-customer-performance-bi-tableau" target="_blank" rel="noopener noreferrer">
+          View Repo
+        </a>
+        <a class="btn btn-secondary" href="https://public.tableau.com/views/SalesDashboard_17726779946520/SalesDashboard?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" target="_blank" rel="noopener noreferrer">
+          Live Dashboard (Tableau Public)
+        </a>
+      </div>
+      <div class="meta" style="margin-top:0.75rem">
+      </div>
+    </div>
+
+    <!-- Solara: sanitized proof (no NDA code) -->
+    <div class="project" role="listitem" aria-labelledby="proj-solara">
+      <h3 id="proj-solara">Healthcare RAG Evaluation (Sanitized)</h3>
+      <div class="meta">Documentation + metrics only (no NDA code)</div>
+      <p style="margin-top:0.75rem;color:var(--gray-700);line-height:1.7">
+        Sanitized case study capturing documented design decisions and evaluation artifacts without sharing proprietary code.
+      </p>
+      <div class="chips" style="margin-top:1rem">
+        <span class="chip">Evaluation</span>
+        <span class="chip">Documentation</span>
+        <span class="chip">Reproducibility</span>
+      </div>
+      <div style="margin-top:1.25rem;display:flex;gap:0.75rem;flex-wrap:wrap">
+        <a class="btn btn-secondary" href="https://github.com/Eashwar-Subramanian/healthcare-rag-evaluation-sanitized" target="_blank" rel="noopener noreferrer">
+          View Repo
+        </a>
+      </div>
+    </div>
+
+    <!-- Retail segmentation -->
+    <div class="project" role="listitem" aria-labelledby="proj-rfm">
+      <h3 id="proj-rfm">Australian Retail Customer Segmentation (Python + Power BI)</h3>
+      <div class="meta">RFM features • K-Means clustering • Dashboard delivery</div>
+      <p style="margin-top:0.75rem;color:var(--gray-700);line-height:1.7">
+        Segmented Australian retail customers using RFM-style features and clustering, then delivered insights through a Power BI dashboard built on a customer-level dataset.
+      </p>
+      <div class="chips" style="margin-top:1rem">
+        <span class="chip">Python</span>
+        <span class="chip">scikit-learn</span>
+        <span class="chip">Power BI</span>
+        <span class="chip">Data Quality</span>
+      </div>
+      <div style="margin-top:1.25rem;display:flex;gap:0.75rem;flex-wrap:wrap">
+        <a class="btn btn-secondary" href="https://github.com/Eashwar-Subramanian/retail-customer-segmentation-australia" target="_blank" rel="noopener noreferrer">
+          View Repo
+        </a>
+      </div>
+    </div>
+
+    <!-- Sales analytics (Power BI + MySQL) -->
+    <div class="project" role="listitem" aria-labelledby="proj-salesbi">
+      <h3 id="proj-salesbi">Sales Analytics Dashboard (Power BI + MySQL)</h3>
+      <div class="meta">Reproducible model • MySQL dump included</div>
+      <p style="margin-top:0.75rem;color:var(--gray-700);line-height:1.7">
+        Power BI sales dashboard packaged with a MySQL database dump so the dataset can be restored locally and the model reproduced.
+      </p>
+      <div class="chips" style="margin-top:1rem">
+        <span class="chip">Power BI</span>
+        <span class="chip">MySQL</span>
+        <span class="chip">Reporting</span>
+      </div>
+      <div style="margin-top:1.25rem;display:flex;gap:0.75rem;flex-wrap:wrap">
+        <a class="btn btn-secondary" href="https://github.com/Eashwar-Subramanian/sales-analytics-dashboard-powerbi" target="_blank" rel="noopener noreferrer">
+          View Repo
+        </a>
+      </div>
+    </div>
+
+    <!-- Climate forecasting -->
+    <div class="project" role="listitem" aria-labelledby="proj-climate">
+      <h3 id="proj-climate">Australian Climate Forecast Dashboard (Flask + SARIMAX + Folium)</h3>
+      <div class="meta">Time-series forecasting • Web dashboard</div>
+      <p style="margin-top:0.75rem;color:var(--gray-700);line-height:1.7">
+        Flask dashboard that generates on-demand weekly SARIMAX forecasts for Australian locations and renders an interactive map.
+      </p>
+      <div class="chips" style="margin-top:1rem">
+        <span class="chip">Python</span>
+        <span class="chip">Flask</span>
+        <span class="chip">SARIMAX</span>
+        <span class="chip">Folium</span>
+      </div>
+      <div style="margin-top:1.25rem;display:flex;gap:0.75rem;flex-wrap:wrap">
+        <a class="btn btn-secondary" href="https://github.com/Eashwar-Subramanian/climate-policy-forecasting-dashboard" target="_blank" rel="noopener noreferrer">
+          View Repo
+        </a>
+      </div>
+    </div>
+
+    <!-- Real estate (MySQL cleaning) - corrected to match repo reality -->
+    <div class="project" role="listitem" aria-labelledby="proj-realestate">
+      <h3 id="proj-realestate">Real Estate Data Cleaning (MySQL)</h3>
+      <div class="meta">Standardization • Parsing • De-duplication</div>
+      <p style="margin-top:0.75rem;color:var(--gray-700);line-height:1.7">
+        Data cleaning workflow for the Nashville housing dataset using MySQL statements (date standardization, address parsing, duplicate removal).
+      </p>
+      <div class="chips" style="margin-top:1rem">
+        <span class="chip">MySQL</span>
+        <span class="chip">Data Cleaning</span>
+        <span class="chip">Data Quality</span>
+      </div>
+      <div style="margin-top:1.25rem;display:flex;gap:0.75rem;flex-wrap:wrap">
+        <a class="btn btn-secondary" href="https://github.com/Eashwar-Subramanian/real-estate-data-cleaning-mysql" target="_blank" rel="noopener noreferrer">
+          View Repo
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
 
     <!-- ================= SKILLS ================= -->
     <section id="skills" aria-labelledby="skills-title">
@@ -1156,6 +1202,7 @@ nav#primary-nav a.btn.btn-secondary:hover {
   </script>
 </body>
 </html>
+
 
 
 
